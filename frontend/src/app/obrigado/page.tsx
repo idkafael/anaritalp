@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, Loader2, ArrowRight } from "lucide-react";
 import { API_BASE } from "@/lib/api";
 
-export default function ObrigadoPage() {
+function ObrigadoPageContent() {
     const searchParams = useSearchParams();
     const order_id = searchParams.get("order_id");
     const [status, setStatus] = useState<string>("processing");
@@ -82,5 +82,22 @@ export default function ObrigadoPage() {
                 </div>
             </div>
         </div>
+    );
+}
+
+function ObrigadoFallback() {
+    return (
+        <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-brand-black bg-dark-texture">
+            <div className="w-16 h-16 border-4 border-brand-orange border-t-transparent rounded-full animate-spin mb-8"></div>
+            <h1 className="text-2xl font-serif text-white">Carregando...</h1>
+        </div>
+    );
+}
+
+export default function ObrigadoPage() {
+    return (
+        <Suspense fallback={<ObrigadoFallback />}>
+            <ObrigadoPageContent />
+        </Suspense>
     );
 }

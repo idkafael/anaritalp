@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Calendar, Video, Headphones, ShieldCheck, Download } from "lucide-react";
 import { API_BASE } from "@/lib/api";
 
-export default function AcessoPortal() {
+function AcessoPortalContent() {
     const searchParams = useSearchParams();
     const token = searchParams.get("token");
 
@@ -132,5 +132,21 @@ export default function AcessoPortal() {
                 )}
             </main>
         </div>
+    );
+}
+
+function AcessoFallback() {
+    return (
+        <div className="min-h-screen bg-[#0A0A0A] bg-dark-texture flex items-center justify-center">
+            <div className="text-white/50 tracking-widest uppercase text-sm animate-pulse">Carregando...</div>
+        </div>
+    );
+}
+
+export default function AcessoPortal() {
+    return (
+        <Suspense fallback={<AcessoFallback />}>
+            <AcessoPortalContent />
+        </Suspense>
     );
 }

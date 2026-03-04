@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { API_BASE } from "@/lib/api";
 
-export default function CheckoutPage() {
+function CheckoutPageContent() {
     const searchParams = useSearchParams();
 
     useEffect(() => {
@@ -49,5 +49,22 @@ export default function CheckoutPage() {
             <h1 className="text-2xl font-serif mb-2">Preparando seu ingresso...</h1>
             <p className="text-white/50 text-sm tracking-widest uppercase">Redirecionando para o ambiente seguro</p>
         </div>
+    );
+}
+
+function CheckoutFallback() {
+    return (
+        <div className="min-h-screen flex flex-col items-center justify-center text-center px-4 bg-brand-black text-brand-offWhite">
+            <div className="w-16 h-16 border-4 border-brand-orange border-t-transparent rounded-full animate-spin mb-8"></div>
+            <h1 className="text-2xl font-serif mb-2">Preparando...</h1>
+        </div>
+    );
+}
+
+export default function CheckoutPage() {
+    return (
+        <Suspense fallback={<CheckoutFallback />}>
+            <CheckoutPageContent />
+        </Suspense>
     );
 }
