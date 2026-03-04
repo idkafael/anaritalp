@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { API_BASE } from "@/lib/api";
 
 export default function CheckoutPage() {
     const searchParams = useSearchParams();
@@ -23,7 +24,7 @@ export default function CheckoutPage() {
                     referrer: document.referrer || undefined
                 };
 
-                const res = await fetch("http://localhost:8000/api/order/create", {
+                const res = await fetch(`${API_BASE}/api/order/create`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)

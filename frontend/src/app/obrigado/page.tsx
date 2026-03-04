@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { CheckCircle2, Loader2, ArrowRight } from "lucide-react";
+import { API_BASE } from "@/lib/api";
 
 export default function ObrigadoPage() {
     const searchParams = useSearchParams();
@@ -17,7 +18,7 @@ export default function ObrigadoPage() {
 
         const checkStatus = async () => {
             try {
-                const res = await fetch(`http://localhost:8000/api/order/${order_id}`);
+                const res = await fetch(`${API_BASE}/api/order/${order_id}`);
                 const data = await res.json();
 
                 if (data.status === "paid") {

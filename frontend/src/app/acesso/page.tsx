@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Calendar, Video, Headphones, ShieldCheck, Download } from "lucide-react";
+import { API_BASE } from "@/lib/api";
 
 export default function AcessoPortal() {
     const searchParams = useSearchParams();
@@ -21,7 +22,7 @@ export default function AcessoPortal() {
 
         async function resolve() {
             try {
-                const res = await fetch(`http://localhost:8000/api/access/resolve?token=${token}`);
+                const res = await fetch(`${API_BASE}/api/access/resolve?token=${token}`);
                 const data = await res.json();
 
                 if (res.ok) {
