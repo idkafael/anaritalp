@@ -62,6 +62,14 @@ export default function LandingPage() {
             {/* HERO CINEMATOGRÁFICO - ESTILO MÉTODO IP OTIMIZADA PARA PC */}
             <header className="relative min-h-[100svh] flex flex-col lg:flex-row items-center justify-center lg:justify-end bg-[#070b14] overflow-hidden pt-0 pb-16 lg:pb-0 font-sans">
 
+                {/* Badge Presencial flutuando acima da imagem */}
+                <div className="absolute top-7 left-1/2 -translate-x-1/2 z-[1000] flex items-center justify-center w-full px-4">
+                    <div className="inline-flex items-center gap-2 px-4 lg:px-5 py-1.5 lg:py-2 rounded-full border border-brand-pink/60 bg-[#070b14]/95 text-white text-[11px] lg:text-[12px] font-bold uppercase tracking-[0.3em] shadow-[0_0_22px_rgba(219,31,133,0.55)]">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                        Evento Presencial — Acorda Filha
+                    </div>
+                </div>
+
                 {/* Imagem do Especialista (3 Mulheres) - Direita no PC */}
                 <div className="relative w-full max-w-[650px] lg:max-w-none lg:w-[55%] lg:h-[100svh] flex items-end justify-center lg:justify-end lg:order-2 mt-4 sm:mt-0 lg:-mt-0">
                     {/* Gradientes Mobile */}
@@ -82,7 +90,7 @@ export default function LandingPage() {
                         src="https://i.imgur.com/Bz1V7tt.png"
                         alt="3 Mulheres"
                         style={{ WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 100%)', maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 100%)' }}
-                        className="w-[140%] sm:w-[120%] md:w-full h-auto lg:h-[105svh] lg:w-auto object-contain object-bottom opacity-[0.95] mx-auto lg:mx-0 lg:mr-[5%] z-0 mix-blend-screen scale-[1.15] lg:scale-125 origin-bottom translate-y-12 lg:translate-y-8"
+                        className="w-[140%] sm:w-[120%] md:w-full h-auto lg:h-[105svh] lg:w-auto object-contain object-bottom opacity-[0.95] mx-auto lg:mx-0 lg:mr-[5%] z-0 mix-blend-screen scale-[1.15] lg:scale-125 origin-bottom translate-y-24 lg:translate-y-20"
                     />
                 </div>
 
@@ -90,19 +98,11 @@ export default function LandingPage() {
                 <div className="hidden lg:block absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-brand-pink/10 rounded-full blur-[150px] mix-blend-screen pointer-events-none z-0"></div>
 
                 {/* Card sobreposto - Esquerda no PC */}
-                <div className="relative z-20 lg:absolute lg:left-[5%] xl:left-[10%] lg:top-1/2 lg:-translate-y-1/2 w-[92%] max-w-[480px] lg:max-w-[620px] xl:max-w-[700px] -mt-[220px] sm:-mt-[220px] lg:mt-0 p-6 sm:p-10 lg:p-14 rounded-2xl lg:rounded-[2rem] border border-brand-pink/30 lg:border-white/5 bg-[#070b14]/95 lg:bg-gradient-to-br lg:from-[#111827]/95 lg:to-[#070b14]/95 backdrop-blur-xl lg:backdrop-blur-3xl shadow-[0_0_50px_rgba(219,31,133,0.15)] lg:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),_0_0_60px_-15px_rgba(219,31,133,0.2)] animate-fade-in-up flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-500 overflow-hidden group">
+                <div className="relative z-20 lg:absolute lg:left-[5%] xl:left-[10%] lg:top-1/2 lg:-translate-y-1/2 w-[92%] max-w-[480px] lg:max-w-[620px] xl:max-w-[700px] -mt-[220px] sm:-mt-[280px] lg:mt-0 p-6 sm:p-10 lg:p-14 rounded-2xl lg:rounded-[2rem] border border-brand-pink/30 lg:border-white/5 bg-[#070b14]/95 lg:bg-gradient-to-br lg:from-[#111827]/95 lg:to-[#070b14]/95 backdrop-blur-xl lg:backdrop-blur-3xl shadow-[0_0_50px_rgba(219,31,133,0.15)] lg:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8),_0_0_60px_-15px_rgba(219,31,133,0.2)] animate-fade-in-up flex flex-col items-center lg:items-start text-center lg:text-left transition-all duration-500 overflow-hidden group">
 
                     {/* Luz de topo do card no PC */}
                     <div className="hidden lg:block absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-brand-pink/80 to-transparent"></div>
                     <div className="hidden lg:block absolute -top-10 -left-10 w-48 h-48 bg-brand-pink/20 rounded-full blur-3xl pointer-events-none"></div>
-
-                    {/* Badge Presencial */}
-                    <div className="mb-6 lg:mb-10 flex flex-col items-center lg:items-start w-full relative z-10">
-                        <div className="inline-flex items-center gap-2 px-3 lg:px-4 py-1 lg:py-1.5 rounded-full border border-brand-pink/30 lg:border-brand-pink/40 bg-brand-pink/10 lg:bg-brand-pink/10 text-brand-pink text-[10px] lg:text-[11px] font-bold uppercase tracking-[0.3em] shadow-[0_0_10px_rgba(219,31,133,0.2)]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-brand-pink animate-pulse"></span>
-                            Evento Presencial — Acorda Filha
-                        </div>
-                    </div>
 
                     <h1 className="relative z-10 font-sans text-[22px] sm:text-[28px] lg:text-[44px] xl:text-[50px] text-white font-medium leading-[1.3] lg:leading-[1.1] mb-6 lg:mb-8 tracking-tight">
                         Descubra quem você é e <strong className="font-bold">volte a viver o propósito…</strong><br className="hidden sm:block mb-1 lg:mb-3" />
