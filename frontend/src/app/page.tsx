@@ -87,7 +87,7 @@ export default function LandingPage() {
                     {/* Imagem Hero */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                        src="https://i.imgur.com/Bz1V7tt.png"
+                        src="https://imgur.com/O7RX5iw.png"
                         alt="3 Mulheres"
                         style={{ WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 100%)', maskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 100%)' }}
                         className="w-[140%] sm:w-[120%] md:w-full h-auto lg:h-[105svh] lg:w-auto object-contain object-bottom opacity-[0.95] mx-auto lg:mx-0 lg:mr-[5%] z-0 mix-blend-screen scale-[1.15] lg:scale-125 origin-bottom translate-y-24 lg:translate-y-20"
