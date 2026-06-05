@@ -81,7 +81,7 @@ export default function CTAScreen() {
             textAlign: 'center', marginBottom: 14,
           }}>
             <p style={{ fontSize: 13, fontWeight: 600, color: '#d4ae6e', lineHeight: 1.45 }}>
-              ⚠️ Assista o vídeo agora — este é o seu primeiro passo para sair do Egito.
+              ⚠️ Assista o vídeo agora. Este é o seu primeiro passo para sair do Egito.
             </p>
           </div>
 

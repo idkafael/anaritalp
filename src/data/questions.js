@@ -4,9 +4,9 @@ export const questions = [
     type: 'single',
     question: 'Ao acordar, qual é o sentimento mais frequente no seu coração?',
     options: [
-      { emoji: '😰', text: 'Minha mente não desacelera — estou sempre preocupada', scores: [3, 0, 0, 1] },
+      { emoji: '😰', text: 'Minha mente não desacelera, estou sempre preocupada', scores: [3, 0, 0, 1] },
       { emoji: '🌫️', text: 'Sinto-me perdida, sem saber o que fazer', scores: [0, 3, 0, 1] },
-      { emoji: '😩', text: 'Cansaço físico e emocional — sem energia para nada', scores: [0, 0, 3, 0] },
+      { emoji: '😩', text: 'Cansaço físico e emocional, sem energia para nada', scores: [0, 0, 3, 0] },
       { emoji: '😨', text: 'Medo constante do que o futuro reserva', scores: [0, 0, 0, 3] },
     ],
   },
@@ -178,7 +178,7 @@ export const resultProfiles = [
       'Você sabe que Deus tem mais, mas não consegue avançar',
     ],
     finalLine1: '🟡 O seu Egito hoje pode estar na sua identidade.',
-    finalLine2: 'Mas Deus ainda sabe exatamente quem você é — e Ele pode te conduzir de volta ao caminho, à clareza e ao propósito.',
+    finalLine2: 'Mas Deus ainda sabe exatamente quem você é. Ele pode te conduzir de volta ao caminho, à clareza e ao propósito.',
   },
   {
     id: 3,
