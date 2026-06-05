@@ -72,42 +72,52 @@ export default function CTAScreen() {
           </h1>
         </Section>
 
-        {/* ── 3. VSL WARNING ── */}
+        {/* ── 3. VSL ── */}
         <Section delay={0.18}>
+          {/* Indicador acima do vídeo */}
           <div style={{
-            background: 'rgba(190,150,81,0.08)',
-            border: '1px solid rgba(190,150,81,0.28)',
-            borderRadius: 10, padding: '11px 16px',
-            textAlign: 'center', marginBottom: 14,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            gap: 8, marginBottom: 12,
           }}>
-            <p style={{ fontSize: 13, fontWeight: 600, color: '#d4ae6e', lineHeight: 1.45 }}>
-              ⚠️ Assista o vídeo agora. Este é o seu primeiro passo para sair do Egito.
-            </p>
+            <span style={{
+              width: 6, height: 6, borderRadius: '50%',
+              background: '#d4ae6e',
+              boxShadow: '0 0 6px rgba(212,174,110,0.8)',
+              display: 'inline-block',
+            }} />
+            <span style={{
+              fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+              color: 'rgba(212,174,110,0.7)', fontWeight: 600,
+            }}>
+              Assista agora — primeiro passo para sair do Egito
+            </span>
           </div>
 
           {/* VSL Video placeholder */}
           <div style={{
             width: '100%', aspectRatio: '16/9',
-            background: 'rgba(0,0,0,0.42)',
-            border: '1px solid rgba(190,150,81,0.22)',
-            borderRadius: 18,
+            background: 'rgba(0,0,0,0.5)',
+            borderRadius: 20,
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             flexDirection: 'column', gap: 10,
             marginBottom: 32,
+            position: 'relative', overflow: 'hidden',
           }}>
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: 'linear-gradient(135deg, rgba(190,150,81,0.04) 0%, transparent 60%)',
+            }} />
             <div style={{
               width: 64, height: 64, borderRadius: '50%',
               background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 0 36px rgba(190,150,81,0.35)',
+              boxShadow: '0 0 40px rgba(190,150,81,0.3)',
+              position: 'relative', zIndex: 1,
             }}>
               <svg width={26} height={26} viewBox="0 0 24 24" fill="#0F3A3A">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
-            <p style={{ fontSize: 12, color: 'rgba(245,239,230,0.28)', letterSpacing: '0.08em' }}>
-              VÍDEO
-            </p>
           </div>
         </Section>
 
@@ -142,18 +152,19 @@ export default function CTAScreen() {
             {includes.map((b, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, x: -14 }}
+                initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.38 + i * 0.08, duration: 0.4 }}
+                transition={{ delay: 0.38 + i * 0.08, duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 14,
-                  padding: '13px 16px', borderRadius: 12, marginBottom: 8,
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.06)',
+                  display: 'flex', alignItems: 'flex-start', gap: 14,
+                  padding: '13px 0',
+                  borderBottom: i < includes.length - 1
+                    ? '1px solid rgba(255,255,255,0.05)'
+                    : 'none',
                 }}
               >
-                <span style={{ fontSize: 20, flexShrink: 0 }}>{b.icon}</span>
-                <span style={{ fontSize: 14, color: 'rgba(245,239,230,0.8)', fontWeight: 500, lineHeight: 1.4 }}>
+                <span style={{ fontSize: 19, flexShrink: 0, marginTop: 1 }}>{b.icon}</span>
+                <span style={{ fontSize: 14, color: 'rgba(245,239,230,0.75)', lineHeight: 1.6 }}>
                   {b.text}
                 </span>
               </motion.div>
@@ -202,16 +213,21 @@ export default function CTAScreen() {
           </motion.button>
 
           {/* Guarantee */}
-          <div style={{
-            background: 'rgba(255,255,255,0.03)',
-            border: '1px solid rgba(255,255,255,0.07)',
-            borderRadius: 12, padding: '13px 16px',
-            textAlign: 'center', marginBottom: 20,
-          }}>
-            <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.55)', lineHeight: 1.65 }}>
-              ✅ <strong style={{ color: 'rgba(245,239,230,0.8)' }}>7 dias de garantia incondicional.</strong>{' '}
-              Se não gostar, devolvemos 100% do seu dinheiro. Sem perguntas. Sem burocracia.
+          <div style={{ textAlign: 'center', marginBottom: 20 }}>
+            <div style={{
+              height: 1, marginBottom: 16,
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+            }} />
+            <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.45)', lineHeight: 1.7 }}>
+              <strong style={{ color: 'rgba(245,239,230,0.65)', fontWeight: 600 }}>
+                7 dias de garantia incondicional.
+              </strong>{' '}
+              Se não gostar, devolvemos 100% do seu dinheiro.
             </p>
+            <div style={{
+              height: 1, marginTop: 16,
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+            }} />
           </div>
 
           <p style={{
