@@ -270,16 +270,16 @@ export default function ResultScreen({ profileId, onContinue }) {
         {/* ── 11. PURPLE CTA BUTTON ── */}
         <Section delay={0.65}>
           <motion.button
-            whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(124,58,237,0.45)' }}
+            whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
             whileTap={{ scale: 0.975 }}
             onClick={onContinue}
             style={{
               width: '100%', padding: '19px',
               borderRadius: 16, border: 'none',
-              background: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 60%, #9333ea 100%)',
-              color: '#ffffff', fontSize: 16, fontWeight: 800,
+              background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
+              color: '#0F3A3A', fontSize: 16, fontWeight: 800,
               cursor: 'pointer', letterSpacing: '0.04em',
-              boxShadow: '0 4px 32px rgba(124,58,237,0.35)',
+              boxShadow: '0 4px 32px rgba(190,150,81,0.35)',
               marginBottom: 20,
               transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
             }}

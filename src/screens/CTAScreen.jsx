@@ -1,39 +1,91 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../components/Logo'
+
+// Quanto tempo (em segundos) após o play para revelar a oferta
+// Ajuste para coincidir com a duração real do vídeo quando for inserido
+const REVEAL_AFTER_SECONDS = 30
+
+const profileHeadlines = {
+  1: {
+    tag: 'O Egito da Paz Roubada',
+    sub: 'Assista o vídeo abaixo e descubra como sair dessa prisão emocional e viver com paz em 7 dias.',
+  },
+  2: {
+    tag: 'O Egito do Propósito Destruído',
+    sub: 'Assista o vídeo abaixo e descubra como reencontrar sua direção e destravar sua identidade em 7 dias.',
+  },
+  3: {
+    tag: 'O Egito da Alma Quebrantada',
+    sub: 'Assista o vídeo abaixo e descubra como ser restaurada e sair do esgotamento emocional em 7 dias.',
+  },
+  4: {
+    tag: 'O Egito da Escrava do Medo',
+    sub: 'Assista o vídeo abaixo e descubra como avançar com coragem e sair da paralisia em 7 dias.',
+  },
+}
+
+const bonuses = [
+  '7 etapas da travessia para sair dos ciclos emocionais e caminhar em direção à Terra Prometida.',
+  'Aulão Especial de Diagnóstico para identificar onde sua vida travou, por que travou e como começar a destravar.',
+  'Comunidade exclusiva Chamadas Para Vencer para caminhar com mulheres que também estão vivendo essa jornada.',
+  'Direção para identificar a Programação do Egito que ainda governa suas emoções, pensamentos e decisões.',
+  'Processo para romper com o DNA de Escrava e desenvolver uma nova mentalidade.',
+  'Garantia incondicional de 7 dias para você entrar, assistir e decidir com segurança.',
+  'Acesso completo por apenas R$ 37,90.',
+]
 
 function Section({ children, delay = 0 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5, ease: 'easeOut' }}
+      transition={{ delay, duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
     >
       {children}
     </motion.div>
   )
 }
 
-const includes = [
-  { icon: '🗝️', text: 'Identifique exatamente o que te prende no seu Egito' },
-  { icon: '🧭', text: 'Receba um plano personalizado de saída em 7 dias' },
-  { icon: '🔥', text: 'Desbloqueie sua identidade e seu verdadeiro potencial' },
-  { icon: '🙏', text: 'Reconecte-se com o propósito que Deus preparou para você' },
-  { icon: '✨', text: 'Comunidade de mulheres que saíram do Egito' },
-]
+export default function CTAScreen({ profileId = 1 }) {
+  const [videoPlaying, setVideoPlaying] = useState(false)
+  const [offerRevealed, setOfferRevealed] = useState(false)
+  const [countdown, setCountdown] = useState(REVEAL_AFTER_SECONDS)
+  const timerRef = useRef(null)
 
-export default function CTAScreen() {
+  const hl = profileHeadlines[profileId] || profileHeadlines[1]
+
+  const handlePlay = () => {
+    if (videoPlaying) return
+    setVideoPlaying(true)
+    timerRef.current = setInterval(() => {
+      setCountdown(t => {
+        if (t <= 1) {
+          clearInterval(timerRef.current)
+          setOfferRevealed(true)
+          return 0
+        }
+        return t - 1
+      })
+    }, 1000)
+  }
+
+  useEffect(() => {
+    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+  }, [])
+
   return (
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
-      padding: '40px 24px 72px',
+      padding: '40px 24px 80px',
       position: 'relative', overflowX: 'hidden',
     }}>
       <div style={{
         position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
         width: 640, height: 380,
-        background: 'radial-gradient(ellipse, rgba(190,150,81,0.09) 0%, transparent 65%)',
+        background: 'radial-gradient(ellipse, rgba(190,150,81,0.08) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
 
@@ -45,201 +97,278 @@ export default function CTAScreen() {
         <Section delay={0.05}>
           <div style={{ textAlign: 'center', marginBottom: 14 }}>
             <span style={{
-              fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: '#be9651', fontWeight: 700, fontStyle: 'italic',
+              fontSize: 10, letterSpacing: '0.26em', textTransform: 'uppercase',
+              color: 'rgba(190,150,81,0.7)', fontWeight: 700,
             }}>
-              ✦ Próximo Passo ✦
+              ✦ &nbsp; Próximo Passo &nbsp; ✦
             </span>
           </div>
         </Section>
 
-        {/* ── 2. HEADLINE ── */}
+        {/* ── 2. HEADLINE PERSONALIZADA ── */}
         <Section delay={0.12}>
           <h1 style={{
             textAlign: 'center',
-            fontSize: 'clamp(24px, 5.5vw, 32px)',
+            fontSize: 'clamp(22px, 5.5vw, 30px)',
             fontWeight: 800, color: '#f5efe6',
-            marginBottom: 28, lineHeight: 1.2,
+            marginBottom: 10, lineHeight: 1.2,
             letterSpacing: '-0.4px',
           }}>
-            Seu Egito foi identificado.{' '}
+            Seu Egito foi identificado:{' '}
             <span style={{
               background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
             }}>
-              Agora é hora de agir.
+              {hl.tag}.
             </span>
           </h1>
         </Section>
 
-        {/* ── 3. VSL ── */}
+        {/* ── 3. SUBHEADLINE ── */}
         <Section delay={0.18}>
-          {/* Indicador acima do vídeo */}
-          <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            gap: 8, marginBottom: 12,
-          }}>
-            <span style={{
-              width: 6, height: 6, borderRadius: '50%',
-              background: '#d4ae6e',
-              boxShadow: '0 0 6px rgba(212,174,110,0.8)',
-              display: 'inline-block',
-            }} />
-            <span style={{
-              fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
-              color: 'rgba(212,174,110,0.7)', fontWeight: 600,
-            }}>
-              Assista agora — primeiro passo para sair do Egito
-            </span>
-          </div>
-
-          {/* VSL Video placeholder */}
-          <div style={{
-            width: '100%', aspectRatio: '16/9',
-            background: 'rgba(0,0,0,0.5)',
-            borderRadius: 20,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            flexDirection: 'column', gap: 10,
-            marginBottom: 32,
-            position: 'relative', overflow: 'hidden',
-          }}>
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(135deg, rgba(190,150,81,0.04) 0%, transparent 60%)',
-            }} />
-            <div style={{
-              width: 64, height: 64, borderRadius: '50%',
-              background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: '0 0 40px rgba(190,150,81,0.3)',
-              position: 'relative', zIndex: 1,
-            }}>
-              <svg width={26} height={26} viewBox="0 0 24 24" fill="#0F3A3A">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </Section>
-
-        {/* ── 4. O CÉU TE VALIDA ── */}
-        <Section delay={0.26}>
-          <h2 style={{
-            textAlign: 'center',
-            fontSize: 'clamp(19px, 4.5vw, 25px)',
-            fontWeight: 800, color: '#f5efe6',
-            lineHeight: 1.35, marginBottom: 8, letterSpacing: '-0.3px',
-          }}>
-            O CÉU TE VALIDA:{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            }}>
-              Descubra como sair do seu Egito e destravar sua identidade em 7 dias.
-            </span>
-          </h2>
-
           <p style={{
-            fontSize: 15, color: 'rgba(245,239,230,0.6)',
-            lineHeight: 1.8, marginBottom: 28, textAlign: 'center', fontStyle: 'italic',
+            textAlign: 'center', fontSize: 15,
+            color: 'rgba(245,239,230,0.6)',
+            lineHeight: 1.75, marginBottom: 24, fontStyle: 'italic',
           }}>
-            Com base nas suas respostas, você está pronta para uma transformação profunda.
+            {hl.sub}
           </p>
         </Section>
 
-        {/* ── 5. INCLUDES ── */}
-        <Section delay={0.32}>
-          <div style={{ marginBottom: 28 }}>
-            {includes.map((b, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.38 + i * 0.08, duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-                style={{
-                  display: 'flex', alignItems: 'flex-start', gap: 14,
-                  padding: '13px 0',
-                  borderBottom: i < includes.length - 1
-                    ? '1px solid rgba(255,255,255,0.05)'
-                    : 'none',
-                }}
-              >
-                <span style={{ fontSize: 19, flexShrink: 0, marginTop: 1 }}>{b.icon}</span>
-                <span style={{ fontSize: 14, color: 'rgba(245,239,230,0.75)', lineHeight: 1.6 }}>
-                  {b.text}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </Section>
-
-        {/* ── 6. SOCIAL PROOF ── */}
-        <Section delay={0.7}>
-          <div style={{
-            height: 1, marginBottom: 24,
-            background: 'linear-gradient(90deg, transparent, rgba(190,150,81,0.3), transparent)',
-          }} />
-
-          <div style={{ textAlign: 'center', marginBottom: 28 }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
-              {['👩', '👩‍🦱', '👩‍🦰', '👩‍🦳', '👩'].map((e, i) => (
-                <span key={i} style={{
-                  fontSize: 20, marginLeft: i > 0 ? -6 : 0,
-                  filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.5))',
-                }}>{e}</span>
-              ))}
-            </div>
-            <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.45)' }}>
-              +2.300 mulheres já identificaram seu Egito e estão na travessia
-            </p>
-          </div>
-        </Section>
-
-        {/* ── 7. CTA BUTTON ── */}
-        <Section delay={0.76}>
-          <motion.button
-            whileHover={{ scale: 1.025, boxShadow: '0 12px 44px rgba(190,150,81,0.5)' }}
-            whileTap={{ scale: 0.975 }}
+        {/* ── 4. VSL ── */}
+        <Section delay={0.24}>
+          <div
+            onClick={handlePlay}
             style={{
-              width: '100%', padding: '19px',
-              borderRadius: 16, border: 'none',
-              background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-              color: '#0F3A3A', fontSize: 17, fontWeight: 800,
-              cursor: 'pointer', letterSpacing: '0.02em',
-              boxShadow: '0 4px 28px rgba(190,150,81,0.35)',
-              marginBottom: 16,
+              width: '100%', aspectRatio: '16/9',
+              background: 'rgba(0,0,0,0.55)',
+              borderRadius: 20,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexDirection: 'column', gap: 12,
+              marginBottom: 40,
+              position: 'relative', overflow: 'hidden',
+              cursor: videoPlaying ? 'default' : 'pointer',
             }}
           >
-            QUERO COMEÇAR MINHA TRAVESSIA 🗝️
-          </motion.button>
+            {/* Subtle inner glow */}
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: 'linear-gradient(135deg, rgba(190,150,81,0.05) 0%, transparent 60%)',
+            }} />
 
-          {/* Guarantee */}
-          <div style={{ textAlign: 'center', marginBottom: 20 }}>
-            <div style={{
-              height: 1, marginBottom: 16,
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
-            }} />
-            <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.45)', lineHeight: 1.7 }}>
-              <strong style={{ color: 'rgba(245,239,230,0.65)', fontWeight: 600 }}>
-                7 dias de garantia incondicional.
-              </strong>{' '}
-              Se não gostar, devolvemos 100% do seu dinheiro.
-            </p>
-            <div style={{
-              height: 1, marginTop: 16,
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
-            }} />
+            {!videoPlaying ? (
+              /* Play button */
+              <motion.div
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  width: 68, height: 68, borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  boxShadow: '0 0 40px rgba(190,150,81,0.35)',
+                  position: 'relative', zIndex: 1,
+                  transition: 'all 0.3s cubic-bezier(0.32,0.72,0,1)',
+                }}
+              >
+                <svg width={28} height={28} viewBox="0 0 24 24" fill="#0F3A3A">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </motion.div>
+            ) : (
+              /* Playing state */
+              <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+                <div style={{
+                  width: 48, height: 48, borderRadius: '50%',
+                  border: '2px solid rgba(190,150,81,0.4)',
+                  borderTopColor: '#be9651',
+                  animation: 'spin 1s linear infinite',
+                  margin: '0 auto 12px',
+                }} />
+                <p style={{
+                  fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase',
+                  color: 'rgba(212,174,110,0.6)',
+                }}>
+                  {offerRevealed ? 'Vídeo concluído' : `Reproduzindo...`}
+                </p>
+              </div>
+            )}
+
+            {/* Progress bar at bottom when playing */}
+            {videoPlaying && !offerRevealed && (
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0, height: 3,
+                background: 'rgba(255,255,255,0.08)',
+              }}>
+                <motion.div
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: REVEAL_AFTER_SECONDS, ease: 'linear' }}
+                  style={{
+                    height: '100%',
+                    background: 'linear-gradient(90deg, #be9651, #d4ae6e)',
+                  }}
+                />
+              </div>
+            )}
           </div>
-
-          <p style={{
-            textAlign: 'center', fontSize: 12,
-            color: 'rgba(245,239,230,0.3)', lineHeight: 1.8,
-            fontStyle: 'italic',
-          }}>
-            Deus não te trouxe até aqui para te deixar parada. Ele está te chamando para algo maior.
-          </p>
         </Section>
 
+        {/* ── 5. OFERTA — aparece após o vídeo ── */}
+        <AnimatePresence>
+          {offerRevealed && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+            >
+              {/* Divisor */}
+              <div style={{
+                display: 'flex', alignItems: 'center',
+                justifyContent: 'center', gap: 10, marginBottom: 32,
+              }}>
+                <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(190,150,81,0.3))' }} />
+                <span style={{ fontSize: 11, color: 'rgba(190,150,81,0.5)', letterSpacing: 6 }}>✦ ✝ ✦</span>
+                <div style={{ flex: 1, height: 1, background: 'linear-gradient(270deg, transparent, rgba(190,150,81,0.3))' }} />
+              </div>
+
+              {/* Headline da oferta */}
+              <div style={{ textAlign: 'center', marginBottom: 12 }}>
+                <span style={{
+                  fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+                  color: 'rgba(190,150,81,0.65)', fontWeight: 700,
+                }}>
+                  ✦ &nbsp; A Decisão &nbsp; ✦
+                </span>
+              </div>
+
+              <h2 style={{
+                textAlign: 'center',
+                fontSize: 'clamp(20px, 5vw, 26px)',
+                fontWeight: 800, color: '#f5efe6',
+                lineHeight: 1.25, marginBottom: 14, letterSpacing: '-0.3px',
+              }}>
+                Agora, a decisão que pode transformar a sua vida está em suas mãos.
+              </h2>
+
+              <p style={{
+                fontSize: 15, color: 'rgba(245,239,230,0.6)',
+                lineHeight: 1.8, marginBottom: 32, textAlign: 'center', fontStyle: 'italic',
+              }}>
+                Você pode continuar presa aos mesmos ciclos ou dar hoje o primeiro passo para viver a travessia que Deus preparou para você.
+              </p>
+
+              {/* Bônus */}
+              <p style={{
+                fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+                color: 'rgba(190,150,81,0.65)', fontWeight: 700,
+                marginBottom: 16,
+              }}>
+                Ao entrar no desafio A Saída do Egito, você recebe:
+              </p>
+
+              <div style={{ marginBottom: 32 }}>
+                {bonuses.map((b, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.1 + i * 0.07, duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+                    style={{
+                      display: 'flex', alignItems: 'flex-start', gap: 12,
+                      padding: '12px 0',
+                      borderBottom: i < bonuses.length - 1
+                        ? '1px solid rgba(255,255,255,0.05)'
+                        : 'none',
+                    }}
+                  >
+                    <span style={{
+                      color: '#be9651', fontSize: 14, fontWeight: 800,
+                      flexShrink: 0, marginTop: 1,
+                    }}>✓</span>
+                    <span style={{
+                      fontSize: 14,
+                      color: i === bonuses.length - 1
+                        ? '#d4ae6e'
+                        : 'rgba(245,239,230,0.75)',
+                      fontWeight: i === bonuses.length - 1 ? 700 : 400,
+                      lineHeight: 1.6,
+                    }}>
+                      {b}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Prova social */}
+              <div style={{ textAlign: 'center', marginBottom: 28 }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 8 }}>
+                  {['👩', '👩‍🦱', '👩‍🦰', '👩‍🦳', '👩'].map((e, i) => (
+                    <span key={i} style={{
+                      fontSize: 20, marginLeft: i > 0 ? -6 : 0,
+                      filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.5))',
+                    }}>{e}</span>
+                  ))}
+                </div>
+                <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.4)' }}>
+                  +2.300 mulheres já identificaram seu Egito e estão na travessia
+                </p>
+              </div>
+
+              {/* CTA button dourado */}
+              <motion.button
+                whileHover={{ scale: 1.025, boxShadow: '0 12px 44px rgba(190,150,81,0.5)' }}
+                whileTap={{ scale: 0.975 }}
+                style={{
+                  width: '100%', padding: '19px',
+                  borderRadius: 16, border: 'none',
+                  background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
+                  color: '#0F3A3A', fontSize: 17, fontWeight: 800,
+                  cursor: 'pointer', letterSpacing: '0.02em',
+                  boxShadow: '0 4px 28px rgba(190,150,81,0.35)',
+                  marginBottom: 20,
+                  transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
+                }}
+              >
+                QUERO COMEÇAR MINHA TRAVESSIA 🗝️
+              </motion.button>
+
+              {/* Garantia */}
+              <div style={{ textAlign: 'center', marginBottom: 16 }}>
+                <div style={{
+                  height: 1, marginBottom: 16,
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+                }} />
+                <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.45)', lineHeight: 1.7 }}>
+                  <strong style={{ color: 'rgba(245,239,230,0.65)', fontWeight: 600 }}>
+                    7 dias de garantia incondicional.
+                  </strong>{' '}
+                  Se não gostar, devolvemos 100% do seu dinheiro.
+                </p>
+                <div style={{
+                  height: 1, marginTop: 16,
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+                }} />
+              </div>
+
+              <p style={{
+                textAlign: 'center', fontSize: 12,
+                color: 'rgba(245,239,230,0.25)', lineHeight: 1.8, fontStyle: 'italic',
+              }}>
+                Deus não te trouxe até aqui para te deixar parada.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
+
+      {/* CSS para animação do spinner */}
+      <style>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   )
 }
