@@ -39,34 +39,41 @@ function ExitPopup({ onContinue }) {
           boxShadow: '0 32px 80px rgba(0,0,0,0.7)',
         }}
       >
-        <div style={{ fontSize: 40, marginBottom: 16 }}>✋</div>
+        {/* Ícone de alerta */}
+        <div style={{ fontSize: 44, marginBottom: 12, lineHeight: 1 }}>🚨</div>
 
         <h2 style={{
           fontSize: 'clamp(19px, 5vw, 23px)', fontWeight: 800,
-          color: '#f5efe6', lineHeight: 1.25, marginBottom: 16,
+          color: '#f5efe6', lineHeight: 1.25, marginBottom: 14,
         }}>
           Espere! Sua análise ainda não foi concluída.
         </h2>
 
         <p style={{
-          fontSize: 14, fontWeight: 600,
-          color: '#d4ae6e', lineHeight: 1.6, marginBottom: 12,
+          fontSize: 14, fontWeight: 700,
+          color: '#d4ae6e', lineHeight: 1.6, marginBottom: 14,
         }}>
           Essa análise é única e gratuita por pessoa.
         </p>
 
         <p style={{
-          fontSize: 14, color: 'rgba(245,239,230,0.6)',
-          lineHeight: 1.75, marginBottom: 24,
+          fontSize: 14, color: 'rgba(245,239,230,0.75)',
+          lineHeight: 1.8, marginBottom: 18,
         }}>
-          Se você sair agora, poderá perder o acesso gratuito ao seu diagnóstico e talvez não consiga refazer essa análise depois.
+          <strong style={{ color: '#f87171', fontWeight: 700 }}>
+            Se você sair agora, poderá perder o acesso gratuito ao seu diagnóstico
+          </strong>{' '}
+          e talvez não consiga refazer essa análise depois.
         </p>
 
         <p style={{
-          fontSize: 14, color: 'rgba(245,239,230,0.75)',
-          lineHeight: 1.75, marginBottom: 28, fontStyle: 'italic',
+          fontSize: 14, color: 'rgba(245,239,230,0.65)',
+          lineHeight: 1.8, marginBottom: 28, fontStyle: 'italic',
         }}>
-          Continue para descobrir em qual área da sua vida você ainda está presa no seu "Egito" e qual caminho seguir para sair desse ciclo.
+          Continue para descobrir em qual área da sua vida você ainda está presa no seu "Egito" e{' '}
+          <strong style={{ fontStyle: 'normal', color: 'rgba(245,239,230,0.9)', fontWeight: 700 }}>
+            qual caminho seguir para sair desse ciclo.
+          </strong>
         </p>
 
         <motion.button
