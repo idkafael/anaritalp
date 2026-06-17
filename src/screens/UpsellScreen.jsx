@@ -17,7 +17,7 @@ function Section({ children, delay = 0 }) {
   )
 }
 
-export default function UpsellScreen() {
+export default function UpsellScreen({ onDecline }) {
   const [videoPlaying, setVideoPlaying] = useState(false)
   const [buttonRevealed, setButtonRevealed] = useState(false)
   const timerRef = useRef(null)
@@ -256,9 +256,27 @@ export default function UpsellScreen() {
                 textAlign: 'center', fontSize: 12,
                 color: 'rgba(245,239,230,0.22)', lineHeight: 1.8,
                 fontStyle: 'italic',
+                marginBottom: 16,
               }}>
                 Deus não te trouxe até aqui para te deixar parada.
               </p>
+
+              <div style={{ textAlign: 'center' }}>
+                <button
+                  onClick={onDecline}
+                  style={{
+                    background: 'none', border: 'none',
+                    fontSize: 12, color: 'rgba(245,239,230,0.2)',
+                    cursor: 'pointer', lineHeight: 1.6,
+                    textDecoration: 'underline',
+                    textDecorationColor: 'rgba(245,239,230,0.08)',
+                    fontStyle: 'italic',
+                    padding: '6px 0',
+                  }}
+                >
+                  Não, obrigada. Não preciso acelerar minha travessia agora.
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

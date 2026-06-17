@@ -7,6 +7,7 @@ import LoadingScreen from './screens/LoadingScreen'
 import ResultScreen from './screens/ResultScreen'
 import CTAScreen from './screens/CTAScreen'
 import UpsellScreen from './screens/UpsellScreen'
+import ContinuacaoScreen from './screens/ContinuacaoScreen'
 
 const TOTAL = questions.length
 
@@ -428,7 +429,8 @@ export default function App() {
         {screen === 'loading' && <LoadingScreen key="loading" onComplete={() => setScreen('result')} />}
         {screen === 'result' && <ResultScreen key="result" profileId={profileId} onContinue={() => setScreen('cta')} />}
         {screen === 'cta' && <CTAScreen key="cta" profileId={profileId} onBuy={() => setScreen('upsell')} />}
-        {screen === 'upsell' && <UpsellScreen key="upsell" />}
+        {screen === 'upsell' && <UpsellScreen key="upsell" onDecline={() => setScreen('continuacao')} />}
+        {screen === 'continuacao' && <ContinuacaoScreen key="continuacao" onDecline={() => setScreen('continuacao')} />}
         {screen === 'downsell' && (
           <DownsellScreen key="downsell" onStay={() => setScreen('cta')} />
         )}
