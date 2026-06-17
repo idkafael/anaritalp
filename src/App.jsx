@@ -6,6 +6,7 @@ import SingleChoice from './screens/SingleChoice'
 import LoadingScreen from './screens/LoadingScreen'
 import ResultScreen from './screens/ResultScreen'
 import CTAScreen from './screens/CTAScreen'
+import UpsellScreen from './screens/UpsellScreen'
 
 const TOTAL = questions.length
 
@@ -426,7 +427,8 @@ export default function App() {
         {screen === 'intro' && <IntroScreen key="intro" onStart={() => setScreen('quiz')} />}
         {screen === 'loading' && <LoadingScreen key="loading" onComplete={() => setScreen('result')} />}
         {screen === 'result' && <ResultScreen key="result" profileId={profileId} onContinue={() => setScreen('cta')} />}
-        {screen === 'cta' && <CTAScreen key="cta" profileId={profileId} />}
+        {screen === 'cta' && <CTAScreen key="cta" profileId={profileId} onBuy={() => setScreen('upsell')} />}
+        {screen === 'upsell' && <UpsellScreen key="upsell" />}
         {screen === 'downsell' && (
           <DownsellScreen key="downsell" onStay={() => setScreen('cta')} />
         )}

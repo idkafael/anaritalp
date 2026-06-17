@@ -47,7 +47,7 @@ function Section({ children, delay = 0 }) {
   )
 }
 
-export default function CTAScreen({ profileId = 1 }) {
+export default function CTAScreen({ profileId = 1, onBuy }) {
   const [videoPlaying, setVideoPlaying] = useState(false)
   const [offerRevealed, setOfferRevealed] = useState(false)
   const [countdown, setCountdown] = useState(REVEAL_AFTER_SECONDS)
@@ -318,6 +318,7 @@ export default function CTAScreen({ profileId = 1 }) {
               <motion.button
                 whileHover={{ scale: 1.025, boxShadow: '0 12px 44px rgba(190,150,81,0.5)' }}
                 whileTap={{ scale: 0.975 }}
+                onClick={onBuy}
                 style={{
                   width: '100%', padding: '19px',
                   borderRadius: 16, border: 'none',
