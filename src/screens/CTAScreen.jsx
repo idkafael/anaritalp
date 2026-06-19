@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../components/Logo'
 
@@ -48,20 +47,7 @@ function Section({ children, delay = 0 }) {
 }
 
 export default function CTAScreen({ profileId = 1, onBuy }) {
-  const [offerRevealed, setOfferRevealed] = useState(false)
-  const timerRef = useRef(null)
-
   const hl = profileHeadlines[profileId] || profileHeadlines[1]
-
-  useEffect(() => {
-    const s = document.createElement('script')
-    s.src = 'https://scripts.converteai.net/b56885d9-7ea4-4b84-b38e-5cdb1c1e45a9/players/6a35b5d8a01c983820390e8b/v4/player.js'
-    s.async = true
-    document.head.appendChild(s)
-
-    timerRef.current = setTimeout(() => setOfferRevealed(true), REVEAL_AFTER_SECONDS * 1000)
-    return () => clearTimeout(timerRef.current)
-  }, [])
 
   return (
     <div style={{
@@ -124,24 +110,13 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
           </p>
         </Section>
 
-        {/* ── 4. VSL VTurb ── */}
+        {/* ── 4. OFERTA ── */}
         <Section delay={0.24}>
-          <div style={{ width: '100%', marginBottom: 40, borderRadius: 20, overflow: 'hidden' }}>
-            <vturb-smartplayer
-              id="vid-6a35b5d8a01c983820390e8b"
-              style={{ display: 'block', margin: '0 auto', width: '100%' }}
-            />
-          </div>
-        </Section>
-
-        {/* ── 5. OFERTA — aparece após o vídeo ── */}
-        <AnimatePresence>
-          {offerRevealed && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
-            >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+          >
               {/* Divisor */}
               <div style={{
                 display: 'flex', alignItems: 'center',
@@ -284,12 +259,10 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
               }}>
                 Deus não te trouxe até aqui para te deixar parada.
               </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
+          </motion.div>
+        </Section>
 
       </div>
-
     </div>
   )
 }

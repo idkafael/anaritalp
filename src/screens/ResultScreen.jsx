@@ -1,6 +1,9 @@
-import { motion } from 'framer-motion'
+import { useState, useEffect, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../components/Logo'
 import { resultProfiles } from '../data/questions'
+
+const REVEAL_AFTER_SECONDS = 30
 
 function Section({ children, delay = 0 }) {
   return (
@@ -16,6 +19,18 @@ function Section({ children, delay = 0 }) {
 
 export default function ResultScreen({ profileId, onContinue }) {
   const p = resultProfiles.find(r => r.id === profileId) || resultProfiles[0]
+  const [buttonRevealed, setButtonRevealed] = useState(false)
+  const timerRef = useRef(null)
+
+  useEffect(() => {
+    const s = document.createElement('script')
+    s.src = 'https://scripts.converteai.net/b56885d9-7ea4-4b84-b38e-5cdb1c1e45a9/players/6a35b5d8a01c983820390e8b/v4/player.js'
+    s.async = true
+    document.head.appendChild(s)
+
+    timerRef.current = setTimeout(() => setButtonRevealed(true), REVEAL_AFTER_SECONDS * 1000)
+    return () => clearTimeout(timerRef.current)
+  }, [])
 
   return (
     <div style={{
@@ -25,7 +40,6 @@ export default function ResultScreen({ profileId, onContinue }) {
       padding: '40px 24px 88px',
       position: 'relative', overflowX: 'hidden',
     }}>
-      {/* Background glow */}
       <div style={{
         position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
         width: 700, height: 420,
@@ -49,7 +63,7 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Section>
 
-        {/* ── 2. IMAGE PLACEHOLDER ── */}
+        {/* ── 2. IMAGE ── */}
         <Section delay={0.1}>
           <div style={{
             width: '100%', height: 210,
@@ -120,14 +134,9 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Section>
 
-        {/* ── 7. RED CHALLENGE — editorial left-stripe ── */}
+        {/* ── 7. RED CHALLENGE ── */}
         <Section delay={0.36}>
-          <div style={{
-            display: 'flex', gap: 16,
-            marginBottom: 32,
-            paddingLeft: 2,
-          }}>
-            {/* Stripe */}
+          <div style={{ display: 'flex', gap: 16, marginBottom: 32, paddingLeft: 2 }}>
             <div style={{
               width: 3, borderRadius: 99, flexShrink: 0,
               background: 'linear-gradient(180deg, #ef4444 0%, rgba(239,68,68,0.2) 100%)',
@@ -150,45 +159,32 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Section>
 
-        {/* ── 8. VERSE — tipográfico, sem caixa ── */}
+        {/* ── 8. VERSE ── */}
         <Section delay={0.42}>
           <div style={{ textAlign: 'center', marginBottom: 36, padding: '0 8px' }}>
-            {/* linha decorativa */}
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20,
-            }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
               <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(96,165,250,0.3))' }} />
               <span style={{ fontSize: 16, color: 'rgba(147,197,253,0.5)' }}>✝️</span>
               <div style={{ flex: 1, height: 1, background: 'linear-gradient(270deg, transparent, rgba(96,165,250,0.3))' }} />
             </div>
-
-            {/* aspas decorativas */}
             <p style={{
               fontSize: 38, lineHeight: 0.6, color: 'rgba(96,165,250,0.25)',
               marginBottom: 8, fontFamily: 'Georgia, serif', fontWeight: 700,
-            }}>
-              "
-            </p>
-
+            }}>"</p>
             <p style={{
               fontSize: 16, fontStyle: 'italic',
               color: 'rgba(219,234,254,0.8)',
-              lineHeight: 1.7, marginBottom: 12,
-              letterSpacing: '0.01em',
+              lineHeight: 1.7, marginBottom: 12, letterSpacing: '0.01em',
             }}>
               {p.verse.replace(/^"|"$/g, '')}
             </p>
-
             <p style={{
               fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'rgba(147,197,253,0.5)', fontWeight: 700,
             }}>
               {p.verseRef}
             </p>
-
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 12, marginTop: 20,
-            }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 20 }}>
               <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(96,165,250,0.3))' }} />
               <div style={{ width: 4, height: 4, borderRadius: '50%', background: 'rgba(96,165,250,0.3)' }} />
               <div style={{ flex: 1, height: 1, background: 'linear-gradient(270deg, transparent, rgba(96,165,250,0.3))' }} />
@@ -196,13 +192,12 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Section>
 
-        {/* ── 9. SIGNS — lista limpa, sem cards ── */}
+        {/* ── 9. SIGNS ── */}
         <Section delay={0.48}>
           <div style={{ marginBottom: 36 }}>
             <p style={{
               fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.65)', fontWeight: 700,
-              marginBottom: 18,
+              color: 'rgba(190,150,81,0.65)', fontWeight: 700, marginBottom: 18,
             }}>
               💡 &nbsp; Sinais que falam com você
             </p>
@@ -246,15 +241,13 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Section>
 
-        {/* ── 10. FINAL PHRASE — tipográfico, sem caixa ── */}
+        {/* ── 10. FINAL PHRASE ── */}
         <Section delay={0.6}>
           <div style={{ textAlign: 'center', marginBottom: 36, padding: '0 4px' }}>
             <p style={{
               fontSize: 'clamp(17px, 4vw, 20px)',
               fontWeight: 800, fontStyle: 'italic',
-              color: '#d4ae6e',
-              lineHeight: 1.45, marginBottom: 14,
-              letterSpacing: '-0.2px',
+              color: '#d4ae6e', lineHeight: 1.45, marginBottom: 14, letterSpacing: '-0.2px',
             }}>
               {p.finalLine1}
             </p>
@@ -267,34 +260,58 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Section>
 
-        {/* ── 11. PURPLE CTA BUTTON ── */}
+        {/* ── 11. VSL ── */}
         <Section delay={0.65}>
-          <motion.button
-            whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
-            whileTap={{ scale: 0.975 }}
-            onClick={onContinue}
-            style={{
-              width: '100%', padding: '19px',
-              borderRadius: 16, border: 'none',
-              background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-              color: '#0F3A3A', fontSize: 16, fontWeight: 800,
-              cursor: 'pointer', letterSpacing: '0.04em',
-              boxShadow: '0 4px 32px rgba(190,150,81,0.35)',
-              marginBottom: 20,
-              transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
-            }}
-          >
-            CONTINUAR 🗝️
-          </motion.button>
-
-          <p style={{
-            textAlign: 'center', fontSize: 12,
-            color: 'rgba(245,239,230,0.28)', lineHeight: 1.8,
-            fontStyle: 'italic',
-          }}>
-            Deus não te trouxe até aqui para te deixar parada.
-          </p>
+          <div style={{ textAlign: 'center', marginBottom: 16 }}>
+            <span style={{
+              fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: 'rgba(190,150,81,0.7)', fontWeight: 700,
+            }}>
+              ✦ &nbsp; Assista até o final &nbsp; ✦
+            </span>
+          </div>
+          <div style={{ width: '100%', marginBottom: 32, borderRadius: 20, overflow: 'hidden' }}>
+            <vturb-smartplayer
+              id="vid-6a35b5d8a01c983820390e8b"
+              style={{ display: 'block', margin: '0 auto', width: '100%' }}
+            />
+          </div>
         </Section>
+
+        {/* ── 12. BOTÃO — aparece após o vídeo ── */}
+        <AnimatePresence>
+          {buttonRevealed && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+            >
+              <motion.button
+                whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
+                whileTap={{ scale: 0.975 }}
+                onClick={onContinue}
+                style={{
+                  width: '100%', padding: '19px',
+                  borderRadius: 16, border: 'none',
+                  background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
+                  color: '#0F3A3A', fontSize: 16, fontWeight: 800,
+                  cursor: 'pointer', letterSpacing: '0.04em',
+                  boxShadow: '0 4px 32px rgba(190,150,81,0.35)',
+                  marginBottom: 20,
+                  transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
+                }}
+              >
+                CONTINUAR 🗝️
+              </motion.button>
+              <p style={{
+                textAlign: 'center', fontSize: 12,
+                color: 'rgba(245,239,230,0.28)', lineHeight: 1.8, fontStyle: 'italic',
+              }}>
+                Deus não te trouxe até aqui para te deixar parada.
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </div>
