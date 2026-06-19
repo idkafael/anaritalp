@@ -337,7 +337,7 @@ function DownsellScreen({ onStay }) {
           <motion.button
             whileHover={{ scale: 1.025, boxShadow: '0 12px 44px rgba(190,130,40,0.5)' }}
             whileTap={{ scale: 0.975 }}
-            onClick={onStay}
+            onClick={() => { window.location.href = 'https://pay.cakto.com.br/34xcvbf' }}
             style={{
               width: '100%', padding: '19px',
               borderRadius: 16, border: 'none',

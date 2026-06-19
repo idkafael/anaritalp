@@ -239,7 +239,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
               <motion.button
                 whileHover={{ scale: 1.025, boxShadow: '0 12px 44px rgba(190,150,81,0.5)' }}
                 whileTap={{ scale: 0.975 }}
-                onClick={onBuy}
+                onClick={() => { window.location.href = 'https://pay.cakto.com.br/3bu46ba_930908' }}
                 style={{
                   width: '100%', padding: '19px',
                   borderRadius: 16, border: 'none',
