@@ -48,30 +48,19 @@ function Section({ children, delay = 0 }) {
 }
 
 export default function CTAScreen({ profileId = 1, onBuy }) {
-  const [videoPlaying, setVideoPlaying] = useState(false)
   const [offerRevealed, setOfferRevealed] = useState(false)
-  const [countdown, setCountdown] = useState(REVEAL_AFTER_SECONDS)
   const timerRef = useRef(null)
 
   const hl = profileHeadlines[profileId] || profileHeadlines[1]
 
-  const handlePlay = () => {
-    if (videoPlaying) return
-    setVideoPlaying(true)
-    timerRef.current = setInterval(() => {
-      setCountdown(t => {
-        if (t <= 1) {
-          clearInterval(timerRef.current)
-          setOfferRevealed(true)
-          return 0
-        }
-        return t - 1
-      })
-    }, 1000)
-  }
-
   useEffect(() => {
-    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+    const s = document.createElement('script')
+    s.src = 'https://scripts.converteai.net/b56885d9-7ea4-4b84-b38e-5cdb1c1e45a9/players/6a35b5d8a01c983820390e8b/v4/player.js'
+    s.async = true
+    document.head.appendChild(s)
+
+    timerRef.current = setTimeout(() => setOfferRevealed(true), REVEAL_AFTER_SECONDS * 1000)
+    return () => clearTimeout(timerRef.current)
   }, [])
 
   return (
@@ -135,81 +124,13 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
           </p>
         </Section>
 
-        {/* ── 4. VSL ── */}
+        {/* ── 4. VSL VTurb ── */}
         <Section delay={0.24}>
-          <div
-            onClick={handlePlay}
-            style={{
-              width: '100%', aspectRatio: '16/9',
-              background: 'rgba(0,0,0,0.55)',
-              borderRadius: 20,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexDirection: 'column', gap: 12,
-              marginBottom: 40,
-              position: 'relative', overflow: 'hidden',
-              cursor: videoPlaying ? 'default' : 'pointer',
-            }}
-          >
-            {/* Subtle inner glow */}
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(135deg, rgba(190,150,81,0.05) 0%, transparent 60%)',
-            }} />
-
-            {!videoPlaying ? (
-              /* Play button */
-              <motion.div
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  width: 68, height: 68, borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  boxShadow: '0 0 40px rgba(190,150,81,0.35)',
-                  position: 'relative', zIndex: 1,
-                  transition: 'all 0.3s cubic-bezier(0.32,0.72,0,1)',
-                }}
-              >
-                <svg width={28} height={28} viewBox="0 0 24 24" fill="#0F3A3A">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </motion.div>
-            ) : (
-              /* Playing state */
-              <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-                <div style={{
-                  width: 48, height: 48, borderRadius: '50%',
-                  border: '2px solid rgba(190,150,81,0.4)',
-                  borderTopColor: '#be9651',
-                  animation: 'spin 1s linear infinite',
-                  margin: '0 auto 12px',
-                }} />
-                <p style={{
-                  fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase',
-                  color: 'rgba(212,174,110,0.6)',
-                }}>
-                  {offerRevealed ? 'Vídeo concluído' : `Reproduzindo...`}
-                </p>
-              </div>
-            )}
-
-            {/* Progress bar at bottom when playing */}
-            {videoPlaying && !offerRevealed && (
-              <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0, height: 3,
-                background: 'rgba(255,255,255,0.08)',
-              }}>
-                <motion.div
-                  initial={{ width: '0%' }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: REVEAL_AFTER_SECONDS, ease: 'linear' }}
-                  style={{
-                    height: '100%',
-                    background: 'linear-gradient(90deg, #be9651, #d4ae6e)',
-                  }}
-                />
-              </div>
-            )}
+          <div style={{ width: '100%', marginBottom: 40, borderRadius: 20, overflow: 'hidden' }}>
+            <vturb-smartplayer
+              id="vid-6a35b5d8a01c983820390e8b"
+              style={{ display: 'block', margin: '0 auto', width: '100%' }}
+            />
           </div>
         </Section>
 
@@ -363,13 +284,6 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
 
       </div>
 
-      {/* CSS para animação do spinner */}
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   )
 }
