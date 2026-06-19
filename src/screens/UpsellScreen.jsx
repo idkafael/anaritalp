@@ -238,6 +238,7 @@ export default function UpsellScreen({ onDecline }) {
               <motion.button
                 whileHover={{ scale: 1.025, boxShadow: '0 12px 44px rgba(190,150,81,0.5)' }}
                 whileTap={{ scale: 0.975 }}
+                onClick={() => { window.location.href = 'https://pay.cakto.com.br/7ptoe6a_934162' }}
                 style={{
                   width: '100%', padding: '19px',
                   borderRadius: 16, border: 'none',
