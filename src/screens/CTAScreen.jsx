@@ -147,16 +147,16 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
                 display: 'flex', alignItems: 'center',
                 justifyContent: 'center', gap: 10, marginBottom: 32,
               }}>
-                <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(190,150,81,0.3))' }} />
-                <span style={{ fontSize: 11, color: 'rgba(190,150,81,0.5)', letterSpacing: 6 }}>✦ ✝ ✦</span>
-                <div style={{ flex: 1, height: 1, background: 'linear-gradient(270deg, transparent, rgba(190,150,81,0.3))' }} />
+                <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(190,150,81,0.45))' }} />
+                <span style={{ fontSize: 11, color: 'rgba(190,150,81,0.75)', letterSpacing: 6 }}>✦ ✝ ✦</span>
+                <div style={{ flex: 1, height: 1, background: 'linear-gradient(270deg, transparent, rgba(190,150,81,0.45))' }} />
               </div>
 
               {/* Headline da oferta */}
               <div style={{ textAlign: 'center', marginBottom: 12 }}>
                 <span style={{
                   fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
-                  color: 'rgba(190,150,81,0.65)', fontWeight: 700,
+                  color: 'rgba(190,150,81,0.9)', fontWeight: 700,
                 }}>
                   ✦ &nbsp; A Decisão &nbsp; ✦
                 </span>
@@ -165,29 +165,35 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
               <h2 style={{
                 textAlign: 'center',
                 fontSize: 'clamp(20px, 5vw, 26px)',
-                fontWeight: 800, color: '#f5efe6',
+                fontWeight: 800, color: '#fff',
                 lineHeight: 1.25, marginBottom: 14, letterSpacing: '-0.3px',
               }}>
                 Agora, a decisão que pode transformar a sua vida está em suas mãos.
               </h2>
 
               <p style={{
-                fontSize: 15, color: 'rgba(245,239,230,0.6)',
+                fontSize: 15, color: 'rgba(245,239,230,0.82)',
                 lineHeight: 1.8, marginBottom: 32, textAlign: 'center', fontStyle: 'italic',
               }}>
                 Você pode continuar presa aos mesmos ciclos ou dar hoje o primeiro passo para viver a travessia que Deus preparou para você.
               </p>
 
-              {/* Bônus */}
-              <p style={{
-                fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
-                color: 'rgba(190,150,81,0.65)', fontWeight: 700,
-                marginBottom: 16,
+              {/* Bônus — container levemente mais claro */}
+              <div style={{
+                background: 'rgba(255,255,255,0.05)',
+                borderRadius: 18,
+                padding: '20px 18px',
+                marginBottom: 32,
+                border: '1px solid rgba(255,255,255,0.08)',
               }}>
-                Ao entrar no desafio A Saída do Egito, você recebe:
-              </p>
+                <p style={{
+                  fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+                  color: '#d4ae6e', fontWeight: 700,
+                  marginBottom: 16,
+                }}>
+                  Ao entrar no desafio A Saída do Egito, você recebe:
+                </p>
 
-              <div style={{ marginBottom: 32 }}>
                 {bonuses.map((b, i) => (
                   <motion.div
                     key={i}
@@ -196,21 +202,21 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
                     transition={{ delay: 0.1 + i * 0.07, duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
                     style={{
                       display: 'flex', alignItems: 'flex-start', gap: 12,
-                      padding: '12px 0',
+                      padding: '11px 0',
                       borderBottom: i < bonuses.length - 1
-                        ? '1px solid rgba(255,255,255,0.05)'
+                        ? '1px solid rgba(255,255,255,0.08)'
                         : 'none',
                     }}
                   >
                     <span style={{
-                      color: '#be9651', fontSize: 14, fontWeight: 800,
+                      color: '#d4ae6e', fontSize: 15, fontWeight: 900,
                       flexShrink: 0, marginTop: 1,
                     }}>✓</span>
                     <span style={{
                       fontSize: 14,
                       color: i === bonuses.length - 1
                         ? '#d4ae6e'
-                        : 'rgba(245,239,230,0.75)',
+                        : 'rgba(245,239,230,0.92)',
                       fontWeight: i === bonuses.length - 1 ? 700 : 400,
                       lineHeight: 1.6,
                     }}>
@@ -230,7 +236,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
                     }}>{e}</span>
                   ))}
                 </div>
-                <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.4)' }}>
+                <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.65)' }}>
                   +2.300 mulheres já identificaram seu Egito e estão na travessia
                 </p>
               </div>
@@ -258,23 +264,23 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
               <div style={{ textAlign: 'center', marginBottom: 16 }}>
                 <div style={{
                   height: 1, marginBottom: 16,
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)',
                 }} />
-                <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.45)', lineHeight: 1.7 }}>
-                  <strong style={{ color: 'rgba(245,239,230,0.65)', fontWeight: 600 }}>
+                <p style={{ fontSize: 13, color: 'rgba(245,239,230,0.7)', lineHeight: 1.7 }}>
+                  <strong style={{ color: 'rgba(245,239,230,0.9)', fontWeight: 600 }}>
                     7 dias de garantia incondicional.
                   </strong>{' '}
                   Se não gostar, devolvemos 100% do seu dinheiro.
                 </p>
                 <div style={{
                   height: 1, marginTop: 16,
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent)',
                 }} />
               </div>
 
               <p style={{
                 textAlign: 'center', fontSize: 12,
-                color: 'rgba(245,239,230,0.25)', lineHeight: 1.8, fontStyle: 'italic',
+                color: 'rgba(245,239,230,0.45)', lineHeight: 1.8, fontStyle: 'italic',
               }}>
                 Deus não te trouxe até aqui para te deixar parada.
               </p>
