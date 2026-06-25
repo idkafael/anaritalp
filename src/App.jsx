@@ -8,6 +8,7 @@ import ResultScreen from './screens/ResultScreen'
 import CTAScreen from './screens/CTAScreen'
 import UpsellScreen from './screens/UpsellScreen'
 import ContinuacaoScreen from './screens/ContinuacaoScreen'
+import mobileBg from './assets/FUNDO-DESTORCIDO-MOBILE.jpeg'
 
 const TOTAL = questions.length
 
@@ -418,6 +419,9 @@ export default function App() {
 
   return (
     <>
+      {/* Fundo mobile fixo */}
+      <div className="mobile-bg-fixed" style={{ backgroundImage: `url(${mobileBg})` }} />
+
       {/* Popup quiz/result */}
       <AnimatePresence>
         {showExitPopup && (
