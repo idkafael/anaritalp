@@ -42,7 +42,7 @@ export default function IntroScreen({ onStart }) {
             border: '1px solid rgba(190,150,81,0.3)',
             background: 'rgba(190,150,81,0.06)',
           }}>
-            Diagnóstico Gratuito
+            Diagnóstico DNA de Escrava
           </span>
         </motion.div>
 
@@ -57,12 +57,12 @@ export default function IntroScreen({ onStart }) {
             letterSpacing: '-0.5px',
           }}
         >
-          Você se sente presa no seu{' '}
+          Você não nasceu para viver presa no{' '}
           <span style={{
             background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
           }}>
-            próprio Egito?
+            Egito que te feriu.
           </span>
         </motion.h1>
 
@@ -71,23 +71,11 @@ export default function IntroScreen({ onStart }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
           style={{
-            fontSize: 16, fontWeight: 600,
-            color: 'rgba(245,239,230,0.85)', marginBottom: 20, lineHeight: 1.5,
+            fontSize: 16, fontWeight: 400,
+            color: 'rgba(245,239,230,0.75)', marginBottom: 36, lineHeight: 1.7,
           }}
         >
-          Descubra o que está te impedindo de avançar e qual é o primeiro passo para viver a liberdade que Deus preparou para você.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          style={{
-            fontSize: 14, color: 'rgba(245,239,230,0.55)',
-            lineHeight: 1.75, marginBottom: 36,
-          }}
-        >
-          Muitas mulheres vivem presas em ciclos de medo, ansiedade, culpa e cansaço emocional sem perceber que existe uma saída. Este diagnóstico foi criado para revelar qual é o seu "Egito" e te mostrar o caminho para a liberdade que Deus já preparou para você.
+          Descubra por que tantas mulheres continuam vivendo os mesmos ciclos de medo, insegurança e sensação de esgotamento, mesmo amando a Deus, e como iniciar uma travessia prática rumo à vida que Ele preparou para você.
         </motion.p>
 
         {/* Stats */}
