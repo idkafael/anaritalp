@@ -117,6 +117,7 @@ function DownsellScreen({ onStay }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
+      className="app-screen"
       style={{
         minHeight: '100vh',
         background: 'linear-gradient(160deg, #1c1005 0%, #150c04 50%, #0f0902 100%)',

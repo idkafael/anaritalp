@@ -73,6 +73,7 @@ export default function ContinuacaoScreen({ onDecline }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.45 }}
+      className="app-screen"
       style={{
         minHeight: '100vh',
         background: 'linear-gradient(160deg, #0c0c14 0%, #0f0f1a 50%, #0a0a12 100%)',

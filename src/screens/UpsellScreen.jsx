@@ -48,6 +48,7 @@ export default function UpsellScreen({ onDecline }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.45 }}
+      className="app-screen"
       style={{
         minHeight: '100vh',
         background: 'linear-gradient(160deg, #07061a 0%, #0a0820 50%, #060412 100%)',

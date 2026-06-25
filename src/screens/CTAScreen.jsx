@@ -50,7 +50,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
   const hl = profileHeadlines[profileId] || profileHeadlines[1]
 
   return (
-    <div style={{
+    <div className="app-screen" style={{
       minHeight: '100vh',
       background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
