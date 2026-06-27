@@ -6,10 +6,8 @@ export default function Logo({ size = 220 }) {
       <img
         src={logoImg}
         alt="Logo"
-        style={{
-          width: size, height: size, objectFit: 'contain',
-          maxWidth: '60vw',
-        }}
+        className="app-logo"
+        style={{ width: size, height: size, objectFit: 'contain' }}
       />
     </div>
   )
