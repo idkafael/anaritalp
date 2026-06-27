@@ -30,12 +30,6 @@ export default function IntroScreen({ onStart }) {
         {/* Hero: logo + H1 sobrepostos */}
         <div style={{ position: 'relative', marginBottom: 20 }}>
           <Logo size={200} />
-          {/* gradiente escuro na metade inferior para legibilidade da H1 */}
-          <div style={{
-            position: 'absolute', bottom: 0, left: 0, right: 0, height: '55%',
-            background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)',
-            pointerEvents: 'none',
-          }} />
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
