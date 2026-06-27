@@ -59,12 +59,11 @@ body {
     max-width: 80vw !important;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,0.6));
   }
-  /* sombra nos textos para contraste */
+  /* sombra nos textos para contraste com o fundo */
   .app-screen h1,
   .app-screen h2,
   .app-screen p,
-  .app-screen span,
-  .app-screen button {
+  .app-screen span {
     text-shadow: 0 1px 6px rgba(0,0,0,0.75);
   }
 }

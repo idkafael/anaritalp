@@ -26,18 +26,52 @@ export default function IntroScreen({ onStart }) {
       }} />
 
       <div style={{ width: '100%', maxWidth: 440, textAlign: 'center', position: 'relative', zIndex: 1 }}>
-        <Logo size={64} />
+
+        {/* Hero: logo + H1 sobrepostos */}
+        <div style={{ position: 'relative', marginBottom: 20 }}>
+          <Logo size={200} />
+          {/* gradiente escuro na metade inferior para legibilidade da H1 */}
+          <div style={{
+            position: 'absolute', bottom: 0, left: 0, right: 0, height: '55%',
+            background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)',
+            pointerEvents: 'none',
+          }} />
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            style={{
+              position: 'absolute',
+              bottom: 12, left: 0, right: 0,
+              padding: '0 12px',
+              textAlign: 'center',
+              fontSize: 'clamp(22px, 5.5vw, 32px)',
+              fontWeight: 800, lineHeight: 1.2,
+              color: '#f5efe6',
+              letterSpacing: '-0.4px',
+              textShadow: '0 2px 16px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,0.9)',
+            }}
+          >
+            Você não nasceu para viver presa no{' '}
+            <span style={{
+              background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            }}>
+              Egito que te feriu.
+            </span>
+          </motion.h1>
+        </div>
 
         {/* Gold label */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.5 }}
+          transition={{ delay: 0.25, duration: 0.5 }}
         >
           <span style={{
             display: 'inline-block',
             fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
-            color: '#be9651', fontWeight: 600, marginBottom: 20,
+            color: '#be9651', fontWeight: 600, marginBottom: 16,
             padding: '5px 16px', borderRadius: 99,
             border: '1px solid rgba(190,150,81,0.3)',
             background: 'rgba(190,150,81,0.06)',
@@ -45,26 +79,6 @@ export default function IntroScreen({ onStart }) {
             Diagnóstico DNA de Escrava
           </span>
         </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          style={{
-            fontSize: 'clamp(26px, 6vw, 38px)',
-            fontWeight: 800, lineHeight: 1.2,
-            color: '#f5efe6', marginBottom: 14,
-            letterSpacing: '-0.5px',
-          }}
-        >
-          Você não nasceu para viver presa no{' '}
-          <span style={{
-            background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-          }}>
-            Egito que te feriu.
-          </span>
-        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
