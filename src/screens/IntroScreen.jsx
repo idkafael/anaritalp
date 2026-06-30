@@ -43,7 +43,6 @@ export default function IntroScreen({ onStart }) {
               fontWeight: 800, lineHeight: 1.2,
               color: '#f5efe6',
               letterSpacing: '-0.4px',
-              textShadow: '0 2px 16px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,0.9)',
             }}
           >
             Você não nasceu para viver presa no{' '}
