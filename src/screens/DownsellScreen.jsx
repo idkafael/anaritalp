@@ -222,7 +222,7 @@ export default function DownsellScreen() {
               width: '100%', padding: '19px',
               borderRadius: 16, border: 'none',
               background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-              color: '#1c1005', fontSize: 17, fontWeight: 800,
+              color: '#ffffff', fontSize: 17, fontWeight: 800,
               cursor: 'pointer', letterSpacing: '0.02em',
               boxShadow: '0 4px 28px rgba(190,130,40,0.35)',
               marginBottom: 20,

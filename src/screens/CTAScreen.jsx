@@ -303,7 +303,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
                 width: '100%', padding: '20px',
                 borderRadius: 16, border: 'none',
                 background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-                color: '#0F3A3A', fontSize: 17, fontWeight: 900,
+                color: '#ffffff', fontSize: 17, fontWeight: 900,
                 cursor: 'pointer', letterSpacing: '0.03em',
                 boxShadow: '0 6px 32px rgba(190,150,81,0.4)',
                 position: 'relative', overflow: 'hidden',

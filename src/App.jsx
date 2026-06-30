@@ -86,7 +86,7 @@ function ExitPopup({ onContinue }) {
             width: '100%', padding: '17px',
             borderRadius: 14, border: 'none',
             background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-            color: '#0F3A3A', fontSize: 15, fontWeight: 800,
+            color: '#ffffff', fontSize: 15, fontWeight: 800,
             cursor: 'pointer', letterSpacing: '0.02em',
             boxShadow: '0 4px 24px rgba(190,150,81,0.3)',
           }}
