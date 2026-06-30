@@ -47,10 +47,7 @@ export default function IntroScreen({ onStart }) {
             }}
           >
             Você não nasceu para viver presa no{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            }}>
+            <span style={{ color: '#ffffff' }}>
               Egito que te feriu.
             </span>
           </motion.h1>
@@ -80,7 +77,7 @@ export default function IntroScreen({ onStart }) {
           transition={{ delay: 0.3, duration: 0.5 }}
           style={{
             fontSize: 16, fontWeight: 400,
-            color: 'rgba(245,239,230,0.75)', marginBottom: 36, lineHeight: 1.7,
+            color: '#ffffff', marginBottom: 36, lineHeight: 1.7,
           }}
         >
           Descubra por que tantas mulheres continuam vivendo os mesmos ciclos de medo, insegurança e sensação de esgotamento, mesmo amando a Deus, e como iniciar uma travessia prática rumo à vida que Ele preparou para você.
@@ -119,7 +116,7 @@ export default function IntroScreen({ onStart }) {
             width: '100%', padding: '17px 24px',
             borderRadius: 14, border: 'none',
             background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-            color: '#0F3A3A', fontSize: 16, fontWeight: 700,
+            color: '#ffffff', fontSize: 16, fontWeight: 700,
             cursor: 'pointer', letterSpacing: '0.02em',
             boxShadow: '0 4px 24px rgba(190,150,81,0.3)',
           }}
