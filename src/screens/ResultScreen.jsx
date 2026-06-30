@@ -1,9 +1,14 @@
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
 import { resultProfiles } from '../data/questions'
 
-const REVEAL_AFTER_SECONDS = 30
+const PROFILE_IMAGES = {
+  1: '/FOTO DO PERFIL 1.png',
+  2: '/FOTO DO PERFIL 2.png',
+  3: '/FOTO DO PERFIL 3.png',
+  4: '/FOTO DO PERFIL 4.png',
+}
 
 function Fade({ children, delay = 0 }) {
   return (
@@ -19,17 +24,13 @@ function Fade({ children, delay = 0 }) {
 
 export default function ResultScreen({ profileId, onContinue }) {
   const p = resultProfiles.find(r => r.id === profileId) || resultProfiles[0]
-  const [buttonRevealed, setButtonRevealed] = useState(false)
-  const timerRef = useRef(null)
+  const profileImage = PROFILE_IMAGES[profileId] || PROFILE_IMAGES[1]
 
   useEffect(() => {
     const s = document.createElement('script')
     s.src = 'https://scripts.converteai.net/b56885d9-7ea4-4b84-b38e-5cdb1c1e45a9/players/6a35b5d8a01c983820390e8b/v4/player.js'
     s.async = true
     document.head.appendChild(s)
-
-    timerRef.current = setTimeout(() => setButtonRevealed(true), REVEAL_AFTER_SECONDS * 1000)
-    return () => clearTimeout(timerRef.current)
   }, [])
 
   return (
@@ -51,7 +52,7 @@ export default function ResultScreen({ profileId, onContinue }) {
 
       <div style={{ width: '100%', maxWidth: 460, position: 'relative', zIndex: 1 }}>
 
-        {/* ── TOPO COMPACTO: label + emoji + tag ── */}
+        {/* ── TOPO: label + emoji + tag + miniDesc ── */}
         <Fade delay={0.05}>
           <div style={{ textAlign: 'center', marginBottom: 10 }}>
             <span style={{
@@ -93,8 +94,52 @@ export default function ResultScreen({ profileId, onContinue }) {
           </h1>
         </Fade>
 
-        {/* ── VSL — destacada, logo abaixo do H1 ── */}
+        {/* ── IMAGEM DO PERFIL ── */}
         <Fade delay={0.18}>
+          <div style={{
+            width: '100%', marginBottom: 28,
+            borderRadius: 18, overflow: 'hidden',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+            border: '1px solid rgba(190,150,81,0.15)',
+          }}>
+            <img
+              src={profileImage}
+              alt={p.profileTag}
+              style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+            />
+          </div>
+        </Fade>
+
+        {/* ── BOTÃO — visível imediatamente ── */}
+        <Fade delay={0.24}>
+          <motion.button
+            whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
+            whileTap={{ scale: 0.975 }}
+            onClick={onContinue}
+            style={{
+              width: '100%', padding: '19px',
+              borderRadius: 16, border: 'none',
+              background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
+              color: '#0F3A3A', fontSize: 16, fontWeight: 800,
+              cursor: 'pointer', letterSpacing: '0.04em',
+              boxShadow: '0 4px 32px rgba(190,150,81,0.35)',
+              marginBottom: 12,
+              transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
+            }}
+          >
+            CONTINUAR 🗝️
+          </motion.button>
+          <p style={{
+            textAlign: 'center', fontSize: 12,
+            color: 'rgba(245,239,230,0.28)', lineHeight: 1.8, fontStyle: 'italic',
+            marginBottom: 36,
+          }}>
+            Deus não te trouxe até aqui para te deixar parada.
+          </p>
+        </Fade>
+
+        {/* ── VSL — após o botão ── */}
+        <Fade delay={0.3}>
           <div style={{ textAlign: 'center', marginBottom: 10 }}>
             <span style={{
               fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
@@ -116,44 +161,8 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Fade>
 
-        {/* ── BOTÃO — aparece após 30s ── */}
-        <AnimatePresence>
-          {buttonRevealed && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
-              style={{ marginBottom: 48 }}
-            >
-              <motion.button
-                whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
-                whileTap={{ scale: 0.975 }}
-                onClick={onContinue}
-                style={{
-                  width: '100%', padding: '19px',
-                  borderRadius: 16, border: 'none',
-                  background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-                  color: '#0F3A3A', fontSize: 16, fontWeight: 800,
-                  cursor: 'pointer', letterSpacing: '0.04em',
-                  boxShadow: '0 4px 32px rgba(190,150,81,0.35)',
-                  marginBottom: 12,
-                  transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
-                }}
-              >
-                CONTINUAR 🗝️
-              </motion.button>
-              <p style={{
-                textAlign: 'center', fontSize: 12,
-                color: 'rgba(245,239,230,0.28)', lineHeight: 1.8, fontStyle: 'italic',
-              }}>
-                Deus não te trouxe até aqui para te deixar parada.
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
         {/* ── DIVISOR ── */}
-        <Fade delay={0.24}>
+        <Fade delay={0.36}>
           <div style={{
             display: 'flex', alignItems: 'center',
             justifyContent: 'center', gap: 10, marginBottom: 28,
@@ -165,7 +174,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── DESCRIPTION ── */}
-        <Fade delay={0.28}>
+        <Fade delay={0.4}>
           <div style={{ marginBottom: 28 }}>
             {p.description.map((d, i) => (
               <p key={i} style={{
@@ -179,7 +188,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── RED CHALLENGE ── */}
-        <Fade delay={0.32}>
+        <Fade delay={0.44}>
           <div style={{ display: 'flex', gap: 16, marginBottom: 28, paddingLeft: 2 }}>
             <div style={{
               width: 3, borderRadius: 99, flexShrink: 0,
@@ -204,7 +213,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── VERSE ── */}
-        <Fade delay={0.36}>
+        <Fade delay={0.48}>
           <div style={{ textAlign: 'center', marginBottom: 28, padding: '0 8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
               <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(96,165,250,0.3))' }} />
@@ -237,7 +246,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── SIGNS ── */}
-        <Fade delay={0.4}>
+        <Fade delay={0.52}>
           <div style={{ marginBottom: 28 }}>
             <p style={{
               fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
@@ -269,7 +278,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── FINAL PHRASE ── */}
-        <Fade delay={0.44}>
+        <Fade delay={0.56}>
           <div style={{ textAlign: 'center', padding: '0 4px' }}>
             <p style={{
               fontSize: 'clamp(16px, 4vw, 19px)',
