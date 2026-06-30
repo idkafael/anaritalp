@@ -1,9 +1,6 @@
-import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
-
-// Quanto tempo (em segundos) após o play para revelar a oferta
-// Ajuste para coincidir com a duração real do vídeo quando for inserido
-const REVEAL_AFTER_SECONDS = 30
 
 const profileHeadlines = {
   1: {
@@ -48,6 +45,13 @@ function Section({ children, delay = 0 }) {
 
 export default function CTAScreen({ profileId = 1, onBuy }) {
   const hl = profileHeadlines[profileId] || profileHeadlines[1]
+
+  useEffect(() => {
+    const s = document.createElement('script')
+    s.src = 'https://scripts.converteai.net/b56885d9-7ea4-4b84-b38e-5cdb1c1e45a9/players/6a35b5d8a01c983820390e8b/v4/player.js'
+    s.async = true
+    document.head.appendChild(s)
+  }, [])
 
   return (
     <div className="app-screen" style={{
@@ -110,7 +114,30 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
           </p>
         </Section>
 
-        {/* ── 4. OFERTA ── */}
+        {/* ── 4. VSL ── */}
+        <Section delay={0.22}>
+          <div style={{ textAlign: 'center', marginBottom: 10 }}>
+            <span style={{
+              fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
+              color: 'rgba(190,150,81,0.75)', fontWeight: 700,
+            }}>
+              ▶ &nbsp; Assista até o final
+            </span>
+          </div>
+          <div style={{
+            width: '100%', marginBottom: 36,
+            borderRadius: 18, overflow: 'hidden',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+            border: '1px solid rgba(190,150,81,0.15)',
+          }}>
+            <vturb-smartplayer
+              id="vid-6a35b5d8a01c983820390e8b"
+              style={{ display: 'block', margin: '0 auto', width: '100%' }}
+            />
+          </div>
+        </Section>
+
+        {/* ── 5. OFERTA ── */}
         <Section delay={0.24}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

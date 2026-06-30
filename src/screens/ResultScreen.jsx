@@ -1,14 +1,12 @@
-import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
 import { resultProfiles } from '../data/questions'
+import perfil1 from '../assets/perfil1.png'
+import perfil2 from '../assets/perfil2.png'
+import perfil3 from '../assets/perfil3.png'
+import perfil4 from '../assets/perfil4.png'
 
-const PROFILE_IMAGES = {
-  1: '/FOTO DO PERFIL 1.png',
-  2: '/FOTO DO PERFIL 2.png',
-  3: '/FOTO DO PERFIL 3.png',
-  4: '/FOTO DO PERFIL 4.png',
-}
+const PROFILE_IMAGES = { 1: perfil1, 2: perfil2, 3: perfil3, 4: perfil4 }
 
 function Fade({ children, delay = 0 }) {
   return (
@@ -25,13 +23,6 @@ function Fade({ children, delay = 0 }) {
 export default function ResultScreen({ profileId, onContinue }) {
   const p = resultProfiles.find(r => r.id === profileId) || resultProfiles[0]
   const profileImage = PROFILE_IMAGES[profileId] || PROFILE_IMAGES[1]
-
-  useEffect(() => {
-    const s = document.createElement('script')
-    s.src = 'https://scripts.converteai.net/b56885d9-7ea4-4b84-b38e-5cdb1c1e45a9/players/6a35b5d8a01c983820390e8b/v4/player.js'
-    s.async = true
-    document.head.appendChild(s)
-  }, [])
 
   return (
     <div className="app-screen" style={{
@@ -57,7 +48,7 @@ export default function ResultScreen({ profileId, onContinue }) {
           <div style={{ textAlign: 'center', marginBottom: 10 }}>
             <span style={{
               fontSize: 10, letterSpacing: '0.28em', textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.7)', fontWeight: 700,
+              color: 'rgba(190,150,81,0.85)', fontWeight: 700,
             }}>
               ✦ &nbsp; Seu Perfil &nbsp; ✦
             </span>
@@ -68,14 +59,14 @@ export default function ResultScreen({ profileId, onContinue }) {
           <div style={{ textAlign: 'center', marginBottom: 6 }}>
             <span style={{
               fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.65)', fontWeight: 700,
+              color: '#ffffff', fontWeight: 700,
             }}>
               {p.icon} &nbsp; {p.profileTag}
             </span>
           </div>
           <p style={{
             textAlign: 'center', fontSize: 12, fontStyle: 'italic',
-            color: 'rgba(212,174,110,0.6)', marginBottom: 14, lineHeight: 1.4,
+            color: 'rgba(255,255,255,0.75)', marginBottom: 14, lineHeight: 1.4,
           }}>
             {p.miniDesc}
           </p>
@@ -110,7 +101,7 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Fade>
 
-        {/* ── BOTÃO — visível imediatamente ── */}
+        {/* ── BOTÃO CONTINUAR — visível imediatamente ── */}
         <Fade delay={0.24}>
           <motion.button
             whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
@@ -131,38 +122,15 @@ export default function ResultScreen({ profileId, onContinue }) {
           </motion.button>
           <p style={{
             textAlign: 'center', fontSize: 12,
-            color: 'rgba(245,239,230,0.28)', lineHeight: 1.8, fontStyle: 'italic',
+            color: 'rgba(255,255,255,0.45)', lineHeight: 1.8, fontStyle: 'italic',
             marginBottom: 36,
           }}>
             Deus não te trouxe até aqui para te deixar parada.
           </p>
         </Fade>
 
-        {/* ── VSL — após o botão ── */}
-        <Fade delay={0.3}>
-          <div style={{ textAlign: 'center', marginBottom: 10 }}>
-            <span style={{
-              fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.75)', fontWeight: 700,
-            }}>
-              ▶ &nbsp; Assista até o final
-            </span>
-          </div>
-          <div style={{
-            width: '100%', marginBottom: 36,
-            borderRadius: 18, overflow: 'hidden',
-            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
-            border: '1px solid rgba(190,150,81,0.15)',
-          }}>
-            <vturb-smartplayer
-              id="vid-6a35b5d8a01c983820390e8b"
-              style={{ display: 'block', margin: '0 auto', width: '100%' }}
-            />
-          </div>
-        </Fade>
-
         {/* ── DIVISOR ── */}
-        <Fade delay={0.36}>
+        <Fade delay={0.3}>
           <div style={{
             display: 'flex', alignItems: 'center',
             justifyContent: 'center', gap: 10, marginBottom: 28,
@@ -174,7 +142,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── DESCRIPTION ── */}
-        <Fade delay={0.4}>
+        <Fade delay={0.34}>
           <div style={{ marginBottom: 28 }}>
             {p.description.map((d, i) => (
               <p key={i} style={{
@@ -188,7 +156,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── RED CHALLENGE ── */}
-        <Fade delay={0.44}>
+        <Fade delay={0.38}>
           <div style={{ display: 'flex', gap: 16, marginBottom: 28, paddingLeft: 2 }}>
             <div style={{
               width: 3, borderRadius: 99, flexShrink: 0,
@@ -213,7 +181,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── VERSE ── */}
-        <Fade delay={0.48}>
+        <Fade delay={0.42}>
           <div style={{ textAlign: 'center', marginBottom: 28, padding: '0 8px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
               <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(96,165,250,0.3))' }} />
@@ -246,7 +214,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── SIGNS ── */}
-        <Fade delay={0.52}>
+        <Fade delay={0.46}>
           <div style={{ marginBottom: 28 }}>
             <p style={{
               fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
@@ -278,7 +246,7 @@ export default function ResultScreen({ profileId, onContinue }) {
         </Fade>
 
         {/* ── FINAL PHRASE ── */}
-        <Fade delay={0.56}>
+        <Fade delay={0.5}>
           <div style={{ textAlign: 'center', padding: '0 4px' }}>
             <p style={{
               fontSize: 'clamp(16px, 4vw, 19px)',
