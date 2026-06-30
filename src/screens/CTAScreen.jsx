@@ -94,10 +94,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
             letterSpacing: '-0.4px',
           }}>
             Seu Egito foi identificado:{' '}
-            <span style={{
-              background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-            }}>
+            <span style={{ color: '#ffffff' }}>
               {hl.tag}.
             </span>
           </h1>
