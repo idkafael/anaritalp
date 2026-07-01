@@ -43,53 +43,6 @@ export default function IntroScreen({ onStart }) {
         pointerEvents: 'none',
       }} />
 
-      {/* Sticker — badge "100% Gratuito" topo esquerdo */}
-      <motion.div
-        initial={{ scale: 0, rotate: -30, opacity: 0 }}
-        animate={{ scale: 1, rotate: -14, opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.55, ease: [0.34, 1.56, 0.64, 1] }}
-        style={{
-          position: 'absolute', top: 72, left: 20,
-          animation: 'float-rotate 5s ease-in-out 1.4s infinite',
-          width: 76, height: 76, borderRadius: '50%',
-          background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'center',
-          boxShadow: '0 6px 24px rgba(190,150,81,0.45), inset 0 1px 2px rgba(255,255,255,0.25)',
-          zIndex: 10, cursor: 'default',
-        }}
-      >
-        <div style={{
-          position: 'absolute', inset: 5, borderRadius: '50%',
-          border: '1.5px dashed rgba(255,255,255,0.45)',
-        }} />
-        <span style={{ fontSize: 17, fontWeight: 900, color: '#0F3A3A', lineHeight: 1, letterSpacing: '-0.5px' }}>100%</span>
-        <span style={{ fontSize: 7.5, fontWeight: 800, color: '#0F3A3A', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 1 }}>gratuito</span>
-      </motion.div>
-
-      {/* Sticker — dove topo direito */}
-      <motion.div
-        initial={{ scale: 0, rotate: 20, opacity: 0 }}
-        animate={{ scale: 1, rotate: 10, opacity: 1 }}
-        transition={{ delay: 1.0, duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
-        style={{
-          position: 'absolute', top: 68, right: 22,
-          animation: 'float-rotate-right 6s ease-in-out 1.6s infinite',
-          zIndex: 10,
-        }}
-      >
-        <div style={{
-          width: 64, height: 64, borderRadius: '50%',
-          background: 'rgba(255,255,255,0.07)',
-          border: '1.5px solid rgba(255,255,255,0.14)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 28,
-          backdropFilter: 'blur(8px)',
-        }}>
-          🕊️
-        </div>
-      </motion.div>
-
       {/* Sparkles decorativos */}
       <Sparkle size={12} style={{
         position: 'absolute', top: 180, right: 36,
