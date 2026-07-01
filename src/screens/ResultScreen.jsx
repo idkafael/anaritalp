@@ -135,7 +135,6 @@ export default function ResultScreen({ profileId, onContinue }) {
 
         {/* ── WAXSEAL com emoji do perfil ── */}
         <Fade delay={0.1}>
-          <WaxSeal emoji={p.imageEmoji} profileId={profileId} />
           <div style={{ textAlign: 'center', marginBottom: 6 }}>
             <span style={{
               fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
