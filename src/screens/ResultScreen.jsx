@@ -360,13 +360,13 @@ export default function ResultScreen({ profileId, onContinue }) {
             <p style={{
               fontSize: 'clamp(16px, 4vw, 19px)',
               fontWeight: 800, fontStyle: 'italic',
-              color: '#d4ae6e', lineHeight: 1.45, marginBottom: 10, letterSpacing: '-0.2px',
+              color: '#ffffff', lineHeight: 1.45, marginBottom: 10, letterSpacing: '-0.2px',
             }}>
               {p.finalLine1}
             </p>
             <p style={{
-              fontSize: 14, color: 'rgba(245,239,230,0.5)',
-              lineHeight: 1.85, fontStyle: 'italic',
+              fontSize: 14, color: '#ffffff',
+              lineHeight: 1.85,
             }}>
               {p.finalLine2}
             </p>
