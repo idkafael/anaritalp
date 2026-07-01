@@ -129,9 +129,9 @@ body {
     z-index: 1;
   }
   .app-logo {
-    width: 180px !important;
-    height: 180px !important;
-    max-width: 60vw !important;
+    width: 130px !important;
+    height: 130px !important;
+    max-width: 50vw !important;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,0.6));
   }
   .app-screen h1,
