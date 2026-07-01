@@ -129,16 +129,16 @@ body {
     z-index: 1;
   }
   .app-logo {
-    width: 300px !important;
-    height: 300px !important;
-    max-width: 80vw !important;
+    width: 180px !important;
+    height: 180px !important;
+    max-width: 60vw !important;
     filter: drop-shadow(0 2px 12px rgba(0,0,0,0.6));
   }
   .app-screen h1,
   .app-screen h2,
   .app-screen p,
   .app-screen span {
-    text-shadow: 0 1px 6px rgba(0,0,0,0.75);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
   }
 }
 

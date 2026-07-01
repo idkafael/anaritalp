@@ -5,7 +5,7 @@ export default function ProgressBar({ current, total }) {
     <div style={{ width: '100%', maxWidth: 460, margin: '0 auto 28px', padding: '0 4px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
         <span style={{
-          fontSize: 10, color: 'rgba(190,150,81,0.65)',
+          fontSize: 10, color: '#ffffff',
           letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
         }}>
           ✦ Sua travessia
