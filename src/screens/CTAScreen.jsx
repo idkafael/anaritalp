@@ -95,7 +95,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
             letterSpacing: '-0.4px',
           }}>
             Seu Egito foi identificado:{' '}
-            <span style={{ color: '#ffffff' }}>{hl.tag}.</span>
+            <span style={{ color: '#d4ae6e' }}>{hl.tag}.</span>
           </h1>
         </Section>
 
@@ -103,7 +103,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
         <Section delay={0.18}>
           <p style={{
             textAlign: 'center', fontSize: 15,
-            color: 'rgba(245,239,230,0.65)',
+            color: '#ffffff',
             lineHeight: 1.75, marginBottom: 24, fontStyle: 'italic',
           }}>
             {hl.sub}
