@@ -277,35 +277,38 @@ export default function ResultScreen({ profileId, onContinue }) {
         <Fade delay={0.46}>
           <div style={{
             textAlign: 'center', marginBottom: 24,
-            padding: '20px 20px',
-            background: 'rgba(96,165,250,0.05)',
+            padding: '24px 20px 20px',
+            background: 'rgba(190,150,81,0.07)',
             borderRadius: 16,
-            border: '1px solid rgba(96,165,250,0.12)',
+            border: '1px solid rgba(190,150,81,0.2)',
             position: 'relative',
           }}>
-            {/* Aspas decorativas */}
+            {/* Cruz decorativa no topo */}
             <div style={{
-              position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)',
+              position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)',
               background: 'linear-gradient(160deg, #0a2e2e, #0F3A3A)',
               padding: '0 10px',
             }}>
-              <span style={{ fontSize: 11, color: 'rgba(147,197,253,0.5)', letterSpacing: 4 }}>✝️</span>
+              <svg width={16} height={16} viewBox="0 0 24 24" fill="none">
+                <rect x="10" y="2" width="4" height="20" rx="2" fill="rgba(190,150,81,0.7)" />
+                <rect x="2" y="8" width="20" height="4" rx="2" fill="rgba(190,150,81,0.7)" />
+              </svg>
             </div>
             <p style={{
-              fontSize: 52, lineHeight: 0.5, color: 'rgba(96,165,250,0.15)',
+              fontSize: 52, lineHeight: 0.5, color: 'rgba(190,150,81,0.2)',
               marginBottom: 10, fontFamily: 'Georgia, serif', fontWeight: 700,
               userSelect: 'none',
             }}>"</p>
             <p style={{
               fontSize: 15, fontStyle: 'italic',
-              color: 'rgba(219,234,254,0.85)',
-              lineHeight: 1.75, marginBottom: 10, letterSpacing: '0.01em',
+              color: '#ffffff',
+              lineHeight: 1.75, marginBottom: 12, letterSpacing: '0.01em',
             }}>
               {p.verse.replace(/^"|"$/g, '')}
             </p>
             <p style={{
               fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'rgba(147,197,253,0.5)', fontWeight: 700,
+              color: 'rgba(190,150,81,0.85)', fontWeight: 700,
             }}>
               — {p.verseRef}
             </p>
