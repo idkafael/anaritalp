@@ -283,17 +283,6 @@ export default function ResultScreen({ profileId, onContinue }) {
             border: '1px solid rgba(190,150,81,0.2)',
             position: 'relative',
           }}>
-            {/* Cruz decorativa no topo */}
-            <div style={{
-              position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)',
-              background: 'linear-gradient(160deg, #0a2e2e, #0F3A3A)',
-              padding: '0 10px',
-            }}>
-              <svg width={16} height={16} viewBox="0 0 24 24" fill="none">
-                <rect x="10" y="2" width="4" height="20" rx="2" fill="rgba(190,150,81,0.7)" />
-                <rect x="2" y="8" width="20" height="4" rx="2" fill="rgba(190,150,81,0.7)" />
-              </svg>
-            </div>
             <p style={{
               fontSize: 52, lineHeight: 0.5, color: 'rgba(190,150,81,0.2)',
               marginBottom: 10, fontFamily: 'Georgia, serif', fontWeight: 700,
