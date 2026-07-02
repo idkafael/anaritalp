@@ -67,7 +67,9 @@ export default function IntroScreen({ onStart }) {
 
         {/* Hero: logo + H1 sobrepostos */}
         <div style={{ position: 'relative', marginBottom: 20 }}>
-          <Logo size={200} />
+          <div style={{ position: 'relative', top: -20 }}>
+            <Logo size={200} />
+          </div>
           <motion.h1
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
