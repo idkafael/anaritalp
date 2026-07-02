@@ -65,24 +65,28 @@ export default function IntroScreen({ onStart }) {
 
       <div style={{ width: '100%', maxWidth: 440, textAlign: 'center', position: 'relative', zIndex: 1 }}>
 
-        {/* Hero: logo acima da H1 */}
-        <Logo size={200} />
-        <motion.h1
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.15, duration: 0.6 }}
-          style={{
-            textAlign: 'center',
-            fontSize: 'clamp(22px, 5.5vw, 32px)',
-            fontWeight: 800, lineHeight: 1.2,
-            color: '#f5efe6',
-            letterSpacing: '-0.4px',
-            marginBottom: 20,
-          }}
-        >
-          Você não nasceu para viver presa no{' '}
-          <span style={{ color: '#ffffff' }}>Egito que te feriu.</span>
-        </motion.h1>
+        {/* Hero: logo + H1 sobrepostos */}
+        <div style={{ position: 'relative', marginBottom: 20 }}>
+          <Logo size={200} />
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
+            style={{
+              position: 'absolute',
+              bottom: 8, left: 0, right: 0,
+              padding: '0 12px',
+              textAlign: 'center',
+              fontSize: 'clamp(22px, 5.5vw, 32px)',
+              fontWeight: 800, lineHeight: 1.2,
+              color: '#f5efe6',
+              letterSpacing: '-0.4px',
+            }}
+          >
+            Você não nasceu para viver presa no{' '}
+            <span style={{ color: '#ffffff' }}>Egito que te feriu.</span>
+          </motion.h1>
+        </div>
 
         {/* Label pill */}
         <motion.div
