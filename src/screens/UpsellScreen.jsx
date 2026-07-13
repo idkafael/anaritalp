@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '../components/Logo'
 
@@ -18,28 +18,21 @@ function Section({ children, delay = 0 }) {
 }
 
 export default function UpsellScreen({ onDecline }) {
-  const [videoPlaying, setVideoPlaying] = useState(false)
   const [buttonRevealed, setButtonRevealed] = useState(false)
-  const timerRef = useRef(null)
-
-  const handlePlay = () => {
-    if (videoPlaying) return
-    setVideoPlaying(true)
-    timerRef.current = setInterval(() => {
-      setButtonRevealed(prev => {
-        if (prev) { clearInterval(timerRef.current); return prev }
-        return false
-      })
-    }, 1000)
-
-    setTimeout(() => {
-      clearInterval(timerRef.current)
-      setButtonRevealed(true)
-    }, REVEAL_AFTER_SECONDS * 1000)
-  }
 
   useEffect(() => {
-    return () => { if (timerRef.current) clearInterval(timerRef.current) }
+    const s = document.createElement('script')
+    s.src = 'https://scripts.converteai.net/17320984-884b-4c8f-a1d2-0391db39f795/players/6a53c097ef5db2135c085548/v4/player.js'
+    s.async = true
+    document.head.appendChild(s)
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setButtonRevealed(true)
+    }, REVEAL_AFTER_SECONDS * 1000)
+
+    return () => clearTimeout(timer)
   }, [])
 
   return (
@@ -145,76 +138,29 @@ export default function UpsellScreen({ onDecline }) {
           </div>
 
           {/* Player */}
-          <div
-            onClick={handlePlay}
-            style={{
-              width: '100%', aspectRatio: '16/9',
-              background: 'rgba(0,0,0,0.6)',
-              borderRadius: 20,
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              flexDirection: 'column', gap: 12,
-              marginBottom: 36,
-              position: 'relative', overflow: 'hidden',
-              cursor: videoPlaying ? 'default' : 'pointer',
-            }}
-          >
-            <div style={{
-              position: 'absolute', inset: 0,
-              background: 'linear-gradient(135deg, rgba(120,80,220,0.06) 0%, transparent 60%)',
-            }} />
-
-            {!videoPlaying ? (
-              <motion.div
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.95 }}
+          <div style={{
+            width: '100%',
+            borderRadius: 20,
+            overflow: 'hidden',
+            marginBottom: 36,
+            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+            border: '1px solid rgba(167,139,250,0.15)',
+          }}>
+            <vturb-smartplayer
+              id="vid-6a53c097ef5db2135c085548"
+              style={{ display: 'block', margin: '0 auto', width: '100%' }}
+            >
+              <div
+                className="vturb-player-placeholder"
                 style={{
-                  width: 68, height: 68, borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #7c3aed, #a855f7)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  boxShadow: '0 0 40px rgba(124,58,237,0.4)',
-                  position: 'relative', zIndex: 1,
-                  transition: 'all 0.3s cubic-bezier(0.32,0.72,0,1)',
+                  position: 'relative',
+                  width: '100%',
+                  padding: '56.25% 0 0',
+                  zIndex: 0,
+                  backgroundColor: 'black',
                 }}
-              >
-                <svg width={28} height={28} viewBox="0 0 24 24" fill="#fff">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </motion.div>
-            ) : (
-              <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-                <div style={{
-                  width: 48, height: 48, borderRadius: '50%',
-                  border: '2px solid rgba(167,139,250,0.3)',
-                  borderTopColor: '#a78bfa',
-                  animation: 'spin 1s linear infinite',
-                  margin: '0 auto 12px',
-                }} />
-                <p style={{
-                  fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase',
-                  color: 'rgba(167,139,250,0.5)',
-                }}>
-                  {buttonRevealed ? 'Aula concluída' : 'Reproduzindo...'}
-                </p>
-              </div>
-            )}
-
-            {/* Barra de progresso */}
-            {videoPlaying && !buttonRevealed && (
-              <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0, height: 3,
-                background: 'rgba(255,255,255,0.07)',
-              }}>
-                <motion.div
-                  initial={{ width: '0%' }}
-                  animate={{ width: '100%' }}
-                  transition={{ duration: REVEAL_AFTER_SECONDS, ease: 'linear' }}
-                  style={{
-                    height: '100%',
-                    background: 'linear-gradient(90deg, #7c3aed, #a855f7)',
-                  }}
-                />
-              </div>
-            )}
+              />
+            </vturb-smartplayer>
           </div>
         </Section>
 
@@ -284,13 +230,6 @@ export default function UpsellScreen({ onDecline }) {
         </AnimatePresence>
 
       </div>
-
-      <style>{`
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </motion.div>
   )
 }
