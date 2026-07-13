@@ -17,15 +17,17 @@ function Section({ children, delay = 0 }) {
   )
 }
 
-export default function UpsellScreen({ onDecline }) {
+const DEFAULT_PLAYER_ID = '6a53c097ef5db2135c085548'
+
+export default function UpsellScreen({ onDecline, playerId = DEFAULT_PLAYER_ID }) {
   const [buttonRevealed, setButtonRevealed] = useState(false)
 
   useEffect(() => {
     const s = document.createElement('script')
-    s.src = 'https://scripts.converteai.net/17320984-884b-4c8f-a1d2-0391db39f795/players/6a53c097ef5db2135c085548/v4/player.js'
+    s.src = `https://scripts.converteai.net/17320984-884b-4c8f-a1d2-0391db39f795/players/${playerId}/v4/player.js`
     s.async = true
     document.head.appendChild(s)
-  }, [])
+  }, [playerId])
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -147,7 +149,7 @@ export default function UpsellScreen({ onDecline }) {
             border: '1px solid rgba(167,139,250,0.15)',
           }}>
             <vturb-smartplayer
-              id="vid-6a53c097ef5db2135c085548"
+              id={`vid-${playerId}`}
               style={{ display: 'block', margin: '0 auto', width: '100%' }}
             >
               <div

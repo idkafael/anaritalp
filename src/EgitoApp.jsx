@@ -11,6 +11,7 @@ export default function EgitoApp() {
       {screen === 'upsell' && (
         <UpsellScreen
           key="upsell"
+          playerId="6a53c3cae83d30401f3af483"
           onDecline={() => setScreen('continuacao')}
         />
       )}
