@@ -4,20 +4,16 @@ import Logo from '../components/Logo'
 
 const profileHeadlines = {
   1: {
-    tag: 'O Egito da Paz Roubada',
-    sub: 'Assista o vídeo abaixo e descubra como sair dessa prisão emocional e viver com paz em 7 dias.',
+    tag: 'Mente em Estado de Alerta',
+    sub: 'Assista o vídeo abaixo e descubra como recuperar a paz e tomar decisões sem o peso constante do alerta.',
   },
   2: {
-    tag: 'O Egito do Propósito Destruído',
-    sub: 'Assista o vídeo abaixo e descubra como reencontrar sua direção e destravar sua identidade em 7 dias.',
+    tag: 'Direção Bloqueada',
+    sub: 'Assista o vídeo abaixo e descubra como encontrar clareza e dar o próximo passo mesmo sem certeza total.',
   },
   3: {
-    tag: 'O Egito da Alma Quebrantada',
-    sub: 'Assista o vídeo abaixo e descubra como ser restaurada e sair do esgotamento emocional em 7 dias.',
-  },
-  4: {
-    tag: 'O Egito da Escrava do Medo',
-    sub: 'Assista o vídeo abaixo e descubra como avançar com coragem e sair da paralisia em 7 dias.',
+    tag: 'Ciclo de Recomeços Interrompidos',
+    sub: 'Assista o vídeo abaixo e descubra como sustentar a mudança e sair do ciclo que sempre te faz voltar ao início.',
   },
 }
 

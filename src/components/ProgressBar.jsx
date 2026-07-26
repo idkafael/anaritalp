@@ -1,51 +1,71 @@
 import { motion } from 'framer-motion'
 
 export default function ProgressBar({ current, total }) {
+  const pct = (current / total) * 100
+
   return (
     <div style={{ width: '100%', maxWidth: 460, margin: '0 auto 28px', padding: '0 4px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+      {/* Label */}
+      <div style={{ marginBottom: 8 }}>
         <span style={{
-          fontSize: 10, color: '#ffffff',
-          letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
+          fontSize: 10,
+          color: '#ffffff',
+          letterSpacing: '0.16em',
+          textTransform: 'uppercase',
+          fontWeight: 700,
         }}>
-          ✦ Sua travessia
-        </span>
-        <span style={{
-          fontSize: 11, fontWeight: 700,
-          color: 'rgba(190,150,81,0.75)',
-          background: 'rgba(190,150,81,0.1)',
-          border: '1px solid rgba(190,150,81,0.2)',
-          borderRadius: 99, padding: '2px 10px',
-        }}>
-          {current}/{total}
+          ✦ SEU DIAGNÓSTICO
         </span>
       </div>
 
-      {/* Segmentos */}
-      <div style={{ display: 'flex', gap: 5, alignItems: 'flex-end', height: 12 }}>
-        {Array.from({ length: total }, (_, i) => {
-          const done = i < current
-          const active = i === current - 1
-          return (
-            <motion.div
-              key={i}
-              initial={false}
-              animate={{
-                height: active ? 12 : done ? 8 : 5,
-                background: done
-                  ? 'linear-gradient(90deg, #be9651, #d4ae6e)'
-                  : 'rgba(255,255,255,0.07)',
-                boxShadow: active ? '0 0 10px rgba(190,150,81,0.7)' : 'none',
-              }}
-              transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-              style={{
-                flex: 1,
-                borderRadius: 99,
-                minHeight: 5,
-              }}
-            />
-          )
-        })}
+      {/* Track */}
+      <div style={{
+        position: 'relative',
+        height: 6,
+        borderRadius: 99,
+        background: 'rgba(255,255,255,0.07)',
+        overflow: 'hidden',
+      }}>
+        {/* Fill */}
+        <motion.div
+          initial={false}
+          animate={{ width: `${pct}%` }}
+          transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+          style={{
+            position: 'absolute',
+            top: 0, left: 0, bottom: 0,
+            borderRadius: 99,
+            background: 'linear-gradient(90deg, #be9651, #d4ae6e)',
+          }}
+        />
+        {/* Shimmer sweep on the fill */}
+        <motion.div
+          animate={{ x: ['-100%', '200%'] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut', repeatDelay: 1 }}
+          style={{
+            position: 'absolute',
+            top: 0, bottom: 0,
+            width: '40%',
+            background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent)',
+            borderRadius: 99,
+          }}
+        />
+        {/* Glow dot at the head */}
+        <motion.div
+          initial={false}
+          animate={{ left: `${pct}%` }}
+          transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 10,
+            height: 10,
+            borderRadius: '50%',
+            background: '#d4ae6e',
+            boxShadow: '0 0 8px rgba(212,174,110,0.9)',
+          }}
+        />
       </div>
     </div>
   )

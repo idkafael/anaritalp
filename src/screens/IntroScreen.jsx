@@ -24,8 +24,8 @@ export default function IntroScreen({ onStart }) {
       minHeight: '100vh',
       background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
-      justifyContent: 'center',
-      padding: '48px 24px',
+      justifyContent: 'flex-start',
+      padding: '20px 24px 48px',
       position: 'relative', overflowX: 'hidden', overflowY: 'auto',
     }}>
 
@@ -65,37 +65,33 @@ export default function IntroScreen({ onStart }) {
 
       <div style={{ width: '100%', maxWidth: 440, textAlign: 'center', position: 'relative', zIndex: 1 }}>
 
-        {/* Hero: logo + H1 sobrepostos */}
-        <div style={{ position: 'relative', marginBottom: 20 }}>
-          <div style={{ position: 'relative', top: -20 }}>
-            <Logo size={200} />
-          </div>
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15, duration: 0.6 }}
-            style={{
-              position: 'absolute',
-              bottom: 8, left: 0, right: 0,
-              padding: '0 12px',
-              textAlign: 'center',
-              fontSize: 'clamp(22px, 5.5vw, 32px)',
-              fontWeight: 800, lineHeight: 1.2,
-              color: '#f5efe6',
-              letterSpacing: '-0.4px',
-            }}
-          >
-            Você não nasceu para viver presa no{' '}
-            <span style={{ color: '#ffffff' }}>Egito que te feriu.</span>
-          </motion.h1>
-        </div>
+        {/* Logo */}
+        <Logo size={200} />
+
+        {/* H1 */}
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          style={{
+            textAlign: 'center',
+            fontSize: 'clamp(16px, 4.2vw, 22px)',
+            fontWeight: 800, lineHeight: 1.3,
+            color: '#f5efe6',
+            letterSpacing: '0px',
+            marginBottom: 14,
+            padding: '0 4px',
+          }}
+        >
+          DESCUBRA QUAL CICLO ESTÁ MANTENDO SUA VIDA PARADA E PORQUE, MESMO ORANDO, VOCÊ CONTINUA VOLTANDO PARA O MESMO LUGAR
+        </motion.h1>
 
         {/* Label pill */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.5 }}
-          style={{ marginBottom: 16 }}
+          style={{ marginBottom: 12 }}
         >
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
@@ -106,7 +102,7 @@ export default function IntroScreen({ onStart }) {
             background: 'rgba(190,150,81,0.06)',
           }}>
             <span style={{ opacity: 0.5 }}>✦</span>
-            Diagnóstico DNA de Escrava
+            TESTE: ONDE SUA VIDA TRAVOU?
             <span style={{ opacity: 0.5 }}>✦</span>
           </span>
         </motion.div>
@@ -118,47 +114,13 @@ export default function IntroScreen({ onStart }) {
           transition={{ delay: 0.35, duration: 0.5 }}
           style={{
             fontSize: 16, fontWeight: 400,
-            color: '#ffffff', marginBottom: 32, lineHeight: 1.7,
+            color: '#ffffff', marginBottom: 22, lineHeight: 1.7,
           }}
         >
-          Descubra por que tantas mulheres continuam vivendo os mesmos ciclos de medo, insegurança e sensação de esgotamento, mesmo amando a Deus, e como iniciar uma travessia prática rumo à vida que Ele preparou para você.
+          Descubra, em poucos minutos, qual padrão está atrasando sua vida e como quebrá-lo de uma vez por todas.
         </motion.p>
 
         {/* Stats como badges criativos */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.5 }}
-          style={{
-            display: 'flex', justifyContent: 'center', gap: 10,
-            marginBottom: 32, flexWrap: 'wrap',
-          }}
-        >
-          {[
-            { num: '12', label: 'Perguntas', icon: '📋' },
-            { num: '2min', label: 'Duração', icon: '⏱' },
-            { num: '100%', label: 'Gratuito', icon: '✨' },
-          ].map((s, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.5 + i * 0.08, duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
-              style={{
-                display: 'flex', flexDirection: 'column', alignItems: 'center',
-                padding: '10px 18px', borderRadius: 14,
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(190,150,81,0.18)',
-                minWidth: 82,
-              }}
-            >
-              <span style={{ fontSize: 14, marginBottom: 2 }}>{s.icon}</span>
-              <span style={{ fontSize: 18, fontWeight: 800, color: '#be9651', lineHeight: 1, letterSpacing: '-0.5px' }}>{s.num}</span>
-              <span style={{ fontSize: 10, color: 'rgba(245,239,230,0.45)', letterSpacing: '0.06em', marginTop: 2, textTransform: 'uppercase' }}>{s.label}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-
         {/* Botão com shimmer */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -196,7 +158,7 @@ export default function IntroScreen({ onStart }) {
               pointerEvents: 'none',
             }} />
             <span style={{ position: 'relative', zIndex: 1 }}>
-              COMEÇAR MEU DIAGNÓSTICO →
+              FAZER MEU TESTE AGORA →
             </span>
           </motion.button>
         </motion.div>

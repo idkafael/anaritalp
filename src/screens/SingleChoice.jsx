@@ -27,7 +27,7 @@ export default function SingleChoice({ question, onAnswer, step, total }) {
               index={i}
               emoji={opt.emoji}
               text={opt.text}
-              onClick={() => onAnswer(opt)}
+              onClick={() => onAnswer({ ...opt, optionIndex: i })}
             />
           ))}
         </div>

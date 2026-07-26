@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { questions, computeProfile } from './data/questions'
 import IntroScreen from './screens/IntroScreen'
 import SingleChoice from './screens/SingleChoice'
@@ -162,7 +162,7 @@ export default function App() {
       <AnimatePresence mode="wait">
         {screen === 'intro' && <IntroScreen key="intro" onStart={() => setScreen('quiz')} />}
         {screen === 'loading' && <LoadingScreen key="loading" onComplete={() => setScreen('result')} />}
-        {screen === 'result' && <ResultScreen key="result" profileId={profileId} onContinue={() => setScreen('cta')} />}
+        {screen === 'result' && <ResultScreen key="result" profileId={profileId} answers={answers} onContinue={() => setScreen('cta')} />}
         {screen === 'cta' && <CTAScreen key="cta" profileId={profileId} onBuy={() => setScreen('upsell')} />}
         {screen === 'upsell' && <UpsellScreen key="upsell" onDecline={() => setScreen('continuacao')} />}
         {screen === 'continuacao' && <ContinuacaoScreen key="continuacao" onDecline={() => setScreen('continuacao')} />}

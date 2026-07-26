@@ -116,8 +116,7 @@ export default function LoadingScreen({ onComplete }) {
           marginBottom: 8, textAlign: 'center',
         }}
       >
-        Analisando sua travessia
-        {/* Três pontinhos animados */}
+        Quase pronto
         {[0, 1, 2].map(i => (
           <motion.span
             key={i}
@@ -132,12 +131,12 @@ export default function LoadingScreen({ onComplete }) {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
         style={{
-          fontSize: 12, color: 'rgba(245,239,230,0.22)',
+          fontSize: 13, color: 'rgba(245,239,230,0.45)',
           textAlign: 'center', fontStyle: 'italic',
-          maxWidth: 240,
+          maxWidth: 280, lineHeight: 1.7,
         }}
       >
-        "Pois eu sei os planos que tenho para vocês…"
+        Encontramos sinais importantes que explicam por que alguns ciclos continuam se repetindo.
       </motion.p>
     </div>
   )

@@ -1,118 +1,339 @@
 import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
 import { resultProfiles } from '../data/questions'
+import {
+  familyContext,
+  centralBelief,
+  emotionalSymptom,
+  internalConflict,
+  behaviorPattern,
+  cycleRobbery,
+  urgency,
+  desiredValue,
+  curiosityBridge,
+  levelClosing,
+  levelNames,
+} from '../data/copyLibrary'
 import perfil1 from '../assets/perfil1.png'
 import perfil2 from '../assets/perfil2.png'
 import perfil3 from '../assets/perfil3.png'
-import perfil4 from '../assets/perfil4.png'
 
-const PROFILE_IMAGES = { 1: perfil1, 2: perfil2, 3: perfil3, 4: perfil4 }
+const PROFILE_IMAGES = { 1: perfil1, 2: perfil2, 3: perfil3 }
 
 function Fade({ children, delay = 0 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 18 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
+      transition={{ delay, duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
     >
       {children}
     </motion.div>
   )
 }
 
-function OrnamentalDivider({ color = 'rgba(190,150,81,0.3)' }) {
+function OrnamentalDivider() {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '28px 0' }}>
-      <div style={{ flex: 1, height: 1, background: `linear-gradient(90deg, transparent, ${color})` }} />
-      <svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-        <path d="M12 2 L13.2 9.8 L21 12 L13.2 14.2 L12 22 L10.8 14.2 L3 12 L10.8 9.8 Z" fill={color} />
-      </svg>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12, margin: '26px 0' }}>
+      <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(190,150,81,0.22))' }} />
       <svg width={16} height={16} viewBox="0 0 24 24" fill="none">
-        <rect x="10" y="2" width="4" height="20" rx="2" fill={color} opacity="0.6" />
-        <rect x="2" y="8" width="20" height="4" rx="2" fill={color} opacity="0.6" />
+        <path d="M12 2 L13.2 9.8 L21 12 L13.2 14.2 L12 22 L10.8 14.2 L3 12 L10.8 9.8 Z" fill="rgba(190,150,81,0.4)" />
       </svg>
-      <svg width={24} height={24} viewBox="0 0 24 24" fill="none">
-        <path d="M12 2 L13.2 9.8 L21 12 L13.2 14.2 L12 22 L10.8 14.2 L3 12 L10.8 9.8 Z" fill={color} />
-      </svg>
-      <div style={{ flex: 1, height: 1, background: `linear-gradient(270deg, transparent, ${color})` }} />
+      <div style={{ flex: 1, height: 1, background: 'linear-gradient(270deg, transparent, rgba(190,150,81,0.22))' }} />
     </div>
   )
 }
 
-function WaxSeal({ emoji, profileId }) {
-  const colors = {
-    1: ['#2d1b5e', '#1a1040'],
-    2: ['#1a3a1a', '#0f2a0f'],
-    3: ['#3a1a1a', '#2a0f0f'],
-    4: ['#1a2a3a', '#0f1a2a'],
-  }
-  const [from, to] = colors[profileId] || colors[1]
+function StageBar({ stages, barProgress }) {
+  const numStages = stages.length
+  const activeIdx = Math.floor(Math.min(barProgress, numStages - 0.01))
+  const pct = (barProgress / numStages) * 100
+
   return (
-    <motion.div
-      initial={{ scale: 0, rotate: -30 }}
-      animate={{ scale: 1, rotate: 0 }}
-      transition={{ delay: 0.2, duration: 0.65, ease: [0.34, 1.56, 0.64, 1] }}
-      style={{ position: 'relative', width: 88, height: 88, margin: '0 auto 12px' }}
-    >
-      {/* Anel externo girando */}
+    <div style={{ marginBottom: 8 }}>
+      {/* Régua text line */}
       <div style={{
-        position: 'absolute', inset: -6, borderRadius: '50%',
-        border: '1.5px dashed rgba(190,150,81,0.3)',
-        animation: 'spin-slow 18s linear infinite',
-      }} />
-      {/* Sela */}
-      <div style={{
-        width: 88, height: 88, borderRadius: '50%',
-        background: `radial-gradient(circle at 38% 35%, #d4ae6e, #be9651 45%, #8a6530 80%)`,
-        boxShadow: '0 6px 28px rgba(190,150,81,0.45), inset 0 2px 6px rgba(255,255,255,0.2), inset 0 -2px 6px rgba(0,0,0,0.25)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 36, position: 'relative',
+        textAlign: 'center',
+        marginBottom: 14,
+        fontSize: 10.5,
+        color: 'rgba(190,150,81,0.5)',
+        letterSpacing: '0.05em',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 0,
+        flexWrap: 'wrap',
+        lineHeight: 1.6,
       }}>
-        <div style={{
-          position: 'absolute', inset: 6, borderRadius: '50%',
-          border: '1.5px solid rgba(255,255,255,0.25)',
-        }} />
-        <span style={{ position: 'relative', zIndex: 1 }}>{emoji}</span>
+        <span style={{ marginRight: 6 }}>🔖</span>
+        <span style={{ color: 'rgba(190,150,81,0.45)', fontWeight: 600 }}>Régua:&nbsp;</span>
+        {stages.map((s, i) => (
+          <span key={i}>
+            <span style={{
+              color: i === activeIdx
+                ? 'rgba(212,174,110,0.9)'
+                : i < activeIdx
+                ? 'rgba(190,150,81,0.55)'
+                : 'rgba(255,255,255,0.18)',
+              fontWeight: i === activeIdx ? 700 : 400,
+            }}>
+              {s}
+            </span>
+            {i < stages.length - 1 && (
+              <span style={{ color: 'rgba(190,150,81,0.25)', margin: '0 4px' }}>→</span>
+            )}
+          </span>
+        ))}
       </div>
-    </motion.div>
+
+      {/* Bar with "Você" pill */}
+      <div style={{ position: 'relative', paddingTop: 30, marginBottom: 10 }}>
+        {/* Você pill */}
+        <div style={{
+          position: 'absolute',
+          left: `${pct}%`,
+          top: 0,
+          transform: 'translateX(-50%)',
+          zIndex: 5,
+        }}>
+          <div style={{
+            background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
+            color: '#0F3A3A',
+            fontSize: 9.5,
+            fontWeight: 900,
+            padding: '3px 9px',
+            borderRadius: 99,
+            letterSpacing: '0.08em',
+            whiteSpace: 'nowrap',
+            textTransform: 'uppercase',
+            boxShadow: '0 2px 10px rgba(190,150,81,0.5)',
+            position: 'relative',
+          }}>
+            Você
+            {/* Arrow down */}
+            <div style={{
+              position: 'absolute',
+              top: '100%',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: 0, height: 0,
+              borderLeft: '5px solid transparent',
+              borderRight: '5px solid transparent',
+              borderTop: '5px solid #d4ae6e',
+            }} />
+          </div>
+        </div>
+
+        {/* Track segments */}
+        <div style={{ display: 'flex', gap: 4 }}>
+          {stages.map((_, i) => {
+            const fill = Math.min(1, Math.max(0, barProgress - i))
+            return (
+              <div
+                key={i}
+                style={{
+                  flex: 1,
+                  height: 8,
+                  borderRadius: 99,
+                  background: 'rgba(255,255,255,0.07)',
+                  overflow: 'hidden',
+                  position: 'relative',
+                }}
+              >
+                <div style={{
+                  position: 'absolute',
+                  top: 0, left: 0, bottom: 0,
+                  width: `${fill * 100}%`,
+                  borderRadius: 99,
+                  background: fill >= 1
+                    ? 'linear-gradient(90deg, #be9651, #d4ae6e)'
+                    : fill > 0
+                    ? 'linear-gradient(90deg, #d4ae6e, rgba(212,174,110,0.4))'
+                    : 'transparent',
+                }} />
+              </div>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Stage labels */}
+      <div style={{ display: 'flex', gap: 4 }}>
+        {stages.map((stage, i) => {
+          const isCurrent = i === activeIdx
+          const isPast = i < activeIdx
+          return (
+            <div key={i} style={{ flex: 1, textAlign: 'center' }}>
+              <p style={{
+                fontSize: 8,
+                color: isCurrent
+                  ? 'rgba(212,174,110,0.9)'
+                  : isPast
+                  ? 'rgba(190,150,81,0.45)'
+                  : 'rgba(255,255,255,0.15)',
+                fontWeight: isCurrent ? 800 : 500,
+                lineHeight: 1.35,
+                letterSpacing: '0.02em',
+                userSelect: 'none',
+              }}>
+                {stage}
+              </p>
+            </div>
+          )
+        })}
+      </div>
+    </div>
   )
 }
 
-export default function ResultScreen({ profileId, onContinue }) {
+function InsightCard({ label, title, body, delay = 0 }) {
+  return (
+    <Fade delay={delay}>
+      <div style={{
+        marginBottom: 10,
+        borderRadius: 14,
+        background: 'rgba(5,22,22,0.55)',
+        border: '1px solid rgba(190,150,81,0.1)',
+        padding: '14px 16px',
+      }}>
+        {/* Label with dot */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 7,
+          marginBottom: 6,
+        }}>
+          <div style={{
+            width: 7,
+            height: 7,
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
+            flexShrink: 0,
+            boxShadow: '0 0 6px rgba(190,150,81,0.6)',
+          }} />
+          <p style={{
+            fontSize: 9,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: 'rgba(190,150,81,0.75)',
+            fontWeight: 700,
+          }}>
+            {label}
+          </p>
+        </div>
+        {/* Title */}
+        <p style={{
+          fontSize: 14,
+          color: '#ffffff',
+          fontWeight: 700,
+          marginBottom: 5,
+          lineHeight: 1.3,
+        }}>
+          {title}
+        </p>
+        {/* Body */}
+        <p style={{
+          fontSize: 13.5,
+          color: 'rgba(245,239,230,0.62)',
+          lineHeight: 1.65,
+        }}>
+          {body}
+        </p>
+      </div>
+    </Fade>
+  )
+}
+
+function HighlightBlock({ label, text, accentColor = 'rgba(190,150,81,0.08)', borderColor = 'rgba(190,150,81,0.18)', delay = 0 }) {
+  return (
+    <Fade delay={delay}>
+      <div style={{
+        marginBottom: 10,
+        padding: '14px 16px',
+        borderRadius: 14,
+        background: accentColor,
+        border: `1px solid ${borderColor}`,
+      }}>
+        <p style={{
+          fontSize: 9,
+          letterSpacing: '0.2em',
+          textTransform: 'uppercase',
+          color: 'rgba(190,150,81,0.7)',
+          fontWeight: 700,
+          marginBottom: 7,
+        }}>
+          {label}
+        </p>
+        <p style={{
+          fontSize: 14.5,
+          color: '#ffffff',
+          lineHeight: 1.7,
+          fontStyle: 'italic',
+        }}>
+          {text}
+        </p>
+      </div>
+    </Fade>
+  )
+}
+
+export default function ResultScreen({ profileId = 1, answers = [], onContinue }) {
   const p = resultProfiles.find(r => r.id === profileId) || resultProfiles[0]
   const profileImage = PROFILE_IMAGES[profileId] || PROFILE_IMAGES[1]
 
+  const q1  = answers[0]?.optionIndex ?? 0
+  const q2  = answers[1]?.optionIndex ?? 0
+  const q3  = answers[2]?.optionIndex ?? 0
+  const q4  = answers[3]?.optionIndex ?? 0
+  const q5  = answers[4]?.optionIndex ?? 0
+  const q6  = answers[5]?.optionIndex ?? 0
+  const q7  = answers[6]?.optionIndex ?? 0
+  const q8  = answers[7]?.optionIndex ?? 0
+  const q9  = answers[8]?.optionIndex ?? 0
+  const q10 = answers[9]?.optionIndex ?? 0
+
+  const levelName = (levelNames[profileId] || levelNames[1])[q10]
+  const { barProgress, closing } = levelClosing[q10]
+  const ctaText = desiredValue[q8].cta
+
   return (
-    <div className="app-screen" style={{
-      minHeight: '100vh',
-      background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 45%, #0d3535 100%)',
-      display: 'flex', flexDirection: 'column', alignItems: 'center',
-      padding: '28px 24px 88px',
-      position: 'relative', overflowX: 'hidden',
-    }}>
+    <div
+      className="app-screen"
+      style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 45%, #0d3535 100%)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        padding: '28px 24px 88px',
+        position: 'relative',
+        overflowX: 'hidden',
+      }}
+    >
+      {/* Background glow */}
       <div style={{
         position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
         width: 700, height: 420,
-        background: 'radial-gradient(ellipse, rgba(190,150,81,0.08) 0%, transparent 65%)',
+        background: 'radial-gradient(ellipse, rgba(190,150,81,0.07) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
 
-      {/* Sparkles decorativos */}
+      {/* Sparkles */}
       <motion.div
-        animate={{ opacity: [0.3, 0.7, 0.3] }}
-        transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ position: 'absolute', top: 80, right: 24, pointerEvents: 'none' }}
+        animate={{ opacity: [0.2, 0.6, 0.2] }}
+        transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ position: 'absolute', top: 84, right: 22, pointerEvents: 'none' }}
       >
-        <svg width={16} height={16} viewBox="0 0 24 24" fill="none">
+        <svg width={13} height={13} viewBox="0 0 24 24" fill="none">
           <path d="M12 2 L13.2 9.8 L21 12 L13.2 14.2 L12 22 L10.8 14.2 L3 12 L10.8 9.8 Z" fill="rgba(190,150,81,0.5)" />
         </svg>
       </motion.div>
       <motion.div
-        animate={{ opacity: [0.2, 0.5, 0.2] }}
-        transition={{ duration: 4, delay: 1, repeat: Infinity, ease: 'easeInOut' }}
-        style={{ position: 'absolute', top: 120, left: 20, pointerEvents: 'none' }}
+        animate={{ opacity: [0.12, 0.4, 0.12] }}
+        transition={{ duration: 4.5, delay: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ position: 'absolute', top: 135, left: 18, pointerEvents: 'none' }}
       >
-        <svg width={10} height={10} viewBox="0 0 24 24" fill="none">
+        <svg width={8} height={8} viewBox="0 0 24 24" fill="none">
           <path d="M12 2 L13.2 9.8 L21 12 L13.2 14.2 L12 22 L10.8 14.2 L3 12 L10.8 9.8 Z" fill="rgba(190,150,81,0.5)" />
         </svg>
       </motion.div>
@@ -121,122 +342,85 @@ export default function ResultScreen({ profileId, onContinue }) {
 
       <div style={{ width: '100%', maxWidth: 460, position: 'relative', zIndex: 1 }}>
 
-        {/* ── TOPO: label ── */}
+        {/* ── SECTION 1: ÍNDICE + NÍVEL + BARRA ── */}
         <Fade delay={0.04}>
-          <div style={{ textAlign: 'center', marginBottom: 16 }}>
-            <span style={{
-              fontSize: 10, letterSpacing: '0.28em', textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.85)', fontWeight: 700,
-            }}>
-              ✦ &nbsp; Seu Perfil &nbsp; ✦
-            </span>
-          </div>
-        </Fade>
-
-        {/* ── WAXSEAL com emoji do perfil ── */}
-        <Fade delay={0.1}>
-          <div style={{ textAlign: 'center', marginBottom: 6 }}>
-            <span style={{
-              fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase',
-              color: '#ffffff', fontWeight: 700,
-            }}>
-              {p.icon} &nbsp; {p.profileTag}
-            </span>
-          </div>
           <p style={{
-            textAlign: 'center', fontSize: 12, fontStyle: 'italic',
-            color: 'rgba(255,255,255,0.7)', marginBottom: 14, lineHeight: 1.4,
+            textAlign: 'center',
+            fontSize: 9,
+            letterSpacing: '0.28em',
+            textTransform: 'uppercase',
+            color: 'rgba(190,150,81,0.6)',
+            fontWeight: 700,
+            marginBottom: 8,
           }}>
-            {p.miniDesc}
+            SEU PADRÃO
           </p>
         </Fade>
 
-        {/* ── H1 ── */}
-        <Fade delay={0.18}>
+        <Fade delay={0.1}>
           <h1 style={{
             textAlign: 'center',
-            fontSize: 'clamp(24px, 6vw, 32px)',
-            fontWeight: 800, color: '#f5efe6',
-            marginBottom: 20, lineHeight: 1.15,
-            letterSpacing: '-0.5px',
+            marginBottom: 18,
+            lineHeight: 1.15,
           }}>
-            {p.personaTitle}
+            <span style={{
+              display: 'block',
+              fontSize: 13,
+              fontWeight: 500,
+              color: 'rgba(245,239,230,0.4)',
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              marginBottom: 2,
+            }}>
+              Nível
+            </span>
+            <span style={{
+              fontSize: 'clamp(22px, 5.5vw, 28px)',
+              fontWeight: 800,
+              color: '#d4ae6e',
+              letterSpacing: '-0.2px',
+            }}>
+              {levelName}
+            </span>
           </h1>
         </Fade>
 
-        {/* ── IMAGEM DO PERFIL ── */}
-        <Fade delay={0.24}>
-          <div style={{
-            width: '100%', marginBottom: 28,
-            borderRadius: 20, overflow: 'hidden',
-            boxShadow: '0 12px 48px rgba(0,0,0,0.55)',
-            border: '1px solid rgba(190,150,81,0.18)',
-            position: 'relative',
-          }}>
-            <img
-              src={profileImage}
-              alt={p.profileTag}
-              style={{ width: '100%', display: 'block', objectFit: 'cover' }}
-            />
-            {/* Gradiente sutil embaixo da imagem */}
-            <div style={{
-              position: 'absolute', bottom: 0, left: 0, right: 0, height: 60,
-              background: 'linear-gradient(to top, rgba(10,46,46,0.6) 0%, transparent 100%)',
-            }} />
-          </div>
-        </Fade>
-
-        {/* ── BOTÃO CONTINUAR ── */}
-        <Fade delay={0.3}>
-          <div style={{ position: 'relative', marginBottom: 8 }}>
-            <div style={{
-              position: 'absolute', inset: -3, borderRadius: 19,
-              border: '1px solid rgba(190,150,81,0.3)',
-              animation: 'pulse-ring 2.8s ease-out 0.5s infinite',
-              pointerEvents: 'none',
-            }} />
-            <motion.button
-              whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
-              whileTap={{ scale: 0.975 }}
-              onClick={onContinue}
-              style={{
-                width: '100%', padding: '19px',
-                borderRadius: 16, border: 'none',
-                background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-                color: '#ffffff', fontSize: 16, fontWeight: 800,
-                cursor: 'pointer', letterSpacing: '0.04em',
-                boxShadow: '0 4px 32px rgba(190,150,81,0.35)',
-                position: 'relative', overflow: 'hidden',
-                transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
-              }}
-            >
-              <div style={{
-                position: 'absolute', top: 0, bottom: 0, width: '45%',
-                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-                animation: 'shimmer-sweep 3s ease-in-out 1s infinite',
-                pointerEvents: 'none',
-              }} />
-              <span style={{ position: 'relative', zIndex: 1 }}>CONTINUAR 🗝️</span>
-            </motion.button>
-          </div>
-          <p style={{
-            textAlign: 'center', fontSize: 12,
-            color: 'rgba(255,255,255,0.35)', lineHeight: 1.8, fontStyle: 'italic',
-            marginBottom: 0,
-          }}>
-            Deus não te trouxe até aqui para te deixar parada.
-          </p>
+        {/* Barra com Você */}
+        <Fade delay={0.16}>
+          <StageBar stages={p.stages} barProgress={barProgress} />
         </Fade>
 
         <OrnamentalDivider />
 
-        {/* ── DESCRIPTION ── */}
-        <Fade delay={0.38}>
-          <div style={{ marginBottom: 24 }}>
+        {/* ── SECTION 2: PERFIL ── */}
+        <Fade delay={0.24}>
+          <p style={{
+            fontSize: 10,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#d4ae6e',
+            fontWeight: 800,
+            marginBottom: 10,
+          }}>
+            Padrão Invisível Identificado na Sua Jornada:
+          </p>
+          <h2 style={{
+            fontSize: 'clamp(19px, 4.8vw, 24px)',
+            fontWeight: 800,
+            color: '#f5efe6',
+            lineHeight: 1.2,
+            letterSpacing: '-0.3px',
+            marginBottom: 14,
+          }}>
+            {p.profileTag}
+          </h2>
+          <div style={{ marginBottom: 18 }}>
             {p.description.map((d, i) => (
               <p key={i} style={{
-                fontSize: 15, color: 'rgba(245,239,230,0.78)',
-                lineHeight: 1.85, marginBottom: 12,
+                fontSize: 14.5,
+                color: 'rgba(245,239,230,0.72)',
+                lineHeight: 1.85,
+                marginBottom: 10,
               }}>
                 {d}
               </p>
@@ -244,125 +428,241 @@ export default function ResultScreen({ profileId, onContinue }) {
           </div>
         </Fade>
 
-        {/* ── RED CHALLENGE ── */}
-        <Fade delay={0.42}>
-          <div style={{
-            display: 'flex', gap: 0, marginBottom: 24,
-            borderRadius: 14, overflow: 'hidden',
-            border: '1px solid rgba(239,68,68,0.15)',
-            background: 'rgba(239,68,68,0.05)',
+        {/* ── CONTEXT FAMILIAR (Q1) ── */}
+        <Fade delay={0.3}>
+          <p style={{
+            fontSize: 14,
+            color: 'rgba(245,239,230,0.58)',
+            lineHeight: 1.85,
+            fontStyle: 'italic',
+            marginBottom: 24,
+            paddingLeft: 14,
+            borderLeft: '2px solid rgba(190,150,81,0.22)',
           }}>
+            {familyContext[q1]}
+          </p>
+        </Fade>
+
+        {/* ── IMAGEM DO PERFIL ── */}
+        <Fade delay={0.34}>
+          <div style={{
+            width: '100%',
+            marginBottom: 26,
+            borderRadius: 18,
+            overflow: 'hidden',
+            boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
+            border: '1px solid rgba(190,150,81,0.13)',
+            position: 'relative',
+          }}>
+            <img
+              src={profileImage}
+              alt={p.profileTag}
+              style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+            />
             <div style={{
-              width: 4, flexShrink: 0,
-              background: 'linear-gradient(180deg, #ef4444 0%, rgba(239,68,68,0.2) 100%)',
+              position: 'absolute', bottom: 0, left: 0, right: 0, height: 70,
+              background: 'linear-gradient(to top, rgba(10,46,46,0.65) 0%, transparent 100%)',
             }} />
-            <div style={{ padding: '14px 16px' }}>
-              <p style={{
-                fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
-                color: '#f87171', fontWeight: 700, marginBottom: 6,
-              }}>
-                ⚠ Desafio silencioso no seu caminho
-              </p>
-              <p style={{
-                fontSize: 15, color: 'rgba(252,165,165,0.85)',
-                lineHeight: 1.8, fontStyle: 'italic',
-              }}>
-                {p.challenge}
-              </p>
-            </div>
           </div>
         </Fade>
 
-        {/* ── VERSE ── */}
-        <Fade delay={0.46}>
+        {/* ── 4 CARDS ── */}
+        <Fade delay={0.38}>
+          <p style={{
+            fontSize: 10,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#d4ae6e',
+            fontWeight: 800,
+            marginBottom: 12,
+          }}>
+            Sua Jornada em Detalhes:
+          </p>
+        </Fade>
+
+        <InsightCard
+          delay={0.41}
+          label="Crença Central · Ciclo Percebido"
+          title={centralBelief[q4].title}
+          body={centralBelief[q4].body}
+        />
+        <InsightCard
+          delay={0.45}
+          label="Sintoma Emocional · Estado Atual"
+          title={emotionalSymptom[q2].title}
+          body={emotionalSymptom[q2].body}
+        />
+        <InsightCard
+          delay={0.49}
+          label="Conflito Interno · Fé e Vida Prática"
+          title={internalConflict[q6].title}
+          body={internalConflict[q6].body}
+        />
+        <InsightCard
+          delay={0.53}
+          label="Padrão de Comportamento · Decisões"
+          title={behaviorPattern[q3].title}
+          body={behaviorPattern[q3].body}
+        />
+
+        <OrnamentalDivider />
+
+        {/* ── O QUE ESSE CICLO ESTÁ ROUBANDO (Q5) ── */}
+        <HighlightBlock
+          delay={0.57}
+          label="O que esse ciclo está roubando"
+          accentColor="rgba(239,68,68,0.06)"
+          borderColor="rgba(239,68,68,0.14)"
+          text={cycleRobbery[q5]}
+        />
+
+        {/* ── URGÊNCIA (Q7) ── */}
+        <HighlightBlock
+          delay={0.61}
+          label="O que você não quer levar para os próximos meses"
+          accentColor="rgba(190,150,81,0.07)"
+          borderColor="rgba(190,150,81,0.17)"
+          text={urgency[q7]}
+        />
+
+        {/* ── DESEJO (Q8) ── */}
+        <HighlightBlock
+          delay={0.65}
+          label="O que você deseja recuperar primeiro"
+          accentColor="rgba(190,150,81,0.07)"
+          borderColor="rgba(190,150,81,0.17)"
+          text={desiredValue[q8].label}
+        />
+
+        {/* ── VERSÍCULO ── */}
+        <Fade delay={0.69}>
           <div style={{
-            textAlign: 'center', marginBottom: 24,
-            padding: '24px 20px 20px',
-            background: 'rgba(190,150,81,0.07)',
-            borderRadius: 16,
-            border: '1px solid rgba(190,150,81,0.2)',
-            position: 'relative',
+            textAlign: 'center',
+            marginBottom: 12,
+            padding: '20px 18px 16px',
+            background: 'rgba(5,22,22,0.5)',
+            borderRadius: 14,
+            border: '1px solid rgba(190,150,81,0.16)',
           }}>
             <p style={{
-              fontSize: 52, lineHeight: 0.5, color: 'rgba(190,150,81,0.2)',
-              marginBottom: 10, fontFamily: 'Georgia, serif', fontWeight: 700,
+              fontSize: 44,
+              lineHeight: 0.4,
+              color: 'rgba(190,150,81,0.15)',
+              marginBottom: 10,
+              fontFamily: 'Georgia, serif',
+              fontWeight: 700,
               userSelect: 'none',
             }}>"</p>
             <p style={{
-              fontSize: 15, fontStyle: 'italic',
+              fontSize: 14,
+              fontStyle: 'italic',
               color: '#ffffff',
-              lineHeight: 1.75, marginBottom: 12, letterSpacing: '0.01em',
+              lineHeight: 1.75,
+              marginBottom: 10,
             }}>
               {p.verse.replace(/^"|"$/g, '')}
             </p>
             <p style={{
-              fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.85)', fontWeight: 700,
+              fontSize: 9,
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: 'rgba(190,150,81,0.8)',
+              fontWeight: 700,
             }}>
               — {p.verseRef}
             </p>
           </div>
         </Fade>
 
-        {/* ── SIGNS ── */}
-        <Fade delay={0.5}>
-          <div style={{ marginBottom: 24 }}>
-            <p style={{
-              fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.7)', fontWeight: 700, marginBottom: 14,
-              display: 'flex', alignItems: 'center', gap: 8,
-            }}>
-              <svg width={12} height={12} viewBox="0 0 24 24" fill="none">
-                <path d="M12 2 L13.2 9.8 L21 12 L13.2 14.2 L12 22 L10.8 14.2 L3 12 L10.8 9.8 Z" fill="rgba(190,150,81,0.7)" />
-              </svg>
-              Sinais que falam com você
-            </p>
-            {p.signs.map((sign, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -12 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.52 + i * 0.06, duration: 0.4, ease: [0.32, 0.72, 0, 1] }}
-                style={{
-                  display: 'flex', alignItems: 'flex-start', gap: 12,
-                  padding: '10px 0',
-                  borderBottom: i < p.signs.length - 1
-                    ? '1px solid rgba(255,255,255,0.05)'
-                    : 'none',
-                }}
-              >
-                <div style={{
-                  width: 6, height: 6, borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
-                  flexShrink: 0, marginTop: 6,
-                }} />
-                <span style={{ fontSize: 14, color: 'rgba(245,239,230,0.72)', lineHeight: 1.6 }}>
-                  {sign}
-                </span>
-              </motion.div>
-            ))}
-          </div>
+        {/* ── O QUE PRECISA SER ENXERGADO (Q9) ── */}
+        <HighlightBlock
+          delay={0.73}
+          label="O que precisa ser enxergado agora"
+          accentColor="rgba(190,150,81,0.07)"
+          borderColor="rgba(190,150,81,0.17)"
+          text={curiosityBridge[q9]}
+        />
+
+        <OrnamentalDivider />
+
+        {/* ── FECHAMENTO (Q10) ── */}
+        <Fade delay={0.77}>
+          <p style={{
+            fontSize: 15,
+            color: 'rgba(245,239,230,0.75)',
+            lineHeight: 1.85,
+            textAlign: 'center',
+            fontStyle: 'italic',
+            marginBottom: 28,
+            padding: '0 4px',
+          }}>
+            {closing}
+          </p>
         </Fade>
 
-        <OrnamentalDivider color="rgba(190,150,81,0.2)" />
-
-        {/* ── FINAL PHRASE ── */}
-        <Fade delay={0.56}>
-          <div style={{ textAlign: 'center', padding: '0 4px' }}>
-            <p style={{
-              fontSize: 'clamp(16px, 4vw, 19px)',
-              fontWeight: 800, fontStyle: 'italic',
-              color: '#ffffff', lineHeight: 1.45, marginBottom: 10, letterSpacing: '-0.2px',
-            }}>
-              {p.finalLine1}
-            </p>
-            <p style={{
-              fontSize: 14, color: '#ffffff',
-              lineHeight: 1.85,
-            }}>
-              {p.finalLine2}
-            </p>
+        {/* ── BOTÃO CTA (Q8) ── */}
+        <Fade delay={0.81}>
+          <div style={{ position: 'relative', marginBottom: 10 }}>
+            <div style={{
+              position: 'absolute', inset: -3, borderRadius: 19,
+              border: '1px solid rgba(190,150,81,0.28)',
+              animation: 'pulse-ring 2.8s ease-out 0.8s infinite',
+              pointerEvents: 'none',
+            }} />
+            <motion.button
+              whileHover={{ scale: 1.025, boxShadow: '0 16px 48px rgba(190,150,81,0.45)' }}
+              whileTap={{ scale: 0.975 }}
+              onClick={onContinue}
+              style={{
+                width: '100%',
+                padding: '19px 14px',
+                borderRadius: 16,
+                border: 'none',
+                background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
+                color: '#ffffff',
+                fontSize: 13.5,
+                fontWeight: 800,
+                cursor: 'pointer',
+                letterSpacing: '0.05em',
+                boxShadow: '0 4px 32px rgba(190,150,81,0.35)',
+                position: 'relative',
+                overflow: 'hidden',
+                transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
+              }}
+            >
+              <div style={{
+                position: 'absolute', top: 0, bottom: 0, width: '45%',
+                background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)',
+                animation: 'shimmer-sweep 3s ease-in-out 1.2s infinite',
+                pointerEvents: 'none',
+              }} />
+              <span style={{ position: 'relative', zIndex: 1 }}>{ctaText}</span>
+            </motion.button>
           </div>
+          <p style={{
+            textAlign: 'center',
+            fontSize: 12,
+            color: 'rgba(255,255,255,0.28)',
+            lineHeight: 1.8,
+            fontStyle: 'italic',
+          }}>
+            Deus não te trouxe até aqui para te deixar parada.
+          </p>
+        </Fade>
+
+        {/* ── DISCLAIMER ── */}
+        <Fade delay={0.86}>
+          <p style={{
+            fontSize: 11,
+            color: 'rgba(245,239,230,0.22)',
+            lineHeight: 1.75,
+            textAlign: 'center',
+            marginTop: 30,
+            padding: '0 6px',
+            fontStyle: 'italic',
+          }}>
+            Este resultado não representa um diagnóstico clínico. Ele apresenta uma leitura educativa baseada nas respostas fornecidas. Em casos de crises de ansiedade, pânico ou sofrimento emocional intenso, este processo não substitui acompanhamento psicológico ou médico.
+          </p>
         </Fade>
 
       </div>
