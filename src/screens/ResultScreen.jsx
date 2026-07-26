@@ -66,21 +66,21 @@ function StageBar({ stages, barProgress }) {
         lineHeight: 1.6,
       }}>
         <span style={{ marginRight: 6 }}>🔖</span>
-        <span style={{ color: 'rgba(190,150,81,0.45)', fontWeight: 600 }}>Régua:&nbsp;</span>
+        <span style={{ color: 'rgba(190,150,81,0.75)', fontWeight: 600 }}>Régua:&nbsp;</span>
         {stages.map((s, i) => (
           <span key={i}>
             <span style={{
               color: i === activeIdx
-                ? 'rgba(212,174,110,0.9)'
+                ? '#d4ae6e'
                 : i < activeIdx
-                ? 'rgba(190,150,81,0.55)'
-                : 'rgba(255,255,255,0.18)',
+                ? 'rgba(212,174,110,0.7)'
+                : 'rgba(255,255,255,0.5)',
               fontWeight: i === activeIdx ? 700 : 400,
             }}>
               {s}
             </span>
             {i < stages.length - 1 && (
-              <span style={{ color: 'rgba(190,150,81,0.25)', margin: '0 4px' }}>→</span>
+              <span style={{ color: 'rgba(190,150,81,0.55)', margin: '0 4px' }}>→</span>
             )}
           </span>
         ))}
@@ -135,7 +135,7 @@ function StageBar({ stages, barProgress }) {
                   flex: 1,
                   height: 8,
                   borderRadius: 99,
-                  background: 'rgba(255,255,255,0.07)',
+                  background: 'rgba(255,255,255,0.13)',
                   overflow: 'hidden',
                   position: 'relative',
                 }}
@@ -167,10 +167,10 @@ function StageBar({ stages, barProgress }) {
               <p style={{
                 fontSize: 8,
                 color: isCurrent
-                  ? 'rgba(212,174,110,0.9)'
+                  ? '#d4ae6e'
                   : isPast
-                  ? 'rgba(190,150,81,0.45)'
-                  : 'rgba(255,255,255,0.15)',
+                  ? 'rgba(212,174,110,0.65)'
+                  : 'rgba(255,255,255,0.45)',
                 fontWeight: isCurrent ? 800 : 500,
                 lineHeight: 1.35,
                 letterSpacing: '0.02em',
