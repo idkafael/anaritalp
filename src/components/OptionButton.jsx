@@ -54,24 +54,6 @@ export default function OptionButton({ emoji, text, onClick, selected, checkbox,
         }} />
       )}
 
-      {/* Badge da letra */}
-      <div style={{
-        width: 30, height: 30, borderRadius: 9, flexShrink: 0,
-        background: selected
-          ? 'linear-gradient(135deg, rgba(190,150,81,0.25), rgba(190,150,81,0.12))'
-          : 'rgba(255,255,255,0.05)',
-        border: selected
-          ? '1px solid rgba(190,150,81,0.45)'
-          : '1px solid rgba(255,255,255,0.08)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 12, fontWeight: 800,
-        color: selected ? '#d4ae6e' : 'rgba(245,239,230,0.28)',
-        transition: 'all 0.2s',
-        letterSpacing: '0.02em',
-      }}>
-        {LETTERS[index]}
-      </div>
-
       {/* Emoji */}
       <span style={{ fontSize: 22, flexShrink: 0, lineHeight: 1 }}>{emoji}</span>
 
