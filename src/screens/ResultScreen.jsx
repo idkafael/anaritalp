@@ -66,21 +66,17 @@ function StageBar({ stages, barProgress }) {
         lineHeight: 1.6,
       }}>
         <span style={{ marginRight: 6 }}>🔖</span>
-        <span style={{ color: 'rgba(190,150,81,0.75)', fontWeight: 600 }}>Régua:&nbsp;</span>
+        <span style={{ color: 'rgba(212,174,110,0.85)', fontWeight: 600 }}>Régua:&nbsp;</span>
         {stages.map((s, i) => (
           <span key={i}>
             <span style={{
-              color: i === activeIdx
-                ? '#d4ae6e'
-                : i < activeIdx
-                ? 'rgba(212,174,110,0.7)'
-                : 'rgba(255,255,255,0.5)',
-              fontWeight: i === activeIdx ? 700 : 400,
+              color: i === activeIdx ? '#d4ae6e' : 'rgba(245,239,230,0.85)',
+              fontWeight: i === activeIdx ? 800 : 400,
             }}>
               {s}
             </span>
             {i < stages.length - 1 && (
-              <span style={{ color: 'rgba(190,150,81,0.55)', margin: '0 4px' }}>→</span>
+              <span style={{ color: 'rgba(245,239,230,0.55)', margin: '0 4px' }}>→</span>
             )}
           </span>
         ))}
@@ -166,12 +162,8 @@ function StageBar({ stages, barProgress }) {
             <div key={i} style={{ flex: 1, textAlign: 'center' }}>
               <p style={{
                 fontSize: 8,
-                color: isCurrent
-                  ? '#d4ae6e'
-                  : isPast
-                  ? 'rgba(212,174,110,0.65)'
-                  : 'rgba(255,255,255,0.45)',
-                fontWeight: isCurrent ? 800 : 500,
+                color: isCurrent ? '#d4ae6e' : 'rgba(245,239,230,0.85)',
+                fontWeight: isCurrent ? 800 : 400,
                 lineHeight: 1.35,
                 letterSpacing: '0.02em',
                 userSelect: 'none',
