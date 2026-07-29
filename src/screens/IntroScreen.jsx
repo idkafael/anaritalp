@@ -24,8 +24,8 @@ export default function IntroScreen({ onStart }) {
       minHeight: '100vh',
       background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
-      justifyContent: 'flex-start',
-      padding: '20px 24px 48px',
+      justifyContent: 'center',
+      padding: '32px 24px 48px',
       position: 'relative', overflowX: 'hidden', overflowY: 'auto',
     }}>
 
