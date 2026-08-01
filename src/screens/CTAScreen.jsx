@@ -34,7 +34,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
 
   useEffect(() => {
     const s = document.createElement('script')
-    s.src = 'https://scripts.converteai.net/17320984-884b-4c8f-a1d2-0391db39f795/players/6a53c097ef5db2135c085548/v4/player.js'
+    s.src = 'https://scripts.converteai.net/ddbb824d-99d3-4461-9b8a-b0bab6039eaa/players/6a6d708c2271152004192f2a/v4/player.js'
     s.async = true
     document.head.appendChild(s)
   }, [])
@@ -115,7 +115,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
             border: '1px solid rgba(190,150,81,0.15)',
           }}>
             <vturb-smartplayer
-              id="vid-6a53c097ef5db2135c085548"
+              id="vid-6a6d708c2271152004192f2a"
               style={{ display: 'block', margin: '0 auto', width: '100%' }}
             >
               <div
