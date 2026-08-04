@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
+import mobileBg from '../assets/FUNDO-DESTORCIDO-MOBILE.jpeg'
 
 export default function VSLScreen() {
   useEffect(() => {
     const s = document.createElement('script')
-    s.src = 'https://scripts.converteai.net/17320984-884b-4c8f-a1d2-0391db39f795/players/6a53c097ef5db2135c085548/v4/player.js'
+    s.src = 'https://scripts.converteai.net/ddbb824d-99d3-4461-9b8a-b0bab6039eaa/players/6a6d708c2271152004192f2a/v4/player.js'
     s.async = true
     document.head.appendChild(s)
   }, [])
@@ -13,67 +14,122 @@ export default function VSLScreen() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
-      padding: '16px 24px 60px',
       position: 'relative', overflowX: 'hidden',
+      background: 'transparent',
     }}>
+      {/* Mobile background fixo */}
+      <div className="mobile-bg-fixed" style={{ backgroundImage: `url(${mobileBg})` }} />
+
+      {/* Glow central */}
       <div style={{
         position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)',
-        width: 640, height: 380,
+        width: 640, height: 400,
         background: 'radial-gradient(ellipse, rgba(190,150,81,0.08) 0%, transparent 65%)',
-        pointerEvents: 'none',
+        pointerEvents: 'none', zIndex: 0,
       }} />
 
-      <Logo />
+      {/* ── TOPO: barra anúncio ── */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45 }}
+        style={{
+          width: '100%',
+          background: 'rgba(0,0,0,0.45)',
+          backdropFilter: 'blur(8px)',
+          borderBottom: '1px solid rgba(190,150,81,0.2)',
+          padding: '10px 24px',
+          textAlign: 'center',
+          position: 'relative', zIndex: 2,
+        }}
+      >
+        <p style={{
+          fontSize: 10.5, letterSpacing: '0.22em',
+          textTransform: 'uppercase', fontWeight: 700,
+          color: 'rgba(245,239,230,0.75)',
+        }}>
+          Vídeo exclusivo para mulheres que sentem que sua vida está travada
+        </p>
+      </motion.div>
 
-      <div style={{ width: '100%', maxWidth: 460, position: 'relative', zIndex: 1 }}>
+      {/* ── BADGE EXCLUSIVO ── */}
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.45 }}
+        style={{
+          width: '100%',
+          background: 'linear-gradient(135deg, #be9651, #d4ae6e)',
+          padding: '8px 24px',
+          textAlign: 'center',
+          position: 'relative', zIndex: 2,
+        }}
+      >
+        <p style={{
+          fontSize: 11, letterSpacing: '0.28em',
+          textTransform: 'uppercase', fontWeight: 900,
+          color: '#0F3A3A',
+        }}>
+          ✦ &nbsp; Exclusivo para Mulher 40+ &nbsp; ✦
+        </p>
+      </motion.div>
 
-        {/* H1 */}
-        <motion.h1
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.08, duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
-          style={{
-            textAlign: 'center',
-            fontSize: 'clamp(22px, 5.5vw, 30px)',
-            fontWeight: 800, color: '#f5efe6',
-            marginBottom: 10, lineHeight: 1.2,
-            letterSpacing: '-0.4px',
-          }}
-        >
-          Seu Egito foi identificado:{' '}
-          <span style={{ color: '#d4ae6e' }}>descubra como sair dele de uma vez por todas.</span>
-        </motion.h1>
+      {/* ── CONTEÚDO ── */}
+      <div style={{
+        width: '100%', maxWidth: 460,
+        padding: '0 24px 60px',
+        position: 'relative', zIndex: 1,
+      }}>
+        <Logo />
 
         {/* Sub */}
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.16, duration: 0.5 }}
+          transition={{ delay: 0.18, duration: 0.5 }}
           style={{
-            textAlign: 'center', fontSize: 15,
-            color: '#ffffff', lineHeight: 1.75,
-            marginBottom: 24, fontStyle: 'italic',
+            textAlign: 'center',
+            fontSize: 11, letterSpacing: '0.18em',
+            textTransform: 'uppercase', fontWeight: 700,
+            color: 'rgba(190,150,81,0.85)',
+            marginBottom: 10,
           }}
         >
-          Assista o vídeo abaixo e descubra como quebrar o ciclo que está mantendo sua vida parada.
+          Vídeo Exclusivo Revela Como…
         </motion.p>
 
-        {/* VSL */}
+        {/* Headline */}
+        <motion.h1
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
+          style={{
+            textAlign: 'center',
+            fontSize: 'clamp(20px, 5vw, 28px)',
+            fontWeight: 800, color: '#f5efe6',
+            lineHeight: 1.25, letterSpacing: '-0.3px',
+            marginBottom: 24,
+          }}
+        >
+          Desinstalar a Programação do Egito pode ser a chave que faltava para viver o{' '}
+          <span style={{ color: '#d4ae6e' }}>propósito que Deus preparou para você.</span>
+        </motion.h1>
+
+        {/* VSL Player */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.22, duration: 0.55 }}
+          transition={{ delay: 0.32, duration: 0.55 }}
           style={{
-            width: '100%', borderRadius: 18, overflow: 'hidden',
-            boxShadow: '0 8px 40px rgba(0,0,0,0.5)',
+            width: '100%', borderRadius: 16, overflow: 'hidden',
+            boxShadow: '0 8px 40px rgba(0,0,0,0.6)',
             border: '1px solid rgba(190,150,81,0.15)',
-            marginBottom: 28,
+            marginBottom: 0,
           }}
         >
           <vturb-smartplayer
-            id="vid-6a53c097ef5db2135c085548"
+            id="vid-6a6d708c2271152004192f2a"
             style={{ display: 'block', margin: '0 auto', width: '100%' }}
           >
             <div
@@ -87,44 +143,60 @@ export default function VSLScreen() {
           </vturb-smartplayer>
         </motion.div>
 
-        {/* Botão CTA */}
+        {/* ── BLOCO ABAIXO DO VÍDEO ── */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          style={{ position: 'relative' }}
+          transition={{ delay: 0.42, duration: 0.5 }}
+          style={{
+            background: 'rgba(0,0,0,0.35)',
+            backdropFilter: 'blur(8px)',
+            border: '1px solid rgba(190,150,81,0.15)',
+            borderTop: 'none',
+            borderRadius: '0 0 16px 16px',
+            padding: '16px 20px 20px',
+            marginBottom: 24,
+            textAlign: 'center',
+          }}
         >
+          {/* Sub hed */}
+          <p style={{
+            fontSize: 13.5, color: '#f5efe6',
+            fontWeight: 600, marginBottom: 10, lineHeight: 1.5,
+          }}>
+            Assista até o final, tem 2 presentes especiais para você!
+          </p>
+
+          {/* Contador ao vivo */}
           <div style={{
-            position: 'absolute', inset: -3, borderRadius: 19,
+            display: 'inline-flex', alignItems: 'center', gap: 7,
+            background: 'rgba(190,150,81,0.15)',
             border: '1px solid rgba(190,150,81,0.3)',
-            animation: 'pulse-ring 2.8s ease-out 0.6s infinite',
-            pointerEvents: 'none',
-          }} />
-          <motion.button
-            whileHover={{ scale: 1.025, boxShadow: '0 12px 44px rgba(190,150,81,0.5)' }}
-            whileTap={{ scale: 0.975 }}
-            onClick={() => { window.location.href = 'https://pay.cakto.com.br/7ptoe6a_934162' }}
-            style={{
-              width: '100%', padding: '19px',
-              borderRadius: 16, border: 'none',
-              background: 'linear-gradient(135deg, #be9651 0%, #d4ae6e 60%, #c9a05a 100%)',
-              color: '#ffffff', fontSize: 16, fontWeight: 900,
-              cursor: 'pointer', letterSpacing: '0.03em',
-              boxShadow: '0 4px 28px rgba(190,150,81,0.35)',
-              position: 'relative', overflow: 'hidden',
-              transition: 'all 0.4s cubic-bezier(0.32,0.72,0,1)',
-            }}
-          >
-            <div style={{
-              position: 'absolute', top: 0, bottom: 0, width: '45%',
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-              animation: 'shimmer-sweep 3s ease-in-out 1s infinite',
-              pointerEvents: 'none',
+            borderRadius: 99, padding: '5px 14px',
+            marginBottom: 12,
+          }}>
+            <span style={{
+              width: 7, height: 7, borderRadius: '50%',
+              background: '#4ade80',
+              boxShadow: '0 0 6px rgba(74,222,128,0.8)',
+              flexShrink: 0,
+              animation: 'pulse-ring 1.8s ease-out infinite',
             }} />
-            <span style={{ position: 'relative', zIndex: 1 }}>
-              QUERO SAIR DO MEU EGITO AGORA →
-            </span>
-          </motion.button>
+            <p style={{
+              fontSize: 12, color: '#d4ae6e',
+              fontWeight: 700, letterSpacing: '0.04em',
+            }}>
+              275 pessoas estão assistindo agora!
+            </p>
+          </div>
+
+          {/* Body */}
+          <p style={{
+            fontSize: 13.5, color: 'rgba(245,239,230,0.7)',
+            lineHeight: 1.75, fontStyle: 'italic',
+          }}>
+            Essa é a oportunidade que você buscava para descobrir por que continua repetindo os mesmos ciclos há anos e transformar sua vida de uma vez por todas.
+          </p>
         </motion.div>
 
       </div>
