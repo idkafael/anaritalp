@@ -78,7 +78,7 @@ export default function VSLScreen() {
       {/* ── CONTEÚDO ── */}
       <div style={{
         width: '100%', maxWidth: 460,
-        padding: '0 24px 60px',
+        padding: '28px 24px 60px',
         position: 'relative', zIndex: 1,
       }}>
         <Logo />
