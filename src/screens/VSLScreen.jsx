@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Logo from '../components/Logo'
 import mobileBg from '../assets/FUNDO-DESTORCIDO-MOBILE.jpeg'
 
 export default function VSLScreen() {
@@ -81,8 +80,6 @@ export default function VSLScreen() {
         padding: '28px 24px 60px',
         position: 'relative', zIndex: 1,
       }}>
-        <Logo />
-
         {/* Sub */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
