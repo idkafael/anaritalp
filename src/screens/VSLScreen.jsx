@@ -28,30 +28,6 @@ export default function VSLScreen() {
         pointerEvents: 'none', zIndex: 0,
       }} />
 
-      {/* ── TOPO: barra anúncio ── */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.45 }}
-        style={{
-          width: '100%',
-          background: 'rgba(0,0,0,0.45)',
-          backdropFilter: 'blur(8px)',
-          borderBottom: '1px solid rgba(190,150,81,0.2)',
-          padding: '10px 24px',
-          textAlign: 'center',
-          position: 'relative', zIndex: 2,
-        }}
-      >
-        <p style={{
-          fontSize: 10.5, letterSpacing: '0.22em',
-          textTransform: 'uppercase', fontWeight: 700,
-          color: 'rgba(245,239,230,0.75)',
-        }}>
-          Vídeo exclusivo para mulheres que sentem que sua vida está travada
-        </p>
-      </motion.div>
-
       {/* ── BADGE EXCLUSIVO ── */}
       <motion.div
         initial={{ opacity: 0, y: 8 }}
