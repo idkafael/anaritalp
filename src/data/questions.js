@@ -13,7 +13,7 @@ export const questions = [
   {
     id: 2,
     type: 'single',
-    question: 'Quando você acorda e pensa na sua vida, o que pensa mais hoje?',
+    question: 'Qual a primeira coisa que te atormenta quando você acorda?',
     options: [
       { emoji: '😰', text: 'Minha mente já começa o dia antecipando preocupações.', scores: [1, 0, 0] },
       { emoji: '🌫️', text: 'Sinto que estou sem saber qual caminho seguir.', scores: [0, 1, 0] },
