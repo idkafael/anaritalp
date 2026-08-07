@@ -7,10 +7,7 @@ import {
   emotionalSymptom,
   internalConflict,
   behaviorPattern,
-  cycleRobbery,
-  urgency,
   desiredValue,
-  curiosityBridge,
   levelClosing,
   levelNames,
 } from '../data/copyLibrary'
@@ -277,15 +274,12 @@ export default function ResultScreen({ profileId = 1, answers = [], onContinue }
   const q2  = answers[1]?.optionIndex ?? 0
   const q3  = answers[2]?.optionIndex ?? 0
   const q4  = answers[3]?.optionIndex ?? 0
-  const q5  = answers[4]?.optionIndex ?? 0
   const q6  = answers[5]?.optionIndex ?? 0
-  const q7  = answers[6]?.optionIndex ?? 0
   const q8  = answers[7]?.optionIndex ?? 0
-  const q9  = answers[8]?.optionIndex ?? 0
   const q10 = answers[9]?.optionIndex ?? 0
 
   const levelName = (levelNames[profileId] || levelNames[1])[q10]
-  const { barProgress, closing } = levelClosing[q10]
+  const { barProgress } = levelClosing[q10]
   const ctaText = desiredValue[q8].cta
 
   return (
@@ -496,101 +490,6 @@ export default function ResultScreen({ profileId = 1, answers = [], onContinue }
           title={behaviorPattern[q3].title}
           body={behaviorPattern[q3].body}
         />
-
-        <OrnamentalDivider />
-
-        {/* ── O QUE ESSE CICLO ESTÁ ROUBANDO (Q5) ── */}
-        <HighlightBlock
-          delay={0.57}
-          label="O que esse ciclo está roubando"
-          accentColor="rgba(239,68,68,0.06)"
-          borderColor="rgba(239,68,68,0.14)"
-          text={cycleRobbery[q5]}
-        />
-
-        {/* ── URGÊNCIA (Q7) ── */}
-        <HighlightBlock
-          delay={0.61}
-          label="O que você não quer levar para os próximos meses"
-          accentColor="rgba(190,150,81,0.07)"
-          borderColor="rgba(190,150,81,0.17)"
-          text={urgency[q7]}
-        />
-
-        {/* ── DESEJO (Q8) ── */}
-        <HighlightBlock
-          delay={0.65}
-          label="O que você deseja recuperar primeiro"
-          accentColor="rgba(190,150,81,0.07)"
-          borderColor="rgba(190,150,81,0.17)"
-          text={desiredValue[q8].label}
-        />
-
-        {/* ── VERSÍCULO ── */}
-        <Fade delay={0.69}>
-          <div style={{
-            textAlign: 'center',
-            marginBottom: 12,
-            padding: '20px 18px 16px',
-            background: 'rgba(5,22,22,0.5)',
-            borderRadius: 14,
-            border: '1px solid rgba(190,150,81,0.16)',
-          }}>
-            <p style={{
-              fontSize: 44,
-              lineHeight: 0.4,
-              color: 'rgba(190,150,81,0.15)',
-              marginBottom: 10,
-              fontFamily: 'Georgia, serif',
-              fontWeight: 700,
-              userSelect: 'none',
-            }}>"</p>
-            <p style={{
-              fontSize: 14,
-              fontStyle: 'italic',
-              color: '#ffffff',
-              lineHeight: 1.75,
-              marginBottom: 10,
-            }}>
-              {p.verse.replace(/^"|"$/g, '')}
-            </p>
-            <p style={{
-              fontSize: 9,
-              letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-              color: 'rgba(190,150,81,0.8)',
-              fontWeight: 700,
-            }}>
-              — {p.verseRef}
-            </p>
-          </div>
-        </Fade>
-
-        {/* ── O QUE PRECISA SER ENXERGADO (Q9) ── */}
-        <HighlightBlock
-          delay={0.73}
-          label="O que precisa ser enxergado agora"
-          accentColor="rgba(190,150,81,0.07)"
-          borderColor="rgba(190,150,81,0.17)"
-          text={curiosityBridge[q9]}
-        />
-
-        <OrnamentalDivider />
-
-        {/* ── FECHAMENTO (Q10) ── */}
-        <Fade delay={0.77}>
-          <p style={{
-            fontSize: 15,
-            color: 'rgba(245,239,230,0.75)',
-            lineHeight: 1.85,
-            textAlign: 'center',
-            fontStyle: 'italic',
-            marginBottom: 28,
-            padding: '0 4px',
-          }}>
-            {closing}
-          </p>
-        </Fade>
 
         {/* ── BOTÃO CTA (Q8) ── */}
         <Fade delay={0.81}>
