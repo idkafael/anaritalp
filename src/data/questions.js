@@ -46,7 +46,7 @@ export const questions = [
   {
     id: 5,
     type: 'single',
-    question: 'Quando esse movimento se repete, o que ele mais rouba de você?',
+    question: 'Quando aquilo que você tem vivido se repete, o que ele mais rouba de você?',
     options: [
       { emoji: '☮️', text: 'A paz de tomar decisões sem carregar tanto medo.', scores: [1, 0, 0] },
       { emoji: '🔍', text: 'A clareza de enxergar o que fazer agora.', scores: [0, 1, 0] },
