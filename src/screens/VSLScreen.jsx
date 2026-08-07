@@ -5,7 +5,7 @@ import mobileBg from '../assets/FUNDO-DESTORCIDO-MOBILE.jpeg'
 export default function VSLScreen() {
   useEffect(() => {
     const s = document.createElement('script')
-    s.src = 'https://scripts.converteai.net/ddbb824d-99d3-4461-9b8a-b0bab6039eaa/players/6a7333035d54baa1c2ae57da/v4/player.js'
+    s.src = 'https://scripts.converteai.net/ddbb824d-99d3-4461-9b8a-b0bab6039eaa/players/6a6d708c2271152004192f2a/v4/player.js'
     s.async = true
     document.head.appendChild(s)
   }, [])
@@ -102,7 +102,7 @@ export default function VSLScreen() {
           }}
         >
           <vturb-smartplayer
-            id="vid-6a7333035d54baa1c2ae57da"
+            id="vid-6a6d708c2271152004192f2a"
             style={{ display: 'block', margin: '0 auto', width: '100%' }}
           >
             <div

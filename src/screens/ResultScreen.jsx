@@ -530,30 +530,6 @@ export default function ResultScreen({ profileId = 1, answers = [], onContinue }
               <span style={{ position: 'relative', zIndex: 1 }}>{ctaText}</span>
             </motion.button>
           </div>
-          <p style={{
-            textAlign: 'center',
-            fontSize: 12,
-            color: 'rgba(255,255,255,0.28)',
-            lineHeight: 1.8,
-            fontStyle: 'italic',
-          }}>
-            Deus não te trouxe até aqui para te deixar parada.
-          </p>
-        </Fade>
-
-        {/* ── DISCLAIMER ── */}
-        <Fade delay={0.86}>
-          <p style={{
-            fontSize: 11,
-            color: 'rgba(245,239,230,0.22)',
-            lineHeight: 1.75,
-            textAlign: 'center',
-            marginTop: 30,
-            padding: '0 6px',
-            fontStyle: 'italic',
-          }}>
-            Este resultado não representa um diagnóstico clínico. Ele apresenta uma leitura educativa baseada nas respostas fornecidas. Em casos de crises de ansiedade, pânico ou sofrimento emocional intenso, este processo não substitui acompanhamento psicológico ou médico.
-          </p>
         </Fade>
 
       </div>
