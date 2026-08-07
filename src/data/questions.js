@@ -37,7 +37,7 @@ export const questions = [
     type: 'single',
     question: 'Qual dessas frases mais se parece com algo que você tem vivido?',
     options: [
-      { emoji: '🔁', text: 'Eu mudo de estratégia, mas parece que volto ao mesmo lugar.', scores: [0, 0, 1] },
+      { emoji: '🔁', text: 'Eu tento de diversas formas, mas parece que nunca saio do lugar.', scores: [0, 0, 1] },
       { emoji: '💭', text: 'Tenho momentos de esperança, mas logo as dúvidas voltam a ocupar espaço.', scores: [1, 0, 0] },
       { emoji: '👀', text: 'Vejo outras mulheres avançando e me pergunto por que eu não consigo.', scores: [1, 0, 0] },
       { emoji: '↩️', text: 'Quando tento crescer, algo dentro de mim parece pedir que eu recue.', scores: [1, 0, 0] },
