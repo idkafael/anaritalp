@@ -24,7 +24,7 @@ export const questions = [
   {
     id: 3,
     type: 'single',
-    question: 'Quando surge uma decisão que poderia mudar seus próximos passos, o que costuma acontecer?',
+    question: 'Quando aparece uma decisão que poderia mudar sua vida, o que costuma acontecer?',
     options: [
       { emoji: '⏳', text: 'Espero uma certeza que parece nunca chegar.', scores: [0, 1, 0] },
       { emoji: '🌀', text: 'Penso em tantas possibilidades que termino sem agir.', scores: [1, 0, 0] },
