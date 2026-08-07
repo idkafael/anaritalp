@@ -429,71 +429,9 @@ export default function ResultScreen({ profileId = 1, answers = [], onContinue }
           </p>
         </Fade>
 
-        {/* ── IMAGEM DO PERFIL ── */}
-        <Fade delay={0.34}>
-          <div style={{
-            width: '100%',
-            marginBottom: 26,
-            borderRadius: 18,
-            overflow: 'hidden',
-            boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
-            border: '1px solid rgba(190,150,81,0.13)',
-            position: 'relative',
-          }}>
-            <img
-              src={profileImage}
-              alt={p.profileTag}
-              style={{ width: '100%', display: 'block', objectFit: 'cover' }}
-            />
-            <div style={{
-              position: 'absolute', bottom: 0, left: 0, right: 0, height: 70,
-              background: 'linear-gradient(to top, rgba(10,46,46,0.65) 0%, transparent 100%)',
-            }} />
-          </div>
-        </Fade>
-
-        {/* ── 4 CARDS ── */}
+        {/* ── BOTÃO CTA ── */}
         <Fade delay={0.38}>
-          <p style={{
-            fontSize: 10,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: '#d4ae6e',
-            fontWeight: 800,
-            marginBottom: 12,
-          }}>
-            Sua Jornada em Detalhes:
-          </p>
-        </Fade>
-
-        <InsightCard
-          delay={0.41}
-          label="Crença Central · Ciclo Percebido"
-          title={centralBelief[q4].title}
-          body={centralBelief[q4].body}
-        />
-        <InsightCard
-          delay={0.45}
-          label="Sintoma Emocional · Estado Atual"
-          title={emotionalSymptom[q2].title}
-          body={emotionalSymptom[q2].body}
-        />
-        <InsightCard
-          delay={0.49}
-          label="Conflito Interno · Fé e Vida Prática"
-          title={internalConflict[q6].title}
-          body={internalConflict[q6].body}
-        />
-        <InsightCard
-          delay={0.53}
-          label="Padrão de Comportamento · Decisões"
-          title={behaviorPattern[q3].title}
-          body={behaviorPattern[q3].body}
-        />
-
-        {/* ── BOTÃO CTA (Q8) ── */}
-        <Fade delay={0.81}>
-          <div style={{ position: 'relative', marginBottom: 10 }}>
+          <div style={{ position: 'relative', marginBottom: 28 }}>
             <div style={{
               position: 'absolute', inset: -3, borderRadius: 19,
               border: '1px solid rgba(190,150,81,0.28)',
@@ -531,6 +469,68 @@ export default function ResultScreen({ profileId = 1, answers = [], onContinue }
             </motion.button>
           </div>
         </Fade>
+
+        {/* ── IMAGEM DO PERFIL ── */}
+        <Fade delay={0.44}>
+          <div style={{
+            width: '100%',
+            marginBottom: 26,
+            borderRadius: 18,
+            overflow: 'hidden',
+            boxShadow: '0 12px 48px rgba(0,0,0,0.5)',
+            border: '1px solid rgba(190,150,81,0.13)',
+            position: 'relative',
+          }}>
+            <img
+              src={profileImage}
+              alt={p.profileTag}
+              style={{ width: '100%', display: 'block', objectFit: 'cover' }}
+            />
+            <div style={{
+              position: 'absolute', bottom: 0, left: 0, right: 0, height: 70,
+              background: 'linear-gradient(to top, rgba(10,46,46,0.65) 0%, transparent 100%)',
+            }} />
+          </div>
+        </Fade>
+
+        {/* ── 4 CARDS ── */}
+        <Fade delay={0.5}>
+          <p style={{
+            fontSize: 10,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            color: '#d4ae6e',
+            fontWeight: 800,
+            marginBottom: 12,
+          }}>
+            Sua Jornada em Detalhes:
+          </p>
+        </Fade>
+
+        <InsightCard
+          delay={0.53}
+          label="Crença Central · Ciclo Percebido"
+          title={centralBelief[q4].title}
+          body={centralBelief[q4].body}
+        />
+        <InsightCard
+          delay={0.57}
+          label="Sintoma Emocional · Estado Atual"
+          title={emotionalSymptom[q2].title}
+          body={emotionalSymptom[q2].body}
+        />
+        <InsightCard
+          delay={0.61}
+          label="Conflito Interno · Fé e Vida Prática"
+          title={internalConflict[q6].title}
+          body={internalConflict[q6].body}
+        />
+        <InsightCard
+          delay={0.65}
+          label="Padrão de Comportamento · Decisões"
+          title={behaviorPattern[q3].title}
+          body={behaviorPattern[q3].body}
+        />
 
       </div>
     </div>
