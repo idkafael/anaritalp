@@ -83,7 +83,7 @@ export default function IntroScreen({ onStart }) {
             padding: '0 4px',
           }}
         >
-          DESCUBRA QUAL CICLO ESTÁ MANTENDO SUA VIDA PARADA E PORQUE, MESMO ORANDO, VOCÊ CONTINUA VOLTANDO PARA O MESMO LUGAR
+          Você não nasceu para viver presa no Egito que te feriu.
         </motion.h1>
 
         {/* Label pill */}
@@ -117,7 +117,7 @@ export default function IntroScreen({ onStart }) {
             color: '#ffffff', marginBottom: 22, lineHeight: 1.7,
           }}
         >
-          Descubra, em poucos minutos, qual padrão está atrasando sua vida e como quebrá-lo de uma vez por todas.
+          Descubra por que tantas mulheres continuam vivendo os mesmos ciclos de medo, insegurança e sensação de esgotamento, mesmo amando a Deus, e como iniciar uma travessia prática rumo à vida que Ele preparou para você.
         </motion.p>
 
         {/* Stats como badges criativos */}
