@@ -101,12 +101,12 @@ export const questions = [
   {
     id: 10,
     type: 'single',
-    question: 'Depois de olhar para essas respostas, qual sentimento está mais presente em você agora?',
+    question: 'Depois de tudo que você refletiu até aqui, o que mais passa pelo seu coração agora?',
     options: [
-      { emoji: '💎', text: 'Reconheci mais coisas do que esperava.', scores: [0, 0, 0] },
-      { emoji: '💪', text: 'Estou cansada, mas não quero continuar do mesmo jeito.', scores: [0, 0, 0] },
-      { emoji: '🔍', text: 'Sinto que preciso olhar para isso com mais clareza.', scores: [0, 0, 0] },
-      { emoji: '🤍', text: 'Meu coração ficou aberto para entender o que ainda não consigo ver.', scores: [0, 0, 0] },
+      { emoji: '💎', text: 'Percebi coisas sobre mim que antes não conseguia enxergar.', scores: [0, 0, 0] },
+      { emoji: '💪', text: 'Estou cansada de viver assim e quero encontrar uma saída.', scores: [0, 0, 0] },
+      { emoji: '🔎', text: 'Sinto que preciso entender melhor o que está acontecendo comigo.', scores: [0, 0, 0] },
+      { emoji: '🤍', text: 'Sinto que existe algo que ainda preciso descobrir sobre mim.', scores: [0, 0, 0] },
     ],
   },
 ]
