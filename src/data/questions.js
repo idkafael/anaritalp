@@ -90,12 +90,12 @@ export const questions = [
   {
     id: 9,
     type: 'single',
-    question: 'Quando você pensa em entender por que isso se repete, o que sente que precisa enxergar primeiro?',
+    question: 'Se você pudesse entender por que isso continua acontecendo, o que gostaria de descobrir primeiro?',
     options: [
-      { emoji: '🔒', text: 'O que tem me feito parar mesmo quando quero avançar.', scores: [1, 0, 0] },
-      { emoji: '🔄', text: 'Por que tantos recomeços acabam no mesmo lugar.', scores: [0, 0, 1] },
-      { emoji: '💡', text: 'O que eu ainda não percebi sobre a forma como tomo decisões.', scores: [0, 1, 0] },
-      { emoji: '🕊️', text: 'Por que desejo e fé ainda não se transformaram na direção que procuro.', scores: [0, 1, 0] },
+      { emoji: '🔒', text: 'O que tem me feito parar mesmo quando quero seguir em frente.', scores: [1, 0, 0] },
+      { emoji: '🔄', text: 'Por que eu tento recomeçar, mas acabo voltando para o mesmo lugar.', scores: [0, 0, 1] },
+      { emoji: '💡', text: 'O que ainda não percebi sobre a forma como tenho tomado minhas decisões.', scores: [0, 1, 0] },
+      { emoji: '🕊️', text: 'Por que, mesmo tendo fé e vontade de mudar, ainda não consigo avançar.', scores: [0, 1, 0] },
     ],
   },
   {
