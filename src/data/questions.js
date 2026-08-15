@@ -1,202 +1,218 @@
 export const questions = [
+  // Q2 — idade (contexto, não pontua)
   {
-    id: 1,
+    id: 'Q2',
     type: 'single',
-    question: 'Você é...',
+    scoring: false,
+    question: 'Qual é a sua idade?',
     options: [
-      { emoji: '👨‍👩‍👧', text: 'Casada com filhos', scores: [0, 0, 0] },
-      { emoji: '💍', text: 'Casada sem filhos', scores: [0, 0, 0] },
-      { emoji: '👩‍👧', text: 'Mãe solo', scores: [0, 0, 0] },
-      { emoji: '🌿', text: 'Solteira', scores: [0, 0, 0] },
+      { emoji: '🌸', text: '30 a 39 anos' },
+      { emoji: '✨', text: '40 a 49 anos' },
+      { emoji: '🌺', text: '50 a 59 anos' },
+      { emoji: '🕊️', text: '60 anos ou mais' },
+      { emoji: '🤍', text: 'Prefiro não responder' },
     ],
   },
+  // Q3 — estado civil (contexto, não pontua)
   {
-    id: 2,
+    id: 'Q3',
     type: 'single',
-    question: 'Qual a primeira coisa que te atormenta quando você acorda?',
+    scoring: false,
+    question: 'Qual é o seu estado civil?',
     options: [
-      { emoji: '😰', text: 'Minha mente já começa o dia antecipando preocupações.', scores: [1, 0, 0] },
-      { emoji: '🌫️', text: 'Sinto que estou sem saber qual caminho seguir.', scores: [0, 1, 0] },
-      { emoji: '😩', text: 'Mesmo fazendo tudo o que preciso, minha energia parece ter acabado.', scores: [1, 0, 0] },
-      { emoji: '🔮', text: 'O futuro mexe comigo porque não consigo enxergar uma direção.', scores: [0, 1, 0] },
+      { emoji: '💍', text: 'Casada' },
+      { emoji: '🌱', text: 'Solteira' },
+      { emoji: '🍃', text: 'Divorciada / Separada' },
+      { emoji: '🤍', text: 'Viúva' },
+      { emoji: '💞', text: 'Em um relacionamento' },
+      { emoji: '🔒', text: 'Prefiro não responder' },
     ],
   },
+  // Q4 — filhos (contexto, não pontua)
   {
-    id: 3,
+    id: 'Q4',
     type: 'single',
-    question: 'Quando aparece uma decisão que poderia mudar sua vida, o que costuma acontecer?',
+    scoring: false,
+    question: 'Você tem filhos?',
     options: [
-      { emoji: '⏳', text: 'Espero uma certeza que parece nunca chegar.', scores: [0, 1, 0] },
-      { emoji: '🌀', text: 'Penso em tantas possibilidades que termino sem agir.', scores: [1, 0, 0] },
-      { emoji: '🔥', text: 'Começo animada, mas perco a força no meio do caminho.', scores: [0, 0, 1] },
-      { emoji: '🚧', text: 'Sinto que ainda não estou pronta, mesmo desejando avançar.', scores: [0, 0, 1] },
+      { emoji: '🏠', text: 'Sim, e ainda moram comigo' },
+      { emoji: '🌍', text: 'Sim, mas já são adultos e moram fora' },
+      { emoji: '🔀', text: 'Sim, alguns moram comigo e outros não' },
+      { emoji: '🌸', text: 'Não tenho filhos' },
+      { emoji: '🤍', text: 'Prefiro não responder' },
     ],
   },
+  // Q5 — pontua A/B/C/D
   {
-    id: 4,
+    id: 'Q5',
     type: 'single',
-    question: 'Qual dessas frases mais se parece com algo que você tem vivido?',
+    scoring: true,
+    question: 'Quando você olha para sua vida hoje, qual dessas frases mais parece com você?',
     options: [
-      { emoji: '🔁', text: 'Eu tento de diversas formas, mas parece que nunca saio do lugar.', scores: [0, 0, 1] },
-      { emoji: '💭', text: 'Tenho momentos de esperança, mas logo as dúvidas voltam a ocupar espaço.', scores: [1, 0, 0] },
-      { emoji: '👀', text: 'Vejo outras mulheres avançando e me pergunto por que eu não consigo.', scores: [1, 0, 0] },
-      { emoji: '↩️', text: 'Quando tento crescer, algo dentro de mim parece pedir que eu recue.', scores: [1, 0, 0] },
+      { emoji: '💝', text: 'Tenho cuidado de tantas coisas e pessoas que quase não penso em mim.', score: 'A' },
+      { emoji: '🌱', text: 'Tenho vontade de mudar algumas coisas, mas penso tanto que acabo não decidindo.', score: 'B' },
+      { emoji: '🪞', text: 'Passei tantos anos vivendo para outras pessoas que já não sei exatamente o que quero para mim.', score: 'C' },
+      { emoji: '🔑', text: 'Sinto que preciso recomeçar alguma coisa na minha vida, mas não sei por onde começar.', score: 'D' },
     ],
   },
+  // Q6 — pontua A/B/C/D
   {
-    id: 5,
+    id: 'Q6',
     type: 'single',
-    question: 'Quando aquilo que você tem vivido se repete, o que ele mais rouba de você?',
+    scoring: true,
+    question: 'Quando você pensa no seu futuro, o que mais acontece dentro de você?',
     options: [
-      { emoji: '☮️', text: 'A paz de tomar decisões sem carregar tanto medo.', scores: [1, 0, 0] },
-      { emoji: '🔍', text: 'A clareza de enxergar o que fazer agora.', scores: [0, 1, 0] },
-      { emoji: '💪', text: 'A coragem de acreditar que posso dar um passo.', scores: [0, 1, 0] },
-      { emoji: '✨', text: 'A alegria de sonhar com a vida que desejo viver.', scores: [0, 0, 1] },
+      { emoji: '⚡', text: 'Quero fazer algo por mim, mas sempre aparece alguma coisa mais importante.', score: 'A' },
+      { emoji: '🔄', text: 'Tenho várias possibilidades na cabeça e não sei qual escolher.', score: 'B' },
+      { emoji: '🌙', text: 'Sinto saudade de uma versão minha que parece ter ficado para trás.', score: 'C' },
+      { emoji: '🌅', text: 'Sinto que existe algo novo para mim, mas ainda não consigo enxergar o caminho.', score: 'D' },
     ],
   },
+  // Q7 — pontua A/B/B/D (C→B)
   {
-    id: 6,
+    id: 'Q7',
     type: 'single',
-    question: 'Mesmo buscando a Deus e tentando recomeçar, em qual ponto você mais se reconhece?',
+    scoring: true,
+    question: 'Quando aparece uma oportunidade de fazer algo diferente na sua vida, qual costuma ser sua reação?',
     options: [
-      { emoji: '🙏', text: 'Eu oro, mas ainda fico sem clareza sobre a direção que devo tomar.', scores: [0, 1, 0] },
-      { emoji: '🌱', text: 'A vontade de mudar existe, mas parece que não se transforma em movimento.', scores: [0, 0, 1] },
-      { emoji: '💔', text: 'Às vezes sinto culpa por não estar vivendo aquilo que imaginei para mim.', scores: [1, 0, 0] },
-      { emoji: '😟', text: 'Tenho medo de continuar me sentindo pequena diante da vida que desejo construir.', scores: [0, 0, 1] },
+      { emoji: '👨‍👩‍👧', text: 'Penso primeiro em como aquilo vai afetar as pessoas ao meu redor.', score: 'A' },
+      { emoji: '😰', text: 'Fico pensando em tudo que pode dar errado antes de decidir.', score: 'B' },
+      { emoji: '💭', text: 'Tenho vontade, mas começo a pensar se realmente sou capaz.', score: 'B' },
+      { emoji: '🚪', text: 'Sinto que deveria aproveitar, mas alguma coisa me faz recuar.', score: 'D' },
     ],
   },
+  // Q8 — pontua A/B/C/D
   {
-    id: 7,
+    id: 'Q8',
     type: 'single',
-    question: 'Se nada mudasse nos próximos meses, o que mais entristeceria você?',
+    scoring: true,
+    question: 'Quando você precisa tomar uma decisão importante sobre sua própria vida, o que costuma acontecer?',
     options: [
-      { emoji: '⏰', text: 'Perceber que adiei mais uma vez uma decisão importante.', scores: [0, 1, 0] },
-      { emoji: '🗺️', text: 'Continuar esperando uma direção sem saber como encontrá-la.', scores: [0, 1, 0] },
-      { emoji: '⌛', text: 'Ver o tempo passar sem me aproximar da vida que desejo viver.', scores: [0, 0, 1] },
-      { emoji: '🏋️', text: 'Me acostumar com um peso que hoje eu ainda quero deixar para trás.', scores: [1, 0, 0] },
+      { emoji: '🏠', text: 'Penso primeiro nas necessidades da minha família.', score: 'A' },
+      { emoji: '😟', text: 'Tenho medo de escolher errado e me arrepender.', score: 'B' },
+      { emoji: '🔍', text: 'Às vezes nem sei direito o que realmente quero.', score: 'C' },
+      { emoji: '⏳', text: 'Fico esperando sentir que é o momento certo ou receber alguma direção.', score: 'D' },
     ],
   },
+  // Q9 — 5 opções: A→B, B→B, C→B, D→C, E→D
   {
-    id: 8,
+    id: 'Q9',
     type: 'single',
-    question: 'Se uma parte da sua vida pudesse ganhar nova direção primeiro, o que você mais gostaria de recuperar?',
+    scoring: true,
+    question: 'Você se lembra de alguma oportunidade que apareceu na sua vida, mas acabou não aproveitando?',
     options: [
-      { emoji: '🕊️', text: 'Paz para não viver em alerta o tempo todo.', scores: [1, 0, 0] },
-      { emoji: '🧭', text: 'Clareza para saber qual passo dar.', scores: [0, 1, 0] },
-      { emoji: '🦋', text: 'Confiança para agir sem me diminuir.', scores: [0, 0, 1] },
-      { emoji: '🌅', text: 'Esperança para voltar a enxergar propósito no meu caminho.', scores: [0, 0, 1] },
+      { emoji: '💭', text: 'Sim. E até hoje penso no que poderia ter acontecido.', score: 'B' },
+      { emoji: '😢', text: 'Sim. Na época, o medo de não conseguir foi maior.', score: 'B' },
+      { emoji: '🤔', text: 'Sim. Eu tinha capacidade, mas achei melhor não arriscar.', score: 'B' },
+      { emoji: '📅', text: 'Sinto que já deixei passar mais de uma oportunidade.', score: 'C' },
+      { emoji: '🌫️', text: 'Não consigo lembrar de uma específica.', score: 'D' },
     ],
   },
+  // Q10 — 5 opções: todas → A
   {
-    id: 9,
+    id: 'Q10',
     type: 'single',
+    scoring: true,
+    question: 'Quando alguém da sua família precisa de você, o que geralmente acontece?',
+    options: [
+      { emoji: '💪', text: 'Dou um jeito, mesmo quando estou cansada.', score: 'A' },
+      { emoji: '❤️', text: 'Coloco a necessidade deles na frente da minha.', score: 'A' },
+      { emoji: '🌊', text: 'Sinto que muitas vezes tudo acaba dependendo de mim.', score: 'A' },
+      { emoji: '🌱', text: 'Ajudo quando posso, mas estou tentando aprender a pensar mais em mim.', score: 'A' },
+      { emoji: '🔓', text: 'Tenho dificuldade de dizer não.', score: 'A' },
+    ],
+  },
+  // Q11 — pontua A/B/C/D
+  {
+    id: 'Q11',
+    type: 'single',
+    scoring: true,
+    question: 'Quando você pensa nos próximos anos, o que mais preocupa você?',
+    options: [
+      { emoji: '😔', text: 'Continuar colocando todo mundo na frente de mim.', score: 'A' },
+      { emoji: '😰', text: 'Continuar com medo de tomar decisões importantes.', score: 'B' },
+      { emoji: '🌙', text: 'Olhar para trás e perceber que deixei meus próprios sonhos para depois.', score: 'C' },
+      { emoji: '🗺️', text: 'Continuar sentindo que preciso mudar, mas sem saber por onde começar.', score: 'D' },
+    ],
+  },
+  // Q12 — pontua A/B/C/D
+  {
+    id: 'Q12',
+    type: 'single',
+    scoring: true,
+    question: 'Quando você pensa no tempo que passou, qual desses pensamentos mais mexe com você?',
+    options: [
+      { emoji: '🤲', text: '"Eu fiz tanto pelos outros… quando vou fazer algo por mim?"', score: 'A' },
+      { emoji: '💔', text: '"Quantas coisas poderiam ter sido diferentes se eu tivesse tido mais coragem?"', score: 'B' },
+      { emoji: '🪞', text: '"Em que momento eu deixei de pensar no que eu queria?"', score: 'C' },
+      { emoji: '🌅', text: '"Será que ainda existe um caminho novo para mim?"', score: 'D' },
+    ],
+  },
+  // Q13 — pontua A/B/C/D
+  {
+    id: 'Q13',
+    type: 'single',
+    scoring: true,
+    question: 'Se você pudesse receber clareza sobre uma coisa hoje, o que mais gostaria de descobrir?',
+    options: [
+      { emoji: '💝', text: 'Como voltar a olhar para mim e para o que eu realmente quero.', score: 'A' },
+      { emoji: '⚡', text: 'Como parar de duvidar tanto e conseguir tomar uma decisão.', score: 'B' },
+      { emoji: '🔍', text: 'Como descobrir o que ainda faz sentido para a minha vida.', score: 'C' },
+      { emoji: '🙏', text: 'Qual deve ser o próximo passo que Deus está me mostrando.', score: 'D' },
+    ],
+  },
+  // Q14 — pontua A/B/C/D
+  {
+    id: 'Q14',
+    type: 'single',
+    scoring: true,
+    question: 'Se você finalmente enxergasse uma direção para sua vida, o que gostaria de sentir novamente?',
+    options: [
+      { emoji: '🕊️', text: 'Paz para cuidar de mim sem culpa.', score: 'A' },
+      { emoji: '🛡️', text: 'Segurança para tomar decisões.', score: 'B' },
+      { emoji: '✨', text: 'Alegria de voltar a sonhar.', score: 'C' },
+      { emoji: '🌅', text: 'Esperança de que ainda existe algo novo para viver.', score: 'D' },
+    ],
+  },
+  // Q15 — pontua B/C/B/D (também serve como desempate)
+  {
+    id: 'Q15',
+    type: 'single',
+    scoring: true,
     question: 'Se você pudesse entender por que isso continua acontecendo, o que gostaria de descobrir primeiro?',
     options: [
-      { emoji: '🔒', text: 'O que tem me feito parar mesmo quando quero seguir em frente.', scores: [1, 0, 0] },
-      { emoji: '🔄', text: 'Por que eu tento recomeçar, mas acabo voltando para o mesmo lugar.', scores: [0, 0, 1] },
-      { emoji: '💡', text: 'O que ainda não percebi sobre a forma como tenho tomado minhas decisões.', scores: [0, 1, 0] },
-      { emoji: '🕊️', text: 'Por que, mesmo tendo fé e vontade de mudar, ainda não consigo avançar.', scores: [0, 1, 0] },
+      { emoji: '🔒', text: 'O que tem me feito parar mesmo quando quero seguir em frente.', score: 'B' },
+      { emoji: '🔄', text: 'Por que eu tento recomeçar, mas acabo voltando para o mesmo lugar.', score: 'C' },
+      { emoji: '💡', text: 'O que ainda não percebi sobre a forma como tenho tomado minhas decisões.', score: 'B' },
+      { emoji: '🕊️', text: 'Por que, mesmo tendo fé e vontade de mudar, ainda não consigo avançar.', score: 'D' },
     ],
-  },
-  {
-    id: 10,
-    type: 'single',
-    question: 'Depois de tudo que você refletiu até aqui, o que mais passa pelo seu coração agora?',
-    options: [
-      { emoji: '💎', text: 'Percebi coisas sobre mim que antes não conseguia enxergar.', scores: [0, 0, 0] },
-      { emoji: '💪', text: 'Estou cansada de viver assim e quero encontrar uma saída.', scores: [0, 0, 0] },
-      { emoji: '🔎', text: 'Sinto que preciso entender melhor o que está acontecendo comigo.', scores: [0, 0, 0] },
-      { emoji: '🤍', text: 'Sinto que existe algo que ainda preciso descobrir sobre mim.', scores: [0, 0, 0] },
-    ],
-  },
-]
-
-export const resultProfiles = [
-  {
-    id: 1,
-    icon: '🌀',
-    profileTag: 'Mente em Estado de Alerta',
-    imageEmoji: '🌀',
-    miniDesc: 'Sua mente está em modo de proteção constante, antecipando riscos antes mesmo que eles cheguem.',
-    personaTitle: 'A Mulher Que Não Consegue Desligar',
-    stages: ['Sobrecarregada', 'Alerta Ativo', 'Recuperando a Paz', 'Escolhendo com Segurança'],
-    description: [
-      'Sua mente parece estar tentando proteger você antecipando riscos, problemas e decisões erradas. E por mais que isso pareça uma tentativa de manter o controle, o resultado é sempre o mesmo: mais peso, menos paz e cada passo se tornando mais difícil do que precisava ser.',
-      'Não é falta de fé. Não é fraqueza. É um padrão que aprendeu a funcionar assim — e que pode ser redirecionado quando você entende o que está por trás dele.',
-    ],
-    challenge: 'a mente que tenta te proteger tem te impedido de descansar em Deus — e isso tem feito cada decisão parecer mais arriscada e mais pesada do que precisa ser.',
-    verse: '"Não andeis ansiosos por coisa alguma, mas em tudo fazei conhecidas as vossas petições a Deus por oração e súplica, com ação de graças."',
-    verseRef: 'Filipenses 4:6',
-    signs: [
-      'Sua mente começa o dia antecipando problemas antes mesmo deles chegarem',
-      'Você pensa em tantas possibilidades que acaba sem agir',
-      'A paz parece algo difícil de alcançar ou manter',
-      'Tomar decisões parece mais arriscado do que deveria ser',
-      'Você carrega um peso interno que não consegue soltar',
-    ],
-    finalLine1: 'O seu Egito pode estar na mente que tenta controlar o que só Deus pode guardar.',
-    finalLine2: 'Mas existe uma saída. E o próximo passo não precisa ser perfeito — ele só precisa ser dado.',
-  },
-  {
-    id: 2,
-    icon: '🧭',
-    profileTag: 'Direção Bloqueada',
-    imageEmoji: '🧭',
-    miniDesc: 'O desejo de avançar existe — mas a busca por certeza tem ocupado o espaço que a direção deveria preencher.',
-    personaTitle: 'A Mulher Que Deseja Avançar, Mas Não Encontra o Caminho',
-    stages: ['Sem Clareza', 'Direção Bloqueada', 'Reconhecendo o Passo', 'Em Movimento'],
-    description: [
-      'Você deseja avançar, mas a busca por certeza pode estar impedindo que reconheça o próximo passo possível. Não é falta de vontade: é excesso de dúvida.',
-      'Você ora, busca, espera — mas a clareza parece sempre um passo à frente. E enquanto isso, a vida que você deseja continua parecendo distante.',
-    ],
-    challenge: 'a busca por certeza tem impedido você de reconhecer os passos que Deus já colocou diante de você — e isso mantém a direção bloqueada mesmo quando a vontade de avançar é real.',
-    verse: '"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento."',
-    verseRef: 'Provérbios 3:5',
-    signs: [
-      'Você espera uma certeza que parece nunca chegar para agir',
-      'Você ora e busca, mas a clareza ainda não veio',
-      'Você adia decisões importantes repetidamente',
-      'Sente que outras mulheres avançam enquanto você permanece no mesmo lugar',
-      'O desejo existe, mas não se transforma em movimento',
-    ],
-    finalLine1: 'O seu Egito pode estar na espera por uma certeza que só vem no caminhar.',
-    finalLine2: 'Deus não está escondendo a direção de você. Às vezes, ela aparece quando o primeiro passo é dado.',
-  },
-  {
-    id: 3,
-    icon: '🔄',
-    profileTag: 'Ciclo de Recomeços Interrompidos',
-    imageEmoji: '🔄',
-    miniDesc: 'Você começa com esperança real — mas algo interrompe o movimento antes que ele se sustente.',
-    personaTitle: 'A Mulher Que Recomeça, Mas Não Consegue Sustentar',
-    stages: ['Ciclo Repetido', 'Recomeço Interrompido', 'Sustentando a Mudança', 'Nova Fase'],
-    description: [
-      'Você começa com esperança, mas perde força, recua ou volta ao mesmo lugar. O desafio não parece ser começar: é sustentar a mudança.',
-      'Isso não é falta de fé nem de força. É um padrão que se repete — e que tem uma razão. Quando compreendido, ele pode ser interrompido de vez.',
-    ],
-    challenge: 'o ciclo não está se repetindo por acaso — existe algo que precisa ser identificado para que o próximo recomeço seja diferente de todos os anteriores.',
-    verse: '"Vinde a mim, todos os que estais cansados e oprimidos, e eu vos aliviarei."',
-    verseRef: 'Mateus 11:28',
-    signs: [
-      'Você começa com força, mas perde o movimento no meio do caminho',
-      'Já passou por vários recomeços que terminaram no mesmo lugar',
-      'A esperança existe, mas logo as dúvidas tomam espaço',
-      'Algo dentro de você parece pedir recuo quando a mudança começa',
-      'O desejo de viver algo diferente é real, mas a distância parece crescer',
-    ],
-    finalLine1: 'O seu Egito pode estar no padrão que interrompe o movimento antes que ele se sustente.',
-    finalLine2: 'Mas isso não precisa continuar assim. Entender o que está por trás do ciclo é o primeiro passo para sair dele.',
   },
 ]
 
 export function computeProfile(answers) {
-  const scores = [0, 0, 0]
-  answers.forEach(answer => {
-    if (answer && answer.scores) {
-      answer.scores.forEach((s, i) => { scores[i] += s })
-    }
+  const scores = { A: 0, B: 0, C: 0, D: 0 }
+
+  questions.forEach((q, idx) => {
+    if (!q.scoring) return
+    const answer = answers[idx]
+    if (!answer?.score) return
+    scores[answer.score]++
   })
-  const maxScore = Math.max(...scores)
-  const winnerIdx = scores.indexOf(maxScore)
-  return winnerIdx + 1
+
+  const max = Math.max(scores.A, scores.B, scores.C, scores.D)
+  const tied = ['A', 'B', 'C', 'D'].filter(k => scores[k] === max)
+
+  if (tied.length === 1) return tied[0]
+
+  // Desempate pela resposta de Q15 (score de Q15 já mapeia para o resultado correto)
+  const q15Idx = questions.findIndex(q => q.id === 'Q15')
+  const q15Answer = answers[q15Idx]
+  if (q15Answer?.score) return q15Answer.score
+
+  // Fallback final: ordem A > B > C > D
+  for (const p of ['A', 'B', 'C', 'D']) {
+    if (tied.includes(p)) return p
+  }
+
+  return 'A'
 }

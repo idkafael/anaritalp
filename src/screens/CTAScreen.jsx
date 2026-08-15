@@ -2,22 +2,26 @@ import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const profileHeadlines = {
-  1: {
-    tag: 'Mente em Estado de Alerta',
-    sub: 'Assista o vídeo abaixo e descubra como recuperar a paz e tomar decisões sem o peso constante do alerta.',
+  A: {
+    tag: 'A Mulher que Deixa Tudo para Depois',
+    sub: 'Assista o vídeo abaixo e descubra por que você deixa tudo para depois e como sair desse ciclo de uma vez por todas.',
   },
-  2: {
-    tag: 'Direção Bloqueada',
-    sub: 'Assista o vídeo abaixo e descubra como encontrar clareza e dar o próximo passo mesmo sem certeza total.',
+  B: {
+    tag: 'A Prisioneira da Dúvida',
+    sub: 'Assista o vídeo abaixo e descubra por que a dúvida continua te paralisando e o que fazer para mudar isso.',
   },
-  3: {
-    tag: 'Ciclo de Recomeços Interrompidos',
-    sub: 'Assista o vídeo abaixo e descubra como sustentar a mudança e sair do ciclo que sempre te faz voltar ao início.',
+  C: {
+    tag: 'A Mulher Adormecida',
+    sub: 'Assista o vídeo abaixo e descubra o que ainda faz sentido na sua vida.',
+  },
+  D: {
+    tag: 'A Mulher sem Direção',
+    sub: 'Assista o vídeo abaixo e descubra qual deve ser o seu próximo passo.',
   },
 }
 
-export default function CTAScreen({ profileId = 1, onBuy }) {
-  const hl = profileHeadlines[profileId] || profileHeadlines[1]
+export default function CTAScreen({ profileId = 'A', onBuy }) {
+  const hl = profileHeadlines[profileId] || profileHeadlines['A']
 
   useEffect(() => {
     const s = document.createElement('script')
@@ -57,7 +61,7 @@ export default function CTAScreen({ profileId = 1, onBuy }) {
             letterSpacing: '-0.4px',
           }}
         >
-          Seu Egito foi identificado:{' '}
+          Seu padrão foi identificado:{' '}
           <span style={{ color: '#d4ae6e' }}>{hl.tag}.</span>
         </motion.h1>
 
