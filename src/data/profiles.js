@@ -8,7 +8,7 @@ export const profiles = {
       'Mesmo quando decide fazer algo por você, sempre aparece uma nova responsabilidade. Com o tempo, seus desejos ficam distantes e você começa a se perguntar quando terá espaço para cuidar da própria vida.',
       'Suas respostas mostram que esse ciclo pode estar impedindo você de avançar.',
     ],
-    buttonText: 'Descubra por que você deixa tudo para depois',
+    buttonText: 'Quero sair desse ciclo',
   },
   B: {
     id: 'B',
@@ -19,7 +19,7 @@ export const profiles = {
       'Mesmo quando tem vontade de seguir em frente, começa a questionar se está preparada ou se vai escolher o caminho certo. Por esperar segurança total, pode acabar adiando decisões importantes e deixando oportunidades passarem.',
       'Suas respostas mostram que a dúvida pode estar impedindo você de aproveitar novas oportunidades.',
     ],
-    buttonText: 'Descubra por que a dúvida continua me paralisando',
+    buttonText: 'Quero vencer a dúvida',
   },
   C: {
     id: 'C',
@@ -30,7 +30,7 @@ export const profiles = {
       'Talvez ainda exista dentro de você uma vontade de sonhar, recomeçar e viver algo diferente. Mas, quando pensa no que realmente quer, pode sentir dificuldade para encontrar uma resposta clara.',
       'Suas respostas mostram que está na hora de descobrir o que ainda faz sentido para você.',
     ],
-    buttonText: 'Descubra o que ainda faz sentido na minha vida',
+    buttonText: 'Quero me reencontrar',
   },
   D: {
     id: 'D',
@@ -41,6 +41,6 @@ export const profiles = {
       'Existe uma vontade de começar algo novo, mas você pode estar esperando o momento certo, uma confirmação ou uma direção mais clara. Enquanto isso, a sensação de estar parada continua aumentando.',
       'Suas respostas mostram que falta clareza para dar o próximo passo.',
     ],
-    buttonText: 'Descubra qual deve ser o seu próximo passo',
+    buttonText: 'Quero encontrar meu caminho',
   },
 }
