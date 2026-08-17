@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
+import quizBg from '../assets/IMAGEM-GERA.png'
 
 const DURATION = 3500
 
@@ -38,11 +39,19 @@ export default function LoadingScreen({ onComplete }) {
   return (
     <div className="app-screen" style={{
       minHeight: '100vh',
-      background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
+      backgroundImage: `url(${quizBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center top',
+      backgroundRepeat: 'no-repeat',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
       justifyContent: 'center', padding: '48px 24px',
       position: 'relative', overflowX: 'hidden',
     }}>
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'rgba(7,22,22,0.72)',
+        pointerEvents: 'none',
+      }} />
 
       {/* Glow central */}
       <div style={{

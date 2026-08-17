@@ -1,11 +1,15 @@
 import Logo from './Logo'
 import ProgressBar from './ProgressBar'
+import quizBg from '../assets/IMAGEM-GERA.png'
 
 export default function QuizLayout({ children, step, total, showProgress = true }) {
   return (
     <div className="app-screen" style={{
       minHeight: '100vh',
-      background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
+      backgroundImage: `url(${quizBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center top',
+      backgroundRepeat: 'no-repeat',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -13,6 +17,12 @@ export default function QuizLayout({ children, step, total, showProgress = true 
       position: 'relative',
       overflow: 'hidden',
     }}>
+      {/* Overlay escuro para legibilidade */}
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'rgba(7,22,22,0.72)',
+        pointerEvents: 'none',
+      }} />
       {/* Decorative glow */}
       <div style={{
         position: 'absolute', top: -100, left: '50%', transform: 'translateX(-50%)',
