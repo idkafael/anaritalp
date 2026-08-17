@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import Logo from '../components/Logo'
+import heroBg from '../assets/IMG_1935.png'
 
 function Sparkle({ size = 14, style = {} }) {
   return (
@@ -24,22 +25,38 @@ export default function IntroScreen({ onStart }) {
       minHeight: '100vh',
       background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
-      justifyContent: 'center',
-      padding: '16px 24px 100px',
+      justifyContent: 'flex-start',
+      padding: '0 0 80px',
       position: 'relative', overflowX: 'hidden', overflowY: 'auto',
     }}>
 
+      {/* Hero image */}
+      <div style={{
+        width: '100%', position: 'relative',
+        marginBottom: 0,
+      }}>
+        <img
+          src={heroBg}
+          alt=""
+          style={{
+            width: '100%', display: 'block',
+            maxHeight: '55vh', objectFit: 'cover', objectPosition: 'center top',
+          }}
+        />
+        {/* Fade bottom da imagem */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0,
+          height: '50%',
+          background: 'linear-gradient(to bottom, transparent, #0F3A3A)',
+          pointerEvents: 'none',
+        }} />
+      </div>
+
       {/* Background glows */}
       <div style={{
-        position: 'absolute', top: '8%', left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', top: '55%', left: '50%', transform: 'translateX(-50%)',
         width: 700, height: 450,
         background: 'radial-gradient(ellipse, rgba(190,150,81,0.08) 0%, transparent 65%)',
-        pointerEvents: 'none',
-      }} />
-      <div style={{
-        position: 'absolute', bottom: '5%', right: '-10%',
-        width: 350, height: 350,
-        background: 'radial-gradient(ellipse, rgba(190,150,81,0.05) 0%, transparent 70%)',
         pointerEvents: 'none',
       }} />
 
@@ -63,7 +80,7 @@ export default function IntroScreen({ onStart }) {
         animation: 'float 4s ease-in-out 0.5s infinite',
       }} />
 
-      <div style={{ width: '100%', maxWidth: 440, textAlign: 'center', position: 'relative', zIndex: 1 }}>
+      <div style={{ width: '100%', maxWidth: 440, textAlign: 'center', position: 'relative', zIndex: 1, padding: '0 24px' }}>
 
         {/* Logo */}
         <Logo size={200} />
@@ -75,10 +92,10 @@ export default function IntroScreen({ onStart }) {
           transition={{ delay: 0.15, duration: 0.6 }}
           style={{
             textAlign: 'center',
-            fontSize: 'clamp(16px, 4.2vw, 22px)',
-            fontWeight: 800, lineHeight: 1.3,
+            fontSize: 'clamp(24px, 7vw, 34px)',
+            fontWeight: 800, lineHeight: 1.25,
             color: '#f5efe6',
-            letterSpacing: '0px',
+            letterSpacing: '-0.3px',
             marginBottom: 14,
             padding: '0 4px',
           }}
