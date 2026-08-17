@@ -10,6 +10,7 @@ import UpsellScreen from './screens/UpsellScreen'
 import ContinuacaoScreen from './screens/ContinuacaoScreen'
 import mobileBg from './assets/FUNDO-DESTORCIDO-MOBILE.jpeg'
 import quizBg from './assets/IMAGEM-GERA.png'
+import introBg from './assets/IMG_1935.png'
 
 const TOTAL = questions.length
 
@@ -152,7 +153,11 @@ export default function App() {
     <>
       {/* Fundo mobile fixo */}
       <div className="mobile-bg-fixed" style={{
-        backgroundImage: `url(${['quiz', 'loading', 'result'].includes(screen) ? quizBg : mobileBg})`
+        backgroundImage: `url(${
+          ['quiz', 'loading', 'result'].includes(screen) ? quizBg :
+          screen === 'intro' ? introBg :
+          mobileBg
+        })`
       }} />
 
       {/* Popup quiz/result */}

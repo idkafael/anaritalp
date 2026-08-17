@@ -23,64 +23,24 @@ export default function IntroScreen({ onStart }) {
   return (
     <div className="app-screen" style={{
       minHeight: '100vh',
-      background: 'linear-gradient(160deg, #0a2e2e 0%, #0F3A3A 40%, #0d3535 100%)',
+      backgroundImage: `url(${heroBg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center top',
+      backgroundRepeat: 'no-repeat',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
-      justifyContent: 'flex-start',
-      padding: '0 0 80px',
+      justifyContent: 'center',
+      padding: '40px 24px 80px',
       position: 'relative', overflowX: 'hidden', overflowY: 'auto',
     }}>
 
-      {/* Hero image */}
+      {/* Overlay escuro para legibilidade */}
       <div style={{
-        width: '100%', position: 'relative',
-        marginBottom: 0,
-      }}>
-        <img
-          src={heroBg}
-          alt=""
-          style={{
-            width: '100%', display: 'block',
-            maxHeight: '55vh', objectFit: 'cover', objectPosition: 'center top',
-          }}
-        />
-        {/* Fade bottom da imagem */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0,
-          height: '50%',
-          background: 'linear-gradient(to bottom, transparent, #0F3A3A)',
-          pointerEvents: 'none',
-        }} />
-      </div>
-
-      {/* Background glows */}
-      <div style={{
-        position: 'absolute', top: '55%', left: '50%', transform: 'translateX(-50%)',
-        width: 700, height: 450,
-        background: 'radial-gradient(ellipse, rgba(190,150,81,0.08) 0%, transparent 65%)',
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(to bottom, rgba(10,30,20,0.45) 0%, rgba(10,30,20,0.75) 50%, rgba(10,30,20,0.92) 100%)',
         pointerEvents: 'none',
       }} />
 
-      {/* Sparkles decorativos */}
-      <Sparkle size={12} style={{
-        position: 'absolute', top: 180, right: 36,
-        animation: 'float 3.5s ease-in-out 0.3s infinite',
-        opacity: 0.6,
-      }} />
-      <Sparkle size={8} style={{
-        position: 'absolute', top: 220, left: 44,
-        animation: 'float 4.2s ease-in-out 0.8s infinite',
-        opacity: 0.4,
-      }} />
-      <Cross size={16} style={{
-        position: 'absolute', bottom: '28%', right: 28,
-        animation: 'float 5s ease-in-out 1s infinite',
-      }} />
-      <Cross size={10} style={{
-        position: 'absolute', bottom: '22%', left: 22,
-        animation: 'float 4s ease-in-out 0.5s infinite',
-      }} />
-
-      <div style={{ width: '100%', maxWidth: 440, textAlign: 'center', position: 'relative', zIndex: 1, padding: '0 24px' }}>
+      <div style={{ width: '100%', maxWidth: 440, textAlign: 'center', position: 'relative', zIndex: 1 }}>
 
         {/* Logo */}
         <Logo size={200} />
