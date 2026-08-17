@@ -17,14 +17,14 @@ function Section({ children, delay = 0 }) {
   )
 }
 
-const DEFAULT_PLAYER_ID = '6a6d70f0d0c58d8796a94b02'
+const DEFAULT_PLAYER_ID = '6a825a27453d92ea35201d49'
 
 export default function UpsellScreen({ onDecline, playerId = DEFAULT_PLAYER_ID }) {
   const [buttonRevealed, setButtonRevealed] = useState(false)
 
   useEffect(() => {
     const s = document.createElement('script')
-    s.src = `https://scripts.converteai.net/ddbb824d-99d3-4461-9b8a-b0bab6039eaa/players/${playerId}/v4/player.js`
+    s.src = `https://scripts.converteai.net/6aea4db1-d2a8-4904-b617-b709699fff5d/players/${playerId}/v4/player.js`
     s.async = true
     document.head.appendChild(s)
   }, [playerId])
